@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--32x32-->
+    <DrawingImage x:Shared="False" x:Key="ClearMissing32">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z"/>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <!--16x16-->
+    <DrawingImage x:Shared="False" x:Key="ClearMissing16">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z"/>
+
+                <!--Bin-->
+                <GeometryDrawing Brush="#FF666666"
+                                 Geometry="M13,5v9c0,0.553-0.447,1-1,1
+                                 H4c-0.552,0-1-0.447-1-1V5H13z M13,2
+                                 h-3c0-0.552-0.447-1-1-1H7
+                                 C6.448,1,6,1.448,6,2H3C2.448,2,2,2.448,2,3
+                                 v1h12V3C14,2.448,13.553,2,13,2z"/>
+
+                <!--Missing-->
+                <GeometryDrawing Brush="{StaticResource AlertBorderBrush}"
+                                 Geometry="M11,7c0.352,0,0.677,0.184,0.857,0.485
+                                 l3,5c0.186,0.309,0.19,0.693,0.013,1.008
+                                 C14.692,13.807,14.36,14,14,14
+                                 H8c-0.36,0-0.693-0.193-0.87-0.507
+                                 c-0.178-0.314-0.173-0.699,0.013-1.008
+                                 l3-5C10.323,7.184,10.648,7,11,7L11,7z"/>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>

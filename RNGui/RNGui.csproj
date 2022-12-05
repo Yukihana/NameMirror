@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+	  <ImplicitUsings>disable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<RootNamespace>CSX.Wpf.Y2022.RNGui</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSX.DotNet6.Logging\CSX.DotNet6.Logging.csproj" />
+    <ProjectReference Include="..\CSX.DotNet6.Y2022.ReferencedNaming\CSX.DotNet6.Y2022.ReferencedNaming.csproj" />
+    <ProjectReference Include="..\CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj" />
+    <ProjectReference Include="..\RNGui.BuildInfo\RNGui.BuildInfo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="GUI\Windows\RNWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\IconsXAML\Clear\ClearUnreferenced.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\IconsXAML\Clear\ClearAll.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

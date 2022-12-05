@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--About-Info-->
+    <system:String x:Key="AboutName">Referenced Naming Tool</system:String>
+    <system:String x:Key="AboutDescription0">Renames files based on the names of other files.</system:String>
+    <system:String x:Key="AboutDescription1">Use the wizard or add files and naming reference files manually.</system:String>
+    <system:String x:Key="AboutDescription2">Optionally reorder them before applying rename.</system:String>
+    <system:String x:Key="AboutDescription3">Use the logger to trace steps back in case there's a mistake renaming.</system:String>
+    <system:String x:Key="AboutTip">Even though the logger will help trace back steps, it's always better to create a backup before attempting to rename files in bulk.</system:String>
+
+    <system:String x:Key="AboutTermsOfUse">You may use this program at your convenience, but you may not use this program to cause intentional harm to other people, self aware entities, and/or their assets.</system:String>
+    <system:String x:Key="AboutDisclaimer">By using this program you agree that this program and its creator are not responsible for any damage caused or losses incurred by the use and/or misuse of this program.</system:String>
+    <system:String x:Key="AboutCopyrights">You may not distribute 'modified' copies of this program with or without profit.</system:String>
+    <system:String x:Key="AboutAccreditations">This program was created using Visual Studio Community without using any third party dependencies and packages. Vector graphics used in this program are originals created solely by the creator of this program. Any resemblance to assets outside this program, or from other products, is entirely coincidental. The only exceptions include WPF, .NET and Windows specific assets, provided free of cost at the time, by Microsoft. The icon was created with a rasterized vector image using IcoFX 1.6.</system:String>
+
+</ResourceDictionary>

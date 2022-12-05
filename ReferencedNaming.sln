@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.DotNet6.Y2022.ReferencedNaming", "CSX.DotNet6.Y2022.ReferencedNaming\CSX.DotNet6.Y2022.ReferencedNaming.csproj", "{250DAD5D-0384-4294-A617-81FC94CF2519}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RNGui", "RNGui\RNGui.csproj", "{A33CCF50-4CE5-4BB8-8218-2718CAF63C5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.DotNet6.Logging", "CSX.DotNet6.Logging\CSX.DotNet6.Logging.csproj", "{54A50779-A002-4E9A-A617-E159C7732A73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{EC812DED-D80A-435B-932A-893CE5AE1408}"
+	ProjectSection(SolutionItems) = preProject
+		obsoletecode.xml = obsoletecode.xml
+		obs_pre_indiv_select.txt = obs_pre_indiv_select.txt
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.Wpf.Dialogs", "CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj", "{3F2A43BF-15F6-4114-A615-48AF819E1F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSX.Wpf.Controls", "CSX.Wpf.Controls\CSX.Wpf.Controls.csproj", "{270831B8-45CB-4286-91B7-2871B5012F9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SourceGenerators", "SourceGenerators", "{76AE92B8-3186-4B1E-A23D-D2910830D434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNGui.BuildInfo", "RNGui.BuildInfo\RNGui.BuildInfo.csproj", "{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{250DAD5D-0384-4294-A617-81FC94CF2519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250DAD5D-0384-4294-A617-81FC94CF2519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250DAD5D-0384-4294-A617-81FC94CF2519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250DAD5D-0384-4294-A617-81FC94CF2519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33CCF50-4CE5-4BB8-8218-2718CAF63C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33CCF50-4CE5-4BB8-8218-2718CAF63C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33CCF50-4CE5-4BB8-8218-2718CAF63C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33CCF50-4CE5-4BB8-8218-2718CAF63C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A50779-A002-4E9A-A617-E159C7732A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A50779-A002-4E9A-A617-E159C7732A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A50779-A002-4E9A-A617-E159C7732A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A50779-A002-4E9A-A617-E159C7732A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2A43BF-15F6-4114-A615-48AF819E1F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2A43BF-15F6-4114-A615-48AF819E1F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2A43BF-15F6-4114-A615-48AF819E1F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2A43BF-15F6-4114-A615-48AF819E1F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270831B8-45CB-4286-91B7-2871B5012F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270831B8-45CB-4286-91B7-2871B5012F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270831B8-45CB-4286-91B7-2871B5012F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270831B8-45CB-4286-91B7-2871B5012F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE7F7EB3-85FB-434D-A92C-71EDD73F9131} = {76AE92B8-3186-4B1E-A23D-D2910830D434}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EAD2B22E-50A2-4E8C-A835-6E6301E06168}
+	EndGlobalSection
+EndGlobal

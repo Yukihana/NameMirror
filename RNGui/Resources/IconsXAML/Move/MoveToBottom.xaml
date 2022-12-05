@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--16x16-->
+    <DrawingImage x:Shared="False"  x:Key="MoveToBottom16">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Geometry="M0,0H16V16H0z" Brush="Transparent"/>
+
+                <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
+                                 Geometry="M14,15c0.553,0,1-0.447,1-1v-2c0-0.553-0.447-1-1-1
+                                 H9.414l5.293-5.293c0.286-0.286,0.372-0.716,0.217-1.09
+                                 C14.77,4.243,14.404,4,14,4h-3V2c0-0.553-0.447-1-1-1
+                                 H6C5.448,1,5,1.447,5,2v2H2C1.596,4,1.231,4.243,1.076,4.617
+                                 s-0.069,0.804,0.217,1.09L6.586,11H2
+                                 c-0.552,0-1,0.447-1,1v2c0,0.553,0.448,1,1,1H14L14,15z"/>
+                <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
+                                 Geometry="M14,14H2v-2h12V14z"/>
+                <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
+                                 Geometry="M8,11L2,5h4V2h4v3h4L8,11z"/>
+                <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
+                                 Geometry="M8,11C7,6,8,4,9,2H6v3H2L8,11z"/>
+                <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
+                                 Geometry="M2,12h12c-1,0-10,1-12,2V12z"/>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+</ResourceDictionary>

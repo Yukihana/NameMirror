@@ -1,0 +1,64 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--32x32-->
+    <DrawingImage x:Shared="False" x:Key="Instructions32">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z"/>
+
+                <!--Page-->
+                <GeometryDrawing Brush="{StaticResource SheetBorderBrush}"
+                                 Geometry="M22,1H2C1.448,1,1,1.448,1,2v28
+                                 c0,0.553,0.448,1,1,1h20c0.553,0,1-0.447,1-1
+                                 V2C23,1.448,22.553,1,22,1L22,1z"/>
+                <GeometryDrawing Brush="{StaticResource SheetSurfaceBrush}"
+                                 Geometry="M22,2v28H2V2H22z"/>
+                <GeometryDrawing Brush="{StaticResource ContentTextBrush}"
+                                 Geometry="M20,6H4V4h16V6z M20,8H4v2h16V8z
+                                 M20,12H4v2h16V12z M20,16H4v2h16V16z
+                                 M19,20H4v2h15V20z M20,24H4v2h16V24z"/>
+                <GeometryDrawing Brush="{StaticResource ContentGlossBrush}"
+                                 Geometry="M22,2v28H2C3,21,4,7,22,2z"/>
+
+                <!--Circle-->
+                <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
+                                 Geometry="M20,7c6.065,0,11,4.935,11,11
+                                 c0,6.065-4.935,11-11,11S9,24.065,9,18
+                                 C9,11.935,13.935,7,20,7L20,7z"/>
+                <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
+                                 Geometry="M30,18c0,5.523-4.478,10-10,10
+                                 c-5.523,0-10-4.477-10-10c0-5.522,4.477-10,10-10
+                                 C25.522,8,30,12.478,30,18z"/>
+                <GeometryDrawing Brush="{StaticResource GlossWhite44x66SE}"
+                                 Geometry="M12.929,25.07c-3.904-3.904-3.904-10.236,0-14.141
+                                 c3.906-3.905,10.237-3.906,14.143,0
+                                 C27.071,10.929,21,11,17,15C13,19,12.929,25.07,12.929,25.07z"/>
+
+                <!--?-->
+                <GeometryDrawing Brush="{StaticResource Shadow44}"
+                                 Geometry="M20,10c-2.757,0-5,2.243-5,5c0,0.552,0.448,1,1,1
+                                 h2c0.553,0,1-0.448,1-1c0-0.551,0.448-1,1-1s1,0.449,1,1
+                                 c0,0.479-0.379,0.849-1.049,1.459C19.128,17.21,18,18.239,18,20
+                                 v1c0,0.553,0.447,1,1,1c-0.553,0-1,0.447-1,1v2c0,0.553,0.447,1,1,1
+                                 h2c0.553,0,1-0.447,1-1v-2c0-0.553-0.447-1-1-1c0.553,0,1-0.447,1-1
+                                 v-1c0-0.388,0.248-0.627,0.906-1.164C23.79,18.114,25,17.126,25,15
+                                 C25,12.243,22.757,10,20,10L20,10z"/>
+                <GeometryDrawing Brush="White"
+                                 Geometry="M19,20c0-2.5,3-3,3-5c0-1.103-0.897-2-2-2
+                                 s-2,0.897-2,2h-2c0-2.209,1.791-4,4-4l0,0c2.209,0,4,1.791,4,4
+                                 c0,3-3,3-3,5v1h-2V20z M21,23h-2v2h2V23z"/>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <!--16x16-->
+    <DrawingImage x:Shared="False" x:Key="Instructions16">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>
