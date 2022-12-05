@@ -9,20 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RNGui", "RNGui\RNGui.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.DotNet6.Logging", "CSX.DotNet6.Logging\CSX.DotNet6.Logging.csproj", "{54A50779-A002-4E9A-A617-E159C7732A73}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{EC812DED-D80A-435B-932A-893CE5AE1408}"
-	ProjectSection(SolutionItems) = preProject
-		obsoletecode.xml = obsoletecode.xml
-		obs_pre_indiv_select.txt = obs_pre_indiv_select.txt
-		TODO.txt = TODO.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.Wpf.Dialogs", "CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj", "{3F2A43BF-15F6-4114-A615-48AF819E1F3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSX.Wpf.Controls", "CSX.Wpf.Controls\CSX.Wpf.Controls.csproj", "{270831B8-45CB-4286-91B7-2871B5012F9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSX.Wpf.Controls", "CSX.Wpf.Controls\CSX.Wpf.Controls.csproj", "{270831B8-45CB-4286-91B7-2871B5012F9E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SourceGenerators", "SourceGenerators", "{76AE92B8-3186-4B1E-A23D-D2910830D434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNGui.BuildInfo", "RNGui.BuildInfo\RNGui.BuildInfo.csproj", "{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RNGui.BuildInfo", "RNGui.BuildInfo\RNGui.BuildInfo.csproj", "{CE7F7EB3-85FB-434D-A92C-71EDD73F9131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
