@@ -1,20 +1,16 @@
 ﻿using CSX.DotNet.Logging.Types;
 
-namespace CSX.DotNet.Logging.Support
+namespace CSX.DotNet.Logging.Support;
+
+internal static class Converters
 {
-    internal static class Converters
+    internal static LogLevel Sanitize(this string levelString)
     {
-        internal static LogLevel Sanitize(this string levelString)
+        return levelString.Trim().ToLowerInvariant() switch
         {
-            return levelString.Trim().ToLowerInvariant() switch
-            {
-                // TODO
+            // TODO
 
-
-
-
-                _ => LogLevel.Information,
-            };
-        }
+            _ => LogLevel.Information,
+        };
     }
 }

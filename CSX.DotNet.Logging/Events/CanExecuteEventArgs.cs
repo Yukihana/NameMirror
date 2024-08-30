@@ -1,16 +1,19 @@
 ﻿using System;
 
-namespace CSX.DotNet.Logging.Events
+namespace CSX.DotNet.Logging.Events;
+
+public class CanExecuteEventArgs : EventArgs
 {
-    public class CanExecuteEventArgs : EventArgs
+    public bool CanExecute = false;
+    public object? Parameter = null;
+
+    public CanExecuteEventArgs() : base()
     {
-        public bool CanExecute = false;
-        public object? Parameter = null;
-        public CanExecuteEventArgs() : base() { }
-        public CanExecuteEventArgs(object? parameter = null, bool canExecute = false)
-        {
-            CanExecute = canExecute;
-            Parameter = parameter;
-        }
+    }
+
+    public CanExecuteEventArgs(object? parameter = null, bool canExecute = false)
+    {
+        CanExecute = canExecute;
+        Parameter = parameter;
     }
 }

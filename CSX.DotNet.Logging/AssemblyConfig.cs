@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CSX.DotNet.Logging;
 
-namespace CSX.DotNet.Logging
+internal static class AssemblyConfig
 {
-    internal static class AssemblyConfig
-    {
-        public static string LogExtension => "log";
-    }
+    public static string LogExtension => "log";
 }

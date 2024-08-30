@@ -1,23 +1,22 @@
-﻿namespace CSX.DotNet.Logging.Types
+﻿namespace CSX.DotNet.Logging.Types;
+
+public enum LogLevel : byte
 {
-    public enum LogLevel : byte
-    {
-        Default = 0,
-        Information = 0,
+    Default = 0,
+    Information = 0,
 
-        Details = 10,
-        Notes = 20,
-        Noise = 30,
+    Details = 10,
+    Notes = 20,
+    Noise = 30,
 
-        Query = 50,
+    Query = 50,
 
-        Important = 100,
-        Summary = 110,
+    Important = 100,
+    Summary = 110,
 
-        Exclamation = 200,
-        Warning = 210,
-        Error = 220,
+    Exclamation = 200,
+    Warning = 210,
+    Error = 220,
 
-        Debug = 250,
-    }
+    Debug = 250,
 }
