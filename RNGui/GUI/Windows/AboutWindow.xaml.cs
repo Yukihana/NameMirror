@@ -1,5 +1,4 @@
-﻿using RNGui.BuildInfo;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows;
 
@@ -18,10 +17,5 @@ namespace CSX.Wpf.Y2022.RNGui.Views.Windows
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
-        [CompilationTimeString]
-        private const string CompilationDateTimeUTC = "";
-
-        public static string BuildTime => CompilationDateTimeUTC;
     }
 }

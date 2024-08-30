@@ -2,19 +2,23 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
+
+    <Version>0.$([System.DateTime]::UtcNow.ToString("yyyy.MMdd.Hmm"))</Version>
+
+    <LangVersion>Latest</LangVersion>
     <Nullable>enable</Nullable>
 	  <ImplicitUsings>disable</ImplicitUsings>
+
     <UseWPF>true</UseWPF>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	<RootNamespace>CSX.Wpf.Y2022.RNGui</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSX.DotNet6.Logging\CSX.DotNet6.Logging.csproj" />
-    <ProjectReference Include="..\CSX.DotNet6.Y2022.ReferencedNaming\CSX.DotNet6.Y2022.ReferencedNaming.csproj" />
+    <ProjectReference Include="..\CSX.DotNet.Logging\CSX.DotNet.Logging.csproj" />
     <ProjectReference Include="..\CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj" />
-    <ProjectReference Include="..\RNGui.BuildInfo\RNGui.BuildInfo.csproj" />
+    <ProjectReference Include="..\ReferencedNaming\ReferencedNaming.csproj" />
   </ItemGroup>
 
   <ItemGroup>
