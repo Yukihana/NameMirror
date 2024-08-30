@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net481-windows</TargetFramework>
 
     <Version>0.$([System.DateTime]::UtcNow.ToString("yyyy.MMdd.Hmm"))</Version>
 
@@ -11,6 +11,10 @@
 
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSX.DotNet.Shared\CSX.DotNet.Shared.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Page Update="Windows\QueryDialog.xaml">
