@@ -199,7 +199,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Finish
-        ConcludeReordering(successes, selected.ToArray());
+        ConcludeReordering(successes, [.. selected]);
     }
 
     private readonly ActionCommand taskMoveToBottomCommand;
@@ -236,7 +236,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Finish
-        ConcludeReordering(successes, selected.ToArray());
+        ConcludeReordering(successes, [.. selected]);
     }
 
     // Commands : References
@@ -279,7 +279,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Conclude
-        ConcludeReordering(successes, selected.ToArray());
+        ConcludeReordering(successes, [.. selected]);
     }
 
     private readonly ActionCommand referenceMoveDownCommand;
@@ -307,7 +307,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Conclude
-        ConcludeReordering(successes, selected.ToArray());
+        ConcludeReordering(successes, [.. selected]);
     }
 
     private readonly ActionCommand referenceMoveToTopCommand;
@@ -318,9 +318,9 @@ public partial class RNLogic : INotifyPropertyChanged
     private void MoveReferenceToTop(object? parameter)
     {
         // Prepare
-        RNTask[] selected = GetSelection().ToArray();
-        List<RNTask> newSelection = new();
-        List<string> pushList = new();
+        RNTask[] selected = [.. GetSelection()];
+        List<RNTask> newSelection = [];
+        List<string> pushList = [];
         int offset = 0, selectedPushCount = 0, successes = 0;
 
         // Get first start position (skip over items that don't need to be moved, add them to new selection)
@@ -365,7 +365,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Finish
-        ConcludeReordering(successes, newSelection.ToArray());
+        ConcludeReordering(successes, [.. newSelection]);
     }
 
     private readonly ActionCommand referenceMoveToBottomCommand;
@@ -375,9 +375,9 @@ public partial class RNLogic : INotifyPropertyChanged
 
     private void MoveReferenceToBottom(object? parameter)
     {
-        RNTask[] selected = GetSelection().ToArray();
-        List<RNTask> newSelection = new();
-        List<string> pushList = new();
+        RNTask[] selected = [.. GetSelection()];
+        List<RNTask> newSelection = [];
+        List<string> pushList = [];
         int i, offset = 0, selectedPushCount = 0, successes = 0;
 
         // Get first start position (skip over items that don't need to be moved, add them to new selection)
@@ -423,7 +423,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
 
         // Finish
-        ConcludeReordering(successes, newSelection.ToArray());
+        ConcludeReordering(successes, [.. newSelection]);
     }
 
     // Commands : Rename
@@ -670,7 +670,7 @@ public partial class RNLogic : INotifyPropertyChanged
     // Move this to the model and change to property? (Data.Selection replacement?)
     private List<RNTask> GetSelection()
     {
-        List<RNTask> result = new();
+        List<RNTask> result = [];
         for (int i = 0; i < Data.Tasks.Count; i++)
         {
             if (Data.Tasks[i].IsSelected)

@@ -11,7 +11,7 @@ namespace RNGui.Views.Windows
     public partial class TutorWindow : Window
     {
         private static ObservableCollection<string> Pages =>
-            new() { "Overview", "Tasks", "References", "Renaming", "Tools", "Log", "Misc" };
+            ["Overview", "Tasks", "References", "Renaming", "Tools", "Log", "Misc"];
 
         public TutorWindow()
         {
@@ -29,10 +29,11 @@ namespace RNGui.Views.Windows
 
         private void LoadPage(string? content)
         {
-            if (string.IsNullOrWhiteSpace(content))
-            {
+            if (content is null)
                 return;
-            }
+
+            if (string.IsNullOrWhiteSpace(content))
+                return;
 
             InstructionsTemplate page = new();
             Pager.Content = page;
