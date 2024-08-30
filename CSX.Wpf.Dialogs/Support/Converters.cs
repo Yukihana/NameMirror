@@ -1,4 +1,5 @@
-﻿using CSX.Wpf.Dialogs.Types;
+﻿using CSX.DotNet.Shared.Compatibility;
+using CSX.Wpf.Dialogs.Types;
 using System;
 using System.Windows;
 
@@ -25,8 +26,8 @@ internal static class Converters
         };
 
     public static int ToPositiveIndex(this int n, int total)
-        => Math.Clamp(n < 0 ? total + n : n, 0, total - 1);
+        => MathFx.Clamp(n < 0 ? total + n : n, 0, total - 1);
 
     public static int ToNegativeIndex(this int n, int total)
-        => Math.Clamp(Math.Abs(n) - total, -1, 0 - total);
+        => MathFx.Clamp(Math.Abs(n) - total, -1, 0 - total);
 }

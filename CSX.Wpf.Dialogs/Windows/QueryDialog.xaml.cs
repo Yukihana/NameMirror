@@ -1,5 +1,6 @@
 ﻿using CSX.Wpf.Dialogs.Types;
 using System;
+using System.Linq;
 using System.Media;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,7 +36,11 @@ public partial class QueryDialog : Window
     public void AddButtons(string buttonsConfig)
     {
         // Sanitize data
+#if NET_5_0_OR_GREATER
         var buttonsText = buttonsConfig.Split(";", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+#elif NETFRAMEWORK
+        var buttonsText = buttonsConfig.Split(';').Select(x => x.Trim()).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+#endif
 
         // Clear and populate
         ButtonsPanel.Children.Clear();

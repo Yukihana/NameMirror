@@ -60,7 +60,7 @@ namespace RNGui.Views.Windows
         {
             if (sender is DataGrid s)
             {
-                s.ScrollIntoView(s.Items[^1]);
+                s.ScrollIntoView(s.Items[s.Items.Count - 1]);
             }
         }
 

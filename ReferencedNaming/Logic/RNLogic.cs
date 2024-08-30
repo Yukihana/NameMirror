@@ -148,7 +148,7 @@ public partial class RNLogic : INotifyPropertyChanged
     private void MoveTaskDown(object? parameter)
     {
         // Snapshot
-        RNTask[] selected = GetSelection().ToArray();
+        RNTask[] selected = [.. GetSelection()];
         int index;
         int successes = 0;
 

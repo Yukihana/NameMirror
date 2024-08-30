@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSX.DotNet.Shared.Compatibility;
+using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -9,7 +10,7 @@ internal class XAMLStatusColor : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        byte index = Math.Clamp((byte)value, (byte)0, (byte)3);
+        byte index = MathFx.Clamp((byte)value, (byte)0, (byte)3);
         Color color = index switch
         {
             1 => Colors.LimeGreen,
