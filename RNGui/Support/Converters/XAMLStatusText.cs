@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace CSX.Wpf.Y2022.RNGui.Support.Converters;
+namespace RNGui.Support.Converters;
 
 internal class XAMLStatusText : IValueConverter
 {

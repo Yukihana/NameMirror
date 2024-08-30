@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSX.Wpf.Y2022.RNGui.Resources.HardCoded;
+namespace RNGui.Resources.HardCoded;
 
 public static class InstructionsData
 {

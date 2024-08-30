@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CSX.Wpf.Y2022.RNGui.Support.Sorting;
+namespace RNGui.Support.Sorting;
 
 internal class NaturalSorter : IComparer<object>, IComparer
 {

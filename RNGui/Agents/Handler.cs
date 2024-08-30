@@ -1,6 +1,6 @@
 ﻿using ReferencedNaming.Agents;
 
-namespace CSX.Wpf.Y2022.RNGui.Agents;
+namespace RNGui.Agents;
 
 internal class Handler : IHandler
 {

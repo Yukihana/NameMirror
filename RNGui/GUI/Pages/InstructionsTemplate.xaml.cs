@@ -1,9 +1,9 @@
-﻿using CSX.Wpf.Y2022.RNGui.Resources.HardCoded;
+﻿using RNGui.Resources.HardCoded;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CSX.Wpf.Y2022.RNGui.GUI.Pages
+namespace RNGui.GUI.Pages
 {
     /// <summary>
     /// Interaction logic for Tasks.xaml

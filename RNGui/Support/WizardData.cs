@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace CSX.Wpf.Y2022.RNGui.Support;
+namespace RNGui.Support;
 
 internal class WizardData : INotifyPropertyChanged
 {

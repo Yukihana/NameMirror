@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace CSX.Wpf.Y2022.RNGui.Views.Windows
+namespace RNGui.Views.Windows
 {
     /// <summary>
     /// Interaction logic for AboutWindow.xaml

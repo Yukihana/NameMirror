@@ -2,7 +2,7 @@
 using ReferencedNaming.Agents;
 using System.IO;
 
-namespace CSX.Wpf.Y2022.RNGui.Agents;
+namespace RNGui.Agents;
 
 public sealed class FileSystemAgent : IFileSystemAgent
 {

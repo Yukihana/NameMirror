@@ -1,11 +1,10 @@
 ﻿using System.Windows;
 
-namespace CSX.Wpf.Y2022.RNGui
+namespace RNGui;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-    }
 }

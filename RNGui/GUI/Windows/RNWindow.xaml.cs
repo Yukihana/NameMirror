@@ -1,6 +1,6 @@
 ﻿using CSX.DotNet.Logging.Logic;
-using CSX.Wpf.Y2022.RNGui.Agents;
-using CSX.Wpf.Y2022.RNGui.GUI.Windows;
+using RNGui.Agents;
+using RNGui.GUI.Windows;
 using ReferencedNaming.Logic;
 using ReferencedNaming.Types;
 using System;
@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 
-namespace CSX.Wpf.Y2022.RNGui.Views.Windows
+namespace RNGui.Views.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

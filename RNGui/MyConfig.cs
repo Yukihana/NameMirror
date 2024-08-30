@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CSX.Wpf.Y2022.RNGui;
+namespace RNGui;
 
 internal static class MyConfig
 {

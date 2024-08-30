@@ -1,8 +1,8 @@
-﻿using CSX.Wpf.Y2022.RNGui.Support;
+﻿using RNGui.Support;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CSX.Wpf.Y2022.RNGui.GUI.Windows
+namespace RNGui.GUI.Windows
 {
     /// <summary>
     /// Interaction logic for WizardWindow.xaml

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace CSX.Wpf.Y2022.RNGui.Support.Sorting;
+namespace RNGui.Support.Sorting;
 
 internal class GridSortBehaviour
 {

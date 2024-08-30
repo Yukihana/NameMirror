@@ -1,9 +1,9 @@
-﻿using CSX.Wpf.Y2022.RNGui.GUI.Pages;
+﻿using RNGui.GUI.Pages;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CSX.Wpf.Y2022.RNGui.Views.Windows
+namespace RNGui.Views.Windows
 {
     /// <summary>
     /// Interaction logic for InstructionsWindow.xaml
