@@ -1,7 +1,7 @@
-﻿using ReferencedNaming.Agents;
-using CSX.Wpf.Dialogs;
+﻿using CSX.Wpf.Dialogs;
+using ReferencedNaming.Agents;
 
-namespace CSX.Wpf.Y2022.RNGui.Agents
-{
-    public class PromptAgent : Activator, IPromptAgent { }
-}
+namespace CSX.Wpf.Y2022.RNGui.Agents;
+
+public class PromptAgent : Activator, IPromptAgent
+{ }
