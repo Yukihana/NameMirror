@@ -9,15 +9,14 @@
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-
 
         <!--Image-->
         <Grid x:Name="ImageContainer" Margin="16 16 2 16"  VerticalAlignment="Top">
@@ -25,49 +24,46 @@
                   Fill="{DynamicResource SystemBlueGradient}"
                   Data="{DynamicResource Info32Figures}">
                 <Path.Effect>
-                    <DropShadowEffect Opacity="0.2" ShadowDepth="2"/>
+                    <DropShadowEffect Opacity="0.2" ShadowDepth="2" />
                 </Path.Effect>
             </Path>
         </Grid>
 
-        
-        <!--Message-->        
+        <!--Message-->
         <ScrollViewer Grid.Column="1" MinWidth="300" BorderThickness="0"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
             <TextBlock x:Name="DialogMessage" Text="Message Content"
-                       Margin="14" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+                       Margin="14" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" />
         </ScrollViewer>
 
-        
         <!--MidSplit-->
         <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Height="1">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}" Offset="0"/>
-                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" Offset="0.5"/>
-                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}" Offset="0" />
+                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" Offset="0.5" />
+                    <GradientStop Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}" Offset="1" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Grid.Row="2" Grid.ColumnSpan="2"
-            Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-        
-        
+            Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+
         <!-- Button Array -->
         <WrapPanel x:Name="ButtonsPanel" HorizontalAlignment="Right"
                    Grid.Row="2" Grid.ColumnSpan="2" Margin="5">
             <WrapPanel.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="Width" Value="100"/>
-                    <Setter Property="Padding" Value="0 0 0 1"/>
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-                    <EventSetter Event="Click" Handler="ResponseClicked"/>
+                    <Setter Property="Height" Value="25" />
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Padding" Value="0 0 0 1" />
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
+                    <EventSetter Event="Click" Handler="ResponseClicked" />
                 </Style>
             </WrapPanel.Resources>
-            <Button Content="OK"/>
+            <Button Content="OK" />
         </WrapPanel>
     </Grid>
 </Window>

@@ -14,5 +14,4 @@
     <system:String x:Key="AboutDisclaimer">By using this program you agree that this program and its creator are not responsible for any damage caused or losses incurred by the use and/or misuse of this program.</system:String>
     <system:String x:Key="AboutCopyrights">You may not distribute 'modified' copies of this program with or without profit.</system:String>
     <system:String x:Key="AboutAccreditations">This program was created using Visual Studio Community without using any third party dependencies and packages. Vector graphics used in this program are originals created solely by the creator of this program. Any resemblance to assets outside this program, or from other products, is entirely coincidental. The only exceptions include WPF, .NET and Windows specific assets, provided free of cost at the time, by Microsoft. The icon was created with a rasterized vector image using IcoFX 1.6.</system:String>
-
 </ResourceDictionary>

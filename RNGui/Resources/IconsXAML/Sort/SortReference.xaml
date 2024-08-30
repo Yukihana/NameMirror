@@ -5,9 +5,9 @@
     <DrawingImage x:Shared="False" x:Key="SortReference32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
-               <!--LinkComplex-->
+                <!--LinkComplex-->
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M28.5,26c-1.208,0-2.217,0.86-2.449,2H14
                                  c-1.104,0-2-0.896-2-2v-5h10.051c0.232,1.14,1.241,2,2.449,2
@@ -17,19 +17,19 @@
                                  h0.051c0.232,1.14,1.242,2,2.449,2C17.879,6,19,4.878,19,3.5
                                  S17.879,1,16.5,1c-1.207,0-2.217,0.86-2.449,2H14c-1.654,0-3,1.346-3,3v20
                                  c0,1.654,1.346,3,3,3h12.051c0.232,1.14,1.241,2,2.449,2
-                                 c1.379,0,2.5-1.121,2.5-2.5S29.879,26,28.5,26z"/>
+                                 c1.379,0,2.5-1.121,2.5-2.5S29.879,26,28.5,26z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M28.5,27c0.828,0,1.5,0.672,1.5,1.5
-                                 S29.328,30,28.5,30S27,29.328,27,28.5S27.672,27,28.5,27z"/>
+                                 S29.328,30,28.5,30S27,29.328,27,28.5S27.672,27,28.5,27z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M23,20.5c0,0.828,0.672,1.5,1.5,1.5
-                                 s1.5-0.672,1.5-1.5S25.328,19,24.5,19S23,19.672,23,20.5z"/>
+                                 s1.5-0.672,1.5-1.5S25.328,19,24.5,19S23,19.672,23,20.5z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M19,11.5 c0,0.829,0.672,1.5,1.5,1.5
-                                 s1.5-0.671,1.5-1.5S21.328,10,20.5,10 S19,10.671,19,11.5z"/>
+                                 s1.5-0.671,1.5-1.5S21.328,10,20.5,10 S19,10.671,19,11.5z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M15,3.5C15,4.329,15.672,5,16.5,5
-                                 S18,4.329,18,3.5S17.328,2,16.5,2S15,2.671,15,3.5z"/>
+                                 S18,4.329,18,3.5S17.328,2,16.5,2S15,2.671,15,3.5z" />
 
                 <!--Arrows-->
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
@@ -38,22 +38,21 @@
                                  C1.231,7.757,1.596,8,2,8h2v3c0,0.552,0.448,1,1,1
                                  h4c0.552,0,1-0.448,1-1V8h2c0.404,0,0.769-0.244,0.924-0.617
                                  c0.155-0.374,0.069-0.804-0.217-1.09l-5-5
-                                 C7.512,1.098,7.256,1,7,1L7,1z"/>
+                                 C7.512,1.098,7.256,1,7,1L7,1z" />
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
                                  Geometry="M9,20H5c-0.552,0-1,0.447-1,1v3H2
                                  c-0.404,0-0.769,0.243-0.924,0.617s-0.069,0.804,0.217,1.09l5,5
                                  C6.488,30.902,6.744,31,7,31s0.512-0.098,0.707-0.293
                                  l5-5c0.286-0.286,0.372-0.716,0.217-1.09S12.404,24,12,24
-                                 h-2v-3C10,20.447,9.552,20,9,20L9,20z"/>
+                                 h-2v-3C10,20.447,9.552,20,9,20L9,20z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M12,7H9v4H5V7H2l5-5L12,7z"/>
+                                 Geometry="M12,7H9v4H5V7H2l5-5L12,7z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M9,21v4h3l-5,5l-5-5h3v-4H9z"/>
+                                 Geometry="M9,21v4h3l-5,5l-5-5h3v-4H9z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
                                  Geometry="M7,11H5V7H2l5-5l1,1C6,6,7,11,7,11z
-                                 M5,21v4H2l5,5c0,0-1-4,1-9H5z"/>
+                                 M5,21v4H2l5,5c0,0-1-4,1-9H5z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

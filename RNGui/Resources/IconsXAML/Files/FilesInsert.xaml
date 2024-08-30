@@ -5,36 +5,36 @@
     <DrawingImage x:Shared="False" x:Key="FilesInsert32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Page-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderTopFadedBrush}"
-                                 Geometry="M2,1v12c0,0.552,0.448,1,1,1h18c0.553,0,1-0.448,1-1V1h-1v12H3V1H2z"/>
+                                 Geometry="M2,1v12c0,0.552,0.448,1,1,1h18c0.553,0,1-0.448,1-1V1h-1v12H3V1H2z" />
                 <GeometryDrawing Brush="{StaticResource SheetBorderBottomFadedBrush}"
-                                 Geometry="M22,31V19c0-0.553-0.447-1-1-1l0,0H3c-0.552,0-1,0.447-1,1v12h1V19h18v12H22z"/>
+                                 Geometry="M22,31V19c0-0.553-0.447-1-1-1l0,0H3c-0.552,0-1,0.447-1,1v12h1V19h18v12H22z" />
                 <GeometryDrawing Brush="{StaticResource SheetSurfaceTopFadedBrush}"
-                                 Geometry="M21,1v12H3V1H21"/>
+                                 Geometry="M21,1v12H3V1H21" />
                 <GeometryDrawing Brush="{StaticResource SheetSurfaceBottomFadedBrush}"
-                                 Geometry="M21,19v12H3V19H21"/>
+                                 Geometry="M21,19v12H3V19H21" />
 
                 <!--Page Contents-->
                 <GeometryDrawing Brush="{StaticResource ContentTextTopFadedBrush}"
-                                 Geometry="M5,9h14v2H5V9z M5,7h14V5H5V7z M5,3h14V1H5V3z"/>
+                                 Geometry="M5,9h14v2H5V9z M5,7h14V5H5V7z M5,3h14V1H5V3z" />
                 <GeometryDrawing Brush="{StaticResource ContentTextBottomFadedBrush}"
-                                 Geometry="M19,21H5v2h14V21z M19,25H5v2h14V25z M19,29H5v2h14V29z"/>
+                                 Geometry="M19,21H5v2h14V21z M19,25H5v2h14V25z M19,29H5v2h14V29z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossTopFadedBrush}"
-                                 Geometry="M8,1C7,2,4,6,3,9v4h18V1L8,1z"/>
+                                 Geometry="M8,1C7,2,4,6,3,9v4h18V1L8,1z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossX0Brush}"
-                                 Geometry="M21,22c-4,1-10,4-14,9h14V22z"/>
+                                 Geometry="M21,22c-4,1-10,4-14,9h14V22z" />
 
                 <!--Arrow-->
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
                                  Geometry="M29,11h-1c-0.266,0-0.52,0.105-0.707,0.293
                                  l-4,4C23.105,15.481,23,15.735,23,16s0.105,0.52,0.293,0.707
                                  l4,4C27.48,20.895,27.734,21,28,21h1c0.553,0,1-0.447,1-1
-                                 v-8C30,11.448,29.553,11,29,11L29,11z"/>
+                                 v-8C30,11.448,29.553,11,29,11L29,11z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
-                                 Geometry="M29,12v8h-1l-4-4l4-4H29"/>
+                                 Geometry="M29,12v8h-1l-4-4l4-4H29" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
@@ -43,22 +43,22 @@
     <DrawingImage x:Shared="False" x:Key="FilesInsert16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
 
                 <!--Page-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderTopFadedBrush}"
                                  Geometry="M10,15v-5c0-0.553-0.447-1-1-1l0,0
                                  H2c-0.552,0-1,0.447-1,1v5h1v-5h7v5H10z
                                  M9,1v5H2V1H1v5c0,0.552,0.448,1,1,1
-                                 h7c0.553,0,1-0.448,1-1V1H9z"/>
+                                 h7c0.553,0,1-0.448,1-1V1H9z" />
                 <GeometryDrawing Brush="{StaticResource SheetSurfaceTopFadedBrush}"
-                                 Geometry="M9,6H2V1h7V6z M9,10H2v5h7V10z"/>
+                                 Geometry="M9,6H2V1h7V6z M9,10H2v5h7V10z" />
 
                 <!--Page Contents-->
                 <GeometryDrawing Brush="{StaticResource ContentGlossTopFadedBrush}"
-                                 Geometry="M4,1c0,0-1,1-2,3l0,2h7V1H4z"/>
+                                 Geometry="M4,1c0,0-1,1-2,3l0,2h7V1H4z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossX0Brush}"
-                                 Geometry="M9,11c0,0-3,1-5,4h5V11z"/>
+                                 Geometry="M9,11c0,0-3,1-5,4h5V11z" />
 
                 <!--Arrow-->
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
@@ -66,9 +66,9 @@
                                  l-2,2C11.105,7.481,11,7.735,11,8s0.105,0.52,0.293,0.707
                                  l2,2C13.484,10.898,13.74,11,14,11c0.129,0,0.259-0.024,0.383-0.076
                                  C14.757,10.77,15,10.404,15,10V6c0-0.404-0.243-0.769-0.617-0.924
-                                 C14.259,5.025,14.129,5,14,5L14,5z"/>
+                                 C14.259,5.025,14.129,5,14,5L14,5z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
-                                 Geometry="M14,10l-2-2l2-2V10z"/>
+                                 Geometry="M14,10l-2-2l2-2V10z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

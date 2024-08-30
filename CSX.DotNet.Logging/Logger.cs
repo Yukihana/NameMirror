@@ -9,17 +9,11 @@ namespace CSX.DotNet.Logging;
 
 internal class Logger
 {
-    #region Fields
-
     private readonly string Location;
     private readonly string SessionTime;
     private readonly string Prefix;
     private string TargetLog = string.Empty;
     private ulong SubSessionIndex = 0;
-
-    #endregion Fields
-
-    #region LifeTime
 
     internal Logger(string directory, string prefix)
     {
@@ -28,10 +22,6 @@ internal class Logger
         SessionTime = DateTime.Now.ToString(format: "yyyyMMdd_HHmmss");
         TargetLog = GetNewLogName();
     }
-
-    #endregion LifeTime
-
-    #region Cycle
 
     public void CycleLog()
        => TargetLog = GetNewLogName();
@@ -50,8 +40,6 @@ internal class Logger
 
         return path;
     }
-
-    #endregion Cycle
 
     // Async operations
     internal async Task<bool> WriteAsync(IEnumerable<LogEntry> logEntries)

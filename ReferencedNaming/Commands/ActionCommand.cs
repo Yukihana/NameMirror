@@ -13,20 +13,20 @@ namespace ReferencedNaming.Commands
             Avail = canExecute;
         }
 
-
         // Notify
         public event EventHandler? CanExecuteChanged;
-        public void UpdateCanExecute() => CanExecuteChanged?.Invoke(this, new());
 
+        public void UpdateCanExecute() => CanExecuteChanged?.Invoke(this, new());
 
         // Avail
         private readonly Func<object?, bool>? Avail;
+
         [DebuggerStepThrough]
         public bool CanExecute(object? parameter) => Avail == null || Avail(parameter);
 
-
         // Actual
         private readonly Action<object?> ExecuteAction;
+
         public void Execute(object? parameter) => ExecuteAction(parameter);
     }
 }

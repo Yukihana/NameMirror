@@ -5,7 +5,7 @@
     <DrawingImage x:Shared="False"  x:Key="MoveToTop16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0H16V16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0H16V16H0z" Brush="Transparent" />
 
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
                                  Geometry="M14,1H2C1.448,1,1,1.448,1,2v2
@@ -16,17 +16,16 @@
                                  c0.404,0,0.77-0.243,0.924-0.617
                                  c0.155-0.374,0.069-0.804-0.217-1.09
                                  L9.414,5H14c0.553,0,1-0.448,1-1V2
-                                 C15,1.448,14.553,1,14,1L14,1z"/>
+                                 C15,1.448,14.553,1,14,1L14,1z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M14,4H2V2h12V4z"/>
+                                 Geometry="M14,4H2V2h12V4z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M14,11h-4v3H6v-3H2l6-6L14,11z"/>
+                                 Geometry="M14,11h-4v3H6v-3H2l6-6L14,11z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
-                                 Geometry="M8,5l1,1c-1,1-2,3-1,8H6v-3H2L8,5z"/>
+                                 Geometry="M8,5l1,1c-1,1-2,3-1,8H6v-3H2L8,5z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
-                                 Geometry="M2,2h12C13,2,4,3,2,4V2z"/>
+                                 Geometry="M2,2h12C13,2,4,3,2,4V2z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

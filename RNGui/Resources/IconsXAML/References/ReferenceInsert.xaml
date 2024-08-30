@@ -1,58 +1,58 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <!--32x32-->
     <DrawingImage x:Shared="False" x:Key="ReferenceInsert32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Link Lines-->
                 <GeometryDrawing Brush="{StaticResource ReferenceCompositeLinkLinesBrush}"
                                  Geometry="M6,6c0-1.104,0.896-2,2-2h19V3H8
                                  C6.346,3,5,4.346,5,6v20c0,1.654,1.346,3,3,3
-                                 h19v-1H8c-1.104,0-2-0.895-2-2V12h21v-1H6V6z"/>
+                                 h19v-1H8c-1.104,0-2-0.895-2-2V12h21v-1H6V6z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveColorBrush}"
-                                 Geometry="M27,21H7v-1h20V21z"/>
+                                 Geometry="M27,21H7v-1h20V21z" />
 
                 <!--Link Terminals-->
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M28.5,1C27.121,1,26,2.122,26,3.5
-                                 S27.121,6,28.5,6S31,4.878,31,3.5S29.879,1,28.5,1L28.5,1z"/>
+                                 S27.121,6,28.5,6S31,4.878,31,3.5S29.879,1,28.5,1L28.5,1z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M28.5,9c-1.379,0-2.5,1.122-2.5,2.5
                                  s1.121,2.5,2.5,2.5s2.5-1.122,2.5-2.5
-                                 S29.879,9,28.5,9L28.5,9z"/>
+                                 S29.879,9,28.5,9L28.5,9z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
                                  Geometry="M28.5,18c-1.379,0-2.5,1.121-2.5,2.5
                                  s1.121,2.5,2.5,2.5s2.5-1.121,2.5-2.5
-                                 S29.879,18,28.5,18L28.5,18z"/>
+                                 S29.879,18,28.5,18L28.5,18z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M28.5,26c-1.379,0-2.5,1.121-2.5,2.5
                                  s1.121,2.5,2.5,2.5s2.5-1.121,2.5-2.5
-                                 S29.879,26,28.5,26L28.5,26z"/>
+                                 S29.879,26,28.5,26L28.5,26z" />
 
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M28.5,2C29.328,2,30,2.671,30,3.5
-                                 C30,4.328,29.328,5,28.5,5S27,4.328,27,3.5C27,2.671,27.672,2,28.5,2"/>
+                                 C30,4.328,29.328,5,28.5,5S27,4.328,27,3.5C27,2.671,27.672,2,28.5,2" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M28.5,10c0.828,0,1.5,0.671,1.5,1.5
-                                 S29.328,13,28.5,13S27,12.329,27,11.5S27.672,10,28.5,10"/>
+                                 S29.328,13,28.5,13S27,12.329,27,11.5S27.672,10,28.5,10" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
                                  Geometry="M28.5,19c0.828,0,1.5,0.672,1.5,1.5
-                                 S29.328,22,28.5,22S27,21.328,27,20.5S27.672,19,28.5,19"/>
+                                 S29.328,22,28.5,22S27,21.328,27,20.5S27.672,19,28.5,19" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M28.5,27c0.828,0,1.5,0.672,1.5,1.5
-                                 S29.328,30,28.5,30S27,29.328,27,28.5S27.672,27,28.5,27"/>
+                                 S29.328,30,28.5,30S27,29.328,27,28.5S27.672,27,28.5,27" />
 
                 <!--Directive-->
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
                                  Geometry="M7,15H6c-0.266,0-0.52,0.105-0.707,0.293
                                  l-4,4c-0.391,0.391-0.391,1.023,0,1.414l4,4
                                  C5.48,24.895,5.734,25,6,25h1c0.553,0,1-0.447,1-1
-                                 v-8C8,15.448,7.553,15,7,15L7,15z"/>
+                                 v-8C8,15.448,7.553,15,7,15L7,15z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
-                                 Geometry="M7,24H6l-4-4l4-4h1V24z"/>
+                                 Geometry="M7,24H6l-4-4l4-4h1V24z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
@@ -61,32 +61,32 @@
     <DrawingImage x:Shared="False" x:Key="ReferenceInsert16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
 
                 <!--Page-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderTopFadedBrush}"
                                  Geometry="M10,15v-5c0-0.553-0.447-1-1-1l0,0
                                  H2c-0.552,0-1,0.447-1,1v5h1v-5h7v5H10z
                                  M9,1v5H2V1H1v5c0,0.552,0.448,1,1,1
-                                 h7c0.553,0,1-0.448,1-1V1H9z"/>
+                                 h7c0.553,0,1-0.448,1-1V1H9z" />
                 <GeometryDrawing Brush="{StaticResource SheetSurfaceTopFadedBrush}"
-                                 Geometry="M9,6H2V1h7V6z M9,10H2v5h7V10z"/>
+                                 Geometry="M9,6H2V1h7V6z M9,10H2v5h7V10z" />
 
                 <!--Page Contents-->
                 <GeometryDrawing Brush="{StaticResource ContentGlossTopFadedBrush}"
-                                 Geometry="M4,1c0,0-1,1-2,3l0,2h7V1H4z"/>
+                                 Geometry="M4,1c0,0-1,1-2,3l0,2h7V1H4z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossX0Brush}"
-                                 Geometry="M9,11c0,0-3,1-5,4h5V11z"/>
+                                 Geometry="M9,11c0,0-3,1-5,4h5V11z" />
 
                 <!--Links-->
                 <GeometryDrawing Brush="{StaticResource ReferenceCompositeLinkLinesBrush}"
                                  Geometry="M13.001,3H10V2h3.001V3z
-                                 M13.001,13H10v1h3.001V13z"/>
+                                 M13.001,13H10v1h3.001V13z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
                                  Geometry="M13.501,1c0.828,0,1.5,0.671,1.5,1.5
                                  S14.329,4,13.501,4s-1.5-0.671-1.5-1.5S12.673,1,13.501,1z
                                  M12.001,13.5c0,0.828,0.672,1.5,1.5,1.5s1.5-0.672,1.5-1.5
-                                 s-0.672-1.5-1.5-1.5S12.001,12.672,12.001,13.5z"/>
+                                 s-0.672-1.5-1.5-1.5S12.001,12.672,12.001,13.5z" />
 
                 <!--Arrow-->
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
@@ -94,9 +94,9 @@
                                  l-2,2C11.105,7.481,11,7.735,11,8s0.105,0.52,0.293,0.707
                                  l2,2C13.484,10.898,13.74,11,14,11c0.129,0,0.259-0.024,0.383-0.076
                                  C14.757,10.77,15,10.404,15,10V6c0-0.404-0.243-0.769-0.617-0.924
-                                 C14.259,5.025,14.129,5,14,5L14,5z"/>
+                                 C14.259,5.025,14.129,5,14,5L14,5z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
-                                 Geometry="M14,10l-2-2l2-2V10z"/>
+                                 Geometry="M14,10l-2-2l2-2V10z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

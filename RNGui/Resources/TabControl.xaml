@@ -3,21 +3,20 @@
 
     <ControlTemplate TargetType="{x:Type TabControl}" x:Key="TabPagerTemplate">
         <Border>
-            <ContentPresenter/>
+            <ContentPresenter />
         </Border>
     </ControlTemplate>
 
     <Style TargetType="{x:Type TabControl}" x:Key="TabPager">
-        <Setter Property="Template" Value="{StaticResource TabPagerTemplate}"/>
+        <Setter Property="Template" Value="{StaticResource TabPagerTemplate}" />
     </Style>
 
     <ControlTemplate TargetType="{x:Type TabControl}" x:Key="WizPagerTemplate">
         <DockPanel>
 
             <Border>
-                <ContentPresenter/>
+                <ContentPresenter />
             </Border>
         </DockPanel>
     </ControlTemplate>
-
 </ResourceDictionary>

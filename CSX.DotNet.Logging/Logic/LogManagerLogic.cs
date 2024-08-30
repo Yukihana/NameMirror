@@ -15,18 +15,10 @@ public class LogManagerLogic : INotifyPropertyChanged
 {
     // Declarations
 
-    #region Data : Events
-
     public event PropertyChangedEventHandler? PropertyChanged;
-
-    #endregion Data : Events
-
-    #region Data : Capacity
 
     private static readonly int[] LogCaps = new int[] { 0, 10, 50, 100, 200, 500, 1000, 2000, 5000, 9999 };
     private static readonly int DefaultStepIndex = 3;
-
-    #endregion Data : Capacity
 
     // Objects
     private readonly Logger Logger;
@@ -37,14 +29,8 @@ public class LogManagerLogic : INotifyPropertyChanged
 
     // Properties
 
-    #region Property : LogEntries
-
     private readonly ObservableCollection<LogEntry> logEntries = new();
     public ObservableCollection<LogEntry> LogEntries => logEntries;
-
-    #endregion Property : LogEntries
-
-    #region Property : StepIndex
 
     // Property : StepIndex
     private double _stepIndex = -1;
@@ -68,16 +54,8 @@ public class LogManagerLogic : INotifyPropertyChanged
         }
     }
 
-    #endregion Property : StepIndex
-
-    #region Property : StepIndex (Additional)
-
     public static double StepIndexMinimum => 0;
     public static double StepIndexMaximum => LogCaps.Length - 1;
-
-    #endregion Property : StepIndex (Additional)
-
-    #region Property : LogCapacity
 
     private int _logCapacity = -1;
 
@@ -99,21 +77,13 @@ public class LogManagerLogic : INotifyPropertyChanged
             : LogCaps[DefaultStepIndex];
     }
 
-    #endregion Property : LogCapacity
-
     // Commands
-
-    #region CycleLog
 
     private readonly ActionCommand _cycleLogCommand;
     public ActionCommand CycleLogCommand => _cycleLogCommand;
 
     public void CycleLog(object? parameter = null)
         => Task.Run(CycleLogAsync);
-
-    #endregion CycleLog
-
-    #region OpenDirectory
 
     private readonly ActionCommand _showInExplorerCommand;
     public ActionCommand ShowInExplorerCommand => _showInExplorerCommand;
@@ -122,10 +92,6 @@ public class LogManagerLogic : INotifyPropertyChanged
     {
         Process.Start(new ProcessStartInfo("file:///c:\\") { UseShellExecute = true });
     }
-
-    #endregion OpenDirectory
-
-    #region DeleteOldLogs
 
     private readonly ActionCommand _deleteOldLogsCommand;
     public ActionCommand DeleteOldLogsCommand => _deleteOldLogsCommand;
@@ -147,11 +113,7 @@ public class LogManagerLogic : INotifyPropertyChanged
         }
     }
 
-    #endregion DeleteOldLogs
-
     // Lifetime
-
-    #region Ctor, Dtor
 
     public LogManagerLogic() : this(string.Empty, "CsxLog")
     {
@@ -174,11 +136,7 @@ public class LogManagerLogic : INotifyPropertyChanged
         Timer.Elapsed += Flush;
     }
 
-    #endregion Ctor, Dtor
-
     // IO
-
-    #region IO : Flush / Write
 
     private bool IsWriteBusy = false;
 
@@ -228,10 +186,6 @@ public class LogManagerLogic : INotifyPropertyChanged
         IsWriteBusy = false;
     }
 
-    #endregion IO : Flush / Write
-
-    #region IO : Start / Cycle
-
     private async Task StartAsync()
     {
         await Task.Run(Logger.CycleLog);
@@ -256,8 +210,6 @@ public class LogManagerLogic : INotifyPropertyChanged
         // Start new session
         await StartAsync();
     }
-
-    #endregion IO : Start / Cycle
 
     // Public Interface
     public void EnterLog(string message, string level, object? sender)

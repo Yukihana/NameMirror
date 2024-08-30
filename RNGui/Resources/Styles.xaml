@@ -2,21 +2,20 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="{x:Type DataGridCell}" x:Key="GrayCell">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
     </Style>
     <Style TargetType="{x:Type Border}" x:Key="InstructorBlocks">
-        <Setter Property="Padding" Value="15"/>
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Background" Value="#44B8"/>
-        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Background" Value="#44B8" />
+        <Setter Property="CornerRadius" Value="6" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#84B8"/>
+                <Setter Property="Background" Value="#84B8" />
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="InstructionsText">
-        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
-
 </ResourceDictionary>

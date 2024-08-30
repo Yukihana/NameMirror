@@ -34,6 +34,7 @@
             );
 
         public bool Validate(string? result, string valid = "OK");
+
         public bool Invalidate(string? result, string invalid = "Cancel");
     }
 }

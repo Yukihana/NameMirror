@@ -4,114 +4,114 @@
     <!--Unassigned-->
     <SolidColorBrush x:Shared="False"
                      x:Key="UnassignedBrush"
-                     Color="#F0F"/>
+                     Color="#F0F" />
 
     <!--Filename-->
     <LinearGradientBrush x:Key="FilenameBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#909090"/>
-        <GradientStop Offset="1" Color="#404040"/>
+        <GradientStop Offset="0" Color="#909090" />
+        <GradientStop Offset="1" Color="#404040" />
     </LinearGradientBrush>
     <SolidColorBrush x:Key="FilenameWhiteBrush"
                      x:Shared="False"
-                     Color="#FFFFFF"/>
+                     Color="#FFFFFF" />
 
     <!--Filename-Old-->
     <LinearGradientBrush x:Key="FilenameOldBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FEEDEA"/>
-        <GradientStop Offset="0.48" Color="#FBD0CD"/>
-        <GradientStop Offset="0.52" Color="#FAC2BF"/>
-        <GradientStop Offset="1" Color="#F7A7A7"/>
+        <GradientStop Offset="0" Color="#FEEDEA" />
+        <GradientStop Offset="0.48" Color="#FBD0CD" />
+        <GradientStop Offset="0.52" Color="#FAC2BF" />
+        <GradientStop Offset="1" Color="#F7A7A7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="FilenameOldSmallBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FEEDEA"/>
-        <GradientStop Offset="1" Color="#FBD0CD"/>
+        <GradientStop Offset="0" Color="#FEEDEA" />
+        <GradientStop Offset="1" Color="#FBD0CD" />
     </LinearGradientBrush>
 
     <!--Filename-New-->
     <LinearGradientBrush x:Key="FilenameNewBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#DDE5F4"/>
-        <GradientStop Offset="0.48" Color="#B1C2E4"/>
-        <GradientStop Offset="0.52" Color="#9BB1DC"/>
-        <GradientStop Offset="1" Color="#7696CD"/>
+        <GradientStop Offset="0" Color="#DDE5F4" />
+        <GradientStop Offset="0.48" Color="#B1C2E4" />
+        <GradientStop Offset="0.52" Color="#9BB1DC" />
+        <GradientStop Offset="1" Color="#7696CD" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="FilenameNewSmallBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#DDE5F4"/>
-        <GradientStop Offset="1" Color="#B1C2E4"/>
+        <GradientStop Offset="0" Color="#DDE5F4" />
+        <GradientStop Offset="1" Color="#B1C2E4" />
     </LinearGradientBrush>
 
     <!--Sheet-Border-->
     <LinearGradientBrush x:Key="SheetBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#BBB"/>
-        <GradientStop Offset="1" Color="#888"/>
+        <GradientStop Offset="0" Color="#BBB" />
+        <GradientStop Offset="1" Color="#888" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="SheetBorderTopFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#00B0B0B0"/>
-        <GradientStop Offset="0.4" Color="#A0A0A0"/>
+        <GradientStop Offset="0" Color="#00B0B0B0" />
+        <GradientStop Offset="0.4" Color="#A0A0A0" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="SheetBorderBottomFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.6" Color="#B0B0B0"/>
-        <GradientStop Offset="1" Color="#00808080"/>
+        <GradientStop Offset="0.6" Color="#B0B0B0" />
+        <GradientStop Offset="1" Color="#00808080" />
     </LinearGradientBrush>
 
     <!--Sheet-Surface-->
     <SolidColorBrush x:Key="SheetSurfaceBrush"
                      x:Shared="False"
-                     Color="#FFFFFF"/>
+                     Color="#FFFFFF" />
     <LinearGradientBrush x:Key="SheetSurfaceTopFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#0FFF"/>
-        <GradientStop Offset="0.4" Color="#FFF"/>
+        <GradientStop Offset="0" Color="#0FFF" />
+        <GradientStop Offset="0.4" Color="#FFF" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="SheetSurfaceBottomFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.6" Color="#FFF"/>
-        <GradientStop Offset="1" Color="#0FFF"/>
+        <GradientStop Offset="0.6" Color="#FFF" />
+        <GradientStop Offset="1" Color="#0FFF" />
     </LinearGradientBrush>
 
     <!--Stack-Surface-->
     <LinearGradientBrush x:Key="StackSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#FFF"/>
-        <GradientStop Offset="0.4" Color="#E7E7E7"/>
+        <GradientStop Offset="0" Color="#FFF" />
+        <GradientStop Offset="0.4" Color="#E7E7E7" />
     </LinearGradientBrush>
 
     <!--ContentText-->
     <LinearGradientBrush x:Key="ContentTextBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#2000"/>
-        <GradientStop Offset="1" Color="#1000"/>
+        <GradientStop Offset="0" Color="#2000" />
+        <GradientStop Offset="1" Color="#1000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ContentTextTopFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#0000"/>
-        <GradientStop Offset="0.4" Color="#2000"/>
+        <GradientStop Offset="0" Color="#0000" />
+        <GradientStop Offset="0.4" Color="#2000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ContentTextBottomFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0.6" Color="#2000"/>
-        <GradientStop Offset="1" Color="#0000"/>
+        <GradientStop Offset="0.6" Color="#2000" />
+        <GradientStop Offset="1" Color="#0000" />
     </LinearGradientBrush>
 
     <!--ContentGloss-->
@@ -120,151 +120,151 @@
     <!--Terminology3: Direction (N,S,E,W), StartOpacity(Default:0), StartColor, EndColor, EndOpacity(Default:0)-->
     <SolidColorBrush x:Key="ContentGlossSolidFog75Brush"
                      x:Shared="False"
-                     Color="#BFFFFFFF"/>
+                     Color="#BFFFFFFF" />
     <LinearGradientBrush x:Key="ContentGlossBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#3000"/>
-        <GradientStop Offset="1" Color="#0000"/>
+        <GradientStop Offset="0" Color="#3000" />
+        <GradientStop Offset="1" Color="#0000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ContentGlossX0Brush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#3000"/>
-        <GradientStop Offset="1" Color="#0000"/>
+        <GradientStop Offset="0" Color="#3000" />
+        <GradientStop Offset="1" Color="#0000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ContentGlossTopFadedBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="0,1">
-        <GradientStop Offset="0" Color="#0000"/>
-        <GradientStop Offset="0.5" Color="#2000"/>
-        <GradientStop Offset="1" Color="#0000"/>
+        <GradientStop Offset="0" Color="#0000" />
+        <GradientStop Offset="0.5" Color="#2000" />
+        <GradientStop Offset="1" Color="#0000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ContentGlossEastFog30Brush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#0FFF"/>
-        <GradientStop Offset="1" Color="#4CFFFFFF"/>
+        <GradientStop Offset="0" Color="#0FFF" />
+        <GradientStop Offset="1" Color="#4CFFFFFF" />
     </LinearGradientBrush>
 
     <!--Gloss-->
     <LinearGradientBrush x:Key="GlossWhite44x66SE"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#44FFFFFF"/>
-        <GradientStop Offset="1" Color="#66FFFFFF"/>
+        <GradientStop Offset="0" Color="#44FFFFFF" />
+        <GradientStop Offset="1" Color="#66FFFFFF" />
     </LinearGradientBrush>
 
     <!--Directive-->
     <SolidColorBrush x:Key="DirectiveColorBrush"
                      x:Shared="False"
-                     Color="#4ECC4E"/>
+                     Color="#4ECC4E" />
     <LinearGradientBrush x:Key="DirectiveLinkEastBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0.2" Color="#404ECC4E"/>
-        <GradientStop Offset="1" Color="#4ECC4E"/>
+        <GradientStop Offset="0.2" Color="#404ECC4E" />
+        <GradientStop Offset="1" Color="#4ECC4E" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="DirectiveBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#4ECC4E"/>
-        <GradientStop Offset="1" Color="#2C602C"/>
+        <GradientStop Offset="0" Color="#4ECC4E" />
+        <GradientStop Offset="1" Color="#2C602C" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="DirectiveSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#B3FFB3"/>
-        <GradientStop Offset="1" Color="#80C080"/>
+        <GradientStop Offset="0" Color="#B3FFB3" />
+        <GradientStop Offset="1" Color="#80C080" />
     </LinearGradientBrush>
 
     <!--Motive-->
     <!--Colors Steps : #001D40, #003980, #0056BF, #0073FF, #4096FF, #80B9FF, #BFDCFF-->
     <Color x:Shared="False" x:Key="MotiveColor"
-           R="0" G="115" B="255" A="255"/>
+           R="0" G="115" B="255" A="255" />
     <SolidColorBrush x:Key="MotiveColorBrush"
                      x:Shared="False"
-                     Color="#0073FF"/>
+                     Color="#0073FF" />
     <LinearGradientBrush x:Key="MotiveLinkEastBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0.2" Color="#400073FF"/>
-        <GradientStop Offset="1" Color="#0073FF"/>
+        <GradientStop Offset="0.2" Color="#400073FF" />
+        <GradientStop Offset="1" Color="#0073FF" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="MotiveBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#0073FF"/>
-        <GradientStop Offset="1" Color="#0056BF"/>
+        <GradientStop Offset="0" Color="#0073FF" />
+        <GradientStop Offset="1" Color="#0056BF" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="MotiveSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#80B9FF"/>
-        <GradientStop Offset="1" Color="#4096FF"/>
+        <GradientStop Offset="0" Color="#80B9FF" />
+        <GradientStop Offset="1" Color="#4096FF" />
     </LinearGradientBrush>
 
     <!--Reference-->
     <!--Color Steps : #402600, #805300, #BF7C00, #FFA500, #FFBC40, #FFD289, #FFE5BF-->
     <Color x:Shared="False" x:Key="ReferenceColor"
-           R="255" G="165" B="0" A="255"/>
+           R="255" G="165" B="0" A="255" />
     <SolidColorBrush x:Key="ReferenceColorBrush"
                      x:Shared="False"
-                     Color="#FFA500"/>
+                     Color="#FFA500" />
     <LinearGradientBrush x:Key="ReferenceCompositeLinkLinesBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,0">
-        <GradientStop Offset="0" Color="#80FFA500"/>
-        <GradientStop Offset="1" Color="#FFA500"/>
+        <GradientStop Offset="0" Color="#80FFA500" />
+        <GradientStop Offset="1" Color="#FFA500" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ReferenceBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FFBC40"/>
-        <GradientStop Offset="1" Color="#FFA500"/>
+        <GradientStop Offset="0" Color="#FFBC40" />
+        <GradientStop Offset="1" Color="#FFA500" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ReferenceSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FFE5BF"/>
-        <GradientStop Offset="1" Color="#FFBC40"/>
+        <GradientStop Offset="0" Color="#FFE5BF" />
+        <GradientStop Offset="1" Color="#FFBC40" />
     </LinearGradientBrush>
 
     <!--Marked-->
     <SolidColorBrush x:Key="MarkedColorBrush"
                      x:Shared="False"
-                     Color="#606060"/>
+                     Color="#606060" />
     <LinearGradientBrush x:Key="MarkedBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#606060"/>
-        <GradientStop Offset="1" Color="#404040"/>
+        <GradientStop Offset="0" Color="#606060" />
+        <GradientStop Offset="1" Color="#404040" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="MarkedSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#B0B0B0"/>
-        <GradientStop Offset="1" Color="#808080"/>
+        <GradientStop Offset="0" Color="#B0B0B0" />
+        <GradientStop Offset="1" Color="#808080" />
     </LinearGradientBrush>
 
     <!--Alert-->
     <!--Color Steps : #400000, #800000, #B00000, #FF0000, #FF4040, #FF8080, #FFB0B0-->
     <Color x:Shared="False" x:Key="AlertColor"
-           R="255" G="0" B="0" A="255"/>
+           R="255" G="0" B="0" A="255" />
     <SolidColorBrush x:Shared="False"
                      x:Key="AlertColorBrush"
-                     Color="#FF0000"/>
+                     Color="#FF0000" />
     <LinearGradientBrush x:Key="AlertBorderBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FF0000"/>
-        <GradientStop Offset="1" Color="#800000"/>
+        <GradientStop Offset="0" Color="#FF0000" />
+        <GradientStop Offset="1" Color="#800000" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="AlertSurfaceBrush"
                          x:Shared="False"
                          StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FF8080"/>
-        <GradientStop Offset="1" Color="#FF4040"/>
+        <GradientStop Offset="0" Color="#FF8080" />
+        <GradientStop Offset="1" Color="#FF4040" />
     </LinearGradientBrush>
 
     <!--Links-->
@@ -272,6 +272,5 @@
     <!--Shadow-->
     <SolidColorBrush x:Shared="False"
                      x:Key="Shadow44"
-                     Color="#44000000"/>
-
+                     Color="#44000000" />
 </ResourceDictionary>

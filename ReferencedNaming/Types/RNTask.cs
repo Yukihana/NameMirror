@@ -7,22 +7,22 @@ namespace ReferencedNaming.Types
     public class RNTask : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
         public Exception? LastException { get; set; } = null;
         private const string StatusChars = " ●✔✖";
 
-
         // Callbacks
         public Func<string, string> GetFullPath;
+
         public Func<string, string> GetFilename;
         public Func<string, string> GetExtension;
         public Func<string, string> GetFilenameWithoutExtension;
         public Func<string, string> GetDirectory;
         public Func<string, string, string> Combine;
 
-
         // Properties : Primary
-        #region Original Path
         private string originalPath = string.Empty;
+
         public string OriginalPath
         {
             get => originalPath;
@@ -45,9 +45,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Reference Path
+
         private string referencePath = string.Empty;
+
         public string ReferencePath
         {
             get => referencePath;
@@ -66,9 +66,9 @@ namespace ReferencedNaming.Types
                 UpdateStatus();
             }
         }
-        #endregion
-        #region Preview Filename
+
         private string previewFilename = string.Empty;
+
         public string PreviewFilename
         {
             get => previewFilename;
@@ -87,9 +87,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region IsSelected
+
         private bool _isSelected;
+
         public bool IsSelected
         {
             get => _isSelected;
@@ -102,12 +102,10 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-
 
         // Properties : Original Derived
-        #region Filename
         private string originalFilename = string.Empty;
+
         public string OriginalFilename
         {
             get => originalFilename;
@@ -120,9 +118,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Filename Without Extension
+
         private string originalFilenameWithoutExtension = string.Empty;
+
         public string OriginalFilenameWithoutExtension
         {
             get => originalFilenameWithoutExtension;
@@ -135,9 +133,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Extension
+
         private string originalExtension = string.Empty;
+
         public string OriginalExtension
         {
             get => originalExtension;
@@ -150,9 +148,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Directory
+
         private string originalDirectory = string.Empty;
+
         public string OriginalDirectory
         {
             get => originalDirectory;
@@ -165,12 +163,10 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-
 
         // Properties : Reference Derived
-        #region Filename
         private string referenceFilename = string.Empty;
+
         public string ReferenceFilename
         {
             get => referenceFilename;
@@ -183,9 +179,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Filename Without Extension
+
         private string referenceFilenameWithoutExtension = string.Empty;
+
         public string ReferenceFilenameWithoutExtension
         {
             get => referenceFilenameWithoutExtension;
@@ -198,9 +194,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Directory
+
         private string referenceDirectory = string.Empty;
+
         public string ReferenceDirectory
         {
             get => referenceDirectory;
@@ -213,12 +209,10 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-
 
         // Properties : Preview
-        #region Generated Filename
         private string generatedFilename = string.Empty;
+
         public string GeneratedFilename
         {
             get => generatedFilename;
@@ -239,9 +233,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Preview Path
+
         private string previewPath = string.Empty;
+
         public string PreviewPath
         {
             get => previewPath;
@@ -254,12 +248,10 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-
 
         // Properties : Status
-        #region Ready
         private bool ready = false;
+
         public bool Ready
         {
             get => ready;
@@ -273,9 +265,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region Success Status
+
         private bool? successStatus = null;
+
         public bool? SuccessStatus
         {
             get => successStatus;
@@ -289,9 +281,9 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-        #region StatusIndex
+
         private byte statusIndex = 0;
+
         public byte StatusIndex
         {
             get => statusIndex;
@@ -304,8 +296,6 @@ namespace ReferencedNaming.Types
                 }
             }
         }
-        #endregion
-
 
         // Ctor
         public RNTask(IFileSystemAgent agent)
@@ -318,15 +308,16 @@ namespace ReferencedNaming.Types
             Combine = agent.Combine;
         }
 
-
         public void GeneratePreview()
             => GeneratedFilename = ReferenceFilenameWithoutExtension + OriginalExtension;
+
         private void UpdateStatus()
         {
             Ready =
                 (!string.IsNullOrWhiteSpace(OriginalDirectory)) &&
                 (!string.IsNullOrEmpty(ReferenceFilenameWithoutExtension));
         }
+
         private void UpdateStatusText()
         {
             if (SuccessStatus == false)

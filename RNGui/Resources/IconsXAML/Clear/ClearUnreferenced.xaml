@@ -5,17 +5,16 @@
     <DrawingImage x:Shared="False" x:Key="ClearUnref32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z"/>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="ClearUnref16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z"/>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z" />
 
                 <!--Bin-->
                 <GeometryDrawing Brush="#FF666666"
@@ -23,14 +22,14 @@
                                  H4c-0.552,0-1-0.447-1-1V5H13z M13,2
                                  h-3c0-0.552-0.447-1-1-1H7
                                  C6.448,1,6,1.448,6,2H3C2.448,2,2,2.448,2,3
-                                 v1h12V3C14,2.448,13.553,2,13,2z"/>
+                                 v1h12V3C14,2.448,13.553,2,13,2z" />
 
                 <!--Unref-->
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M11.5,14C9.57,14,8,12.43,8,10.5
                                  S9.57,7,11.5,7S15,8.57,15,10.5S13.43,14,11.5,14z
                                  M11.5,9C10.673,9,10,9.673,10,10.5s0.673,1.5,1.5,1.5
-                                 s1.5-0.673,1.5-1.5S12.327,9,11.5,9z"/>
+                                 s1.5-0.673,1.5-1.5S12.327,9,11.5,9z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

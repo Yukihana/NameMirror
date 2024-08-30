@@ -23,10 +23,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="DodgerBlue" TargetName="CheckLine"/>
+                            <Setter Property="Fill" Value="DodgerBlue" TargetName="CheckLine" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Fill" Value="LimeGreen" TargetName="CheckLine"/>
+                            <Setter Property="Fill" Value="LimeGreen" TargetName="CheckLine" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -34,20 +34,20 @@
                     <Setter Property="Template" Value="{StaticResource WizTabHeader}" />
                     <Setter Property="TextBlock.FontSize" Value="16" />
                     <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Background" Value="Transparent" />
                     <Setter Property="VerticalAlignment" Value="Stretch" />
                     <Setter Property="HorizontalAlignment" Value="Stretch" />
                     <Setter Property="VerticalContentAlignment" Value="Center" />
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
-                    <EventSetter Event="Click" Handler="WizTab_Click"/>
+                    <EventSetter Event="Click" Handler="WizTab_Click" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#2266AAFF"/>
+                            <Setter Property="Background" Value="#2266AAFF" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </UniformGrid.Resources>
-            <RadioButton Content="Start" IsChecked="True"/>
+            <RadioButton Content="Start" IsChecked="True" />
             <RadioButton Content="Add Tasks" />
             <RadioButton Content="Add References" />
             <RadioButton Content="Settings" />

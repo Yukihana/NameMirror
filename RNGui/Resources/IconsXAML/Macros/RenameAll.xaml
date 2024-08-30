@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <!--32x32-->
     <DrawingImage x:Shared="False" x:Key="RenameAll32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Borders-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
@@ -13,37 +13,36 @@
                                  c0-1.104-0.896-2-2-2H9C7.896,2,7,2.896,7,4v3H6
                                  C4.896,7,4,7.896,4,9v5H3c-1.104,0-2,0.896-2,2
                                  v12c0,1.104,0.896,2,2,2h26c1.104,0,2-0.896,2-2
-                                 V16C31,14.896,30.104,14,29,14z"/>
+                                 V16C31,14.896,30.104,14,29,14z" />
                 <GeometryDrawing Brush="{StaticResource FilenameWhiteBrush}"
                                  Geometry="M15.5,7H8V4c0-0.552,0.448-1,1-1h14
                                  c0.553,0,1,0.448,1,1v3h-1H15.5z M26,14h1V9
                                  c0-0.552-0.447-1-1-1H6C5.448,8,5,8.448,5,9
                                  v5h10.042H26z M29,15c0.553,0,1,0.448,1,1
                                  v12c0,0.553-0.447,1-1,1H3c-0.552,0-1-0.447-1-1
-                                 V16c0-0.552,0.448-1,1-1H29L29,15z"/>
+                                 V16c0-0.552,0.448-1,1-1H29L29,15z" />
 
                 <!--Filename-Back-->
                 <GeometryDrawing Brush="{StaticResource FilenameOldSmallBrush}"
-                                 Geometry="M18,7H9V4l9,0V7z M18,9H6v5h12V9z"/>
+                                 Geometry="M18,7H9V4l9,0V7z M18,9H6v5h12V9z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewSmallBrush}"
                                  Geometry="M23,7h-7.5c0-0.5,0.5-1,1.5-2l1-1l5,0V7z
-                                 M26,9h-8l-2,2c-1.589,1.589-1.894,1.929-0.958,3H26V9z"/>
+                                 M26,9h-8l-2,2c-1.589,1.589-1.894,1.929-0.958,3H26V9z" />
 
                 <!--Filename-Main-->
                 <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
-                                 Geometry="M19,28H3V16h16V28z"/>
+                                 Geometry="M19,28H3V16h16V28z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
-                                 Geometry="M19,16l-4,4c-2,2-2,2,0,4l4,4h10V16L19,16z"/>
+                                 Geometry="M19,16l-4,4c-2,2-2,2,0,4l4,4h10V16L19,16z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-    
-    
+
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="RenameAll16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
 
                 <!--Border-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
@@ -51,19 +50,19 @@
                                  c0-0.552-0.447-1-1-1H4C3.448,2,3,2.448,3,3v1
                                  C2.448,4,2,4.448,2,5v2C1.448,7,1,7.448,1,8v5
                                  c0,0.553,0.448,1,1,1h12c0.553,0,1-0.447,1-1
-                                 V8C15,7.448,14.553,7,14,7z"/>
+                                 V8C15,7.448,14.553,7,14,7z" />
 
                 <!--Filename-Back-->
                 <GeometryDrawing Brush="{StaticResource FilenameOldSmallBrush}"
-                                 Geometry="M9,4H4V3h5V4z M9,5H3v2h6V5z"/>
+                                 Geometry="M9,4H4V3h5V4z M9,5H3v2h6V5z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewSmallBrush}"
-                                 Geometry="M12,3v1H8l1-1H12z M13,5H9C8,6,7.5,6.5,7.5,7H13V5z"/>
+                                 Geometry="M12,3v1H8l1-1H12z M13,5H9C8,6,7.5,6.5,7.5,7H13V5z" />
 
                 <!--Filename-Main-->
                 <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
-                                 Geometry="M9,8H2v5h7V8z"/>
+                                 Geometry="M9,8H2v5h7V8z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
-                                 Geometry="M14,8v5H9l-1-1c-1-1-1-2,0-3l1-1H14z"/>
+                                 Geometry="M14,8v5H9l-1-1c-1-1-1-2,0-3l1-1H14z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

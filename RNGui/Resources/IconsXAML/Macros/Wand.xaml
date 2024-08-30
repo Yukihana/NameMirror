@@ -5,7 +5,7 @@
     <DrawingImage x:Shared="False" x:Key="Wand32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!-- Wand -->
                 <GeometryDrawing Brush="#534741"
@@ -14,11 +14,11 @@
                                  C27.281,28.798,27.634,29,28.001,29
                                  c0.15,0,0.303-0.034,0.446-0.105l2-1
                                  c0.494-0.247,0.694-0.848,0.447-1.342l-12-24
-                                 C18.719,2.202,18.366,2,17.999,2L17.999,2z"/>
+                                 C18.719,2.202,18.366,2,17.999,2L17.999,2z" />
                 <GeometryDrawing Brush="#736357"
-                                 Geometry="M30,27l-2,1l-9-18l2-1L30,27z"/>
+                                 Geometry="M30,27l-2,1l-9-18l2-1L30,27z" />
                 <GeometryDrawing Brush="Gold"
-                                 Geometry="M16,4l2-1l3,6l-2,1L16,4z"/>
+                                 Geometry="M16,4l2-1l3,6l-2,1L16,4z" />
 
                 <!-- Sparks-Border -->
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
@@ -29,7 +29,7 @@
                                  s0.813-0.275,0.949-0.684l0.842-2.525
                                  l2.525-0.842C12.725,16.813,13,16.431,13,16
                                  c0-0.43-0.275-0.813-0.684-0.949l-2.526-0.842
-                                 l-0.842-2.526C8.813,11.275,8.431,11,8,11L8,11z"/>
+                                 l-0.842-2.526C8.813,11.275,8.431,11,8,11L8,11z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M17,19c-0.431,0-0.813,0.275-0.949,0.684
                                  l-0.842,2.525l-2.526,0.843C12.275,23.188,12,23.569,12,24
@@ -37,7 +37,7 @@
                                  C16.188,28.725,16.569,29,17,29s0.813-0.275,0.948-0.684
                                  l0.843-2.525l2.525-0.843C21.725,24.813,22,24.431,22,24
                                  s-0.275-0.813-0.684-0.948l-2.525-0.843l-0.843-2.525
-                                 C17.813,19.275,17.431,19,17,19L17,19z"/>
+                                 C17.813,19.275,17.431,19,17,19L17,19z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M6,21c-0.431,0-0.813,0.275-0.949,0.684
                                  l-0.842,2.525l-2.526,0.843C1.275,25.188,1,25.569,1,26
@@ -45,7 +45,7 @@
                                  C5.188,30.725,5.569,31,6,31s0.813-0.275,0.949-0.684
                                  l0.842-2.525l2.526-0.843C10.725,26.813,11,26.431,11,26
                                  s-0.275-0.813-0.684-0.948l-2.526-0.843l-0.842-2.525
-                                 C6.813,21.275,6.431,21,6,21L6,21z"/>
+                                 C6.813,21.275,6.431,21,6,21L6,21z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceBorderBrush}"
                                  Geometry="M10,1C9.569,1,9.188,1.275,9.051,1.684
                                  L8.209,4.209L5.684,5.051C5.275,5.188,5,5.569,5,6
@@ -53,32 +53,27 @@
                                  C9.188,10.725,9.569,11,10,11s0.813-0.275,0.949-0.684
                                  l0.842-2.526l2.526-0.842C14.725,6.813,15,6.431,15,6
                                  s-0.275-0.813-0.684-0.949l-2.526-0.842l-0.842-2.526
-                                 C10.813,1.275,10.431,1,10,1L10,1z"/>
+                                 C10.813,1.275,10.431,1,10,1L10,1z" />
 
                 <!-- Sparks-Surface -->
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
-                                 Geometry="M9,15l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L9,15z"/>
+                                 Geometry="M9,15l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L9,15z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
-                                 Geometry="M18,23l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L18,23z"/>
+                                 Geometry="M18,23l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L18,23z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
-                                 Geometry="M7,25l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L7,25z"/>
+                                 Geometry="M7,25l3,1l-3,1l-1,3l-1-3l-3-1l3-1l1-3L7,25z" />
                 <GeometryDrawing Brush="{StaticResource ReferenceSurfaceBrush}"
-                                 Geometry="M11,5l3,1l-3,1l-1,3L9,7L6,6l3-1l1-3L11,5z"/>
-
+                                 Geometry="M11,5l3,1l-3,1l-1,3L9,7L6,6l3-1l1-3L11,5z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="Wand16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z"/>
-
-
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

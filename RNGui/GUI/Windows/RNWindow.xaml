@@ -14,22 +14,21 @@
     <Grid>
         <Grid.Style>
             <Style TargetType="{x:Type Grid}">
-                <Setter Property="Margin" Value="0 0 0 0 "/>
+                <Setter Property="Margin" Value="0 0 0 0 " />
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding ElementName=Window, Path=WindowState}" Value="Maximized">
-                        <Setter Property="Margin" Value="4 4 4 4"/>
+                        <Setter Property="Margin" Value="4 4 4 4" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
         </Grid.Style>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
 
         <!--Ribbon-->
         <Ribbon Margin="0 0 0 4">
@@ -38,10 +37,10 @@
                     <TextBlock SnapsToDevicePixels="True" Text="{Binding}">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Margin" Value="0 2 0 -2"/>
+                                <Setter Property="Margin" Value="0 2 0 -2" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ElementName=Window, Path=WindowState}" Value="Maximized">
-                                        <Setter Property="Margin" Value="0"/>
+                                        <Setter Property="Margin" Value="0" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -50,36 +49,34 @@
                 </DataTemplate>
             </Ribbon.TitleTemplate>
 
-
             <!--Appli Menu-->
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu LargeImageSource="{StaticResource Hollow32Icon}"
                                        SmallImageSource="{StaticResource Hamburger16Icon}">
                     <RibbonApplicationMenuItem Header="Program">
                         <RibbonApplicationMenuItem Header="New Window"
-                                                   Click="CreateInstance"/>
+                                                   Click="CreateInstance" />
                         <RibbonApplicationMenuItem Header="Restart"
-                                                   Click="WindowRestart"/>
+                                                   Click="WindowRestart" />
                     </RibbonApplicationMenuItem>
                     <RibbonApplicationMenuItem Header="Logs">
-                        <RibbonApplicationMenuItem Header="Use new log session"/>
-                        <RibbonSeparator/>
+                        <RibbonApplicationMenuItem Header="Use new log session" />
+                        <RibbonSeparator />
                         <RibbonApplicationMenuItem Header="Open logs"
-                                                   ToolTipDescription="Open the directory containing the saved logs in File Explorer"/>
-                        <RibbonApplicationMenuItem Header="Clear old logs"/>
+                                                   ToolTipDescription="Open the directory containing the saved logs in File Explorer" />
+                        <RibbonApplicationMenuItem Header="Clear old logs" />
                     </RibbonApplicationMenuItem>
-                    <RibbonSeparator/>
+                    <RibbonSeparator />
                     <RibbonApplicationMenuItem Header="Help">
                         <RibbonApplicationMenuItem Header="Instructions"
-                                                   Click="ShowTutor"/>
+                                                   Click="ShowTutor" />
                         <RibbonApplicationMenuItem Header="About Program"
-                                                   Click="ShowAbout"/>
+                                                   Click="ShowAbout" />
                     </RibbonApplicationMenuItem>
                     <RibbonApplicationMenuItem Header="Exit"
-                                               Click="WindowExit"/>
+                                               Click="WindowExit" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-
 
             <!--Tab: Home-->
             <RibbonTab Header="Home">
@@ -92,8 +89,7 @@
                                   ToolTipDescription="Use a guided method to add new tasks."
                                   SmallImageSource="{StaticResource Wand16}"
                                   LargeImageSource="{StaticResource Wand32}"
-                                  Click="StartWizard"/>
-
+                                  Click="StartWizard" />
                 </RibbonGroup>
                 <RibbonGroup Header="Apply"
                              SmallImageSource="{StaticResource Hollow16Icon}"
@@ -103,13 +99,13 @@
                                   Label="Rename Selected" ToolTip="Rename selected (F5)"
                                   ToolTipDescription="Rename the original files in selected tasks with status: Ready"
                                   SmallImageSource="{StaticResource RenameSelected16}"
-                                  LargeImageSource="{StaticResource RenameSelected32}"/>
+                                  LargeImageSource="{StaticResource RenameSelected32}" />
 
                     <RibbonButton Label="Rename All" Command="{Binding RenameAllCommand}"
                                   ToolTip="Rename all (Shift+F5)"
                                   ToolTipDescription="Rename the original files in all tasks with status: Ready"
                                   SmallImageSource="{StaticResource RenameAll16}"
-                                  LargeImageSource="{StaticResource RenameAll32}"/>
+                                  LargeImageSource="{StaticResource RenameAll32}" />
                 </RibbonGroup>
 
                 <!--Tasks-->
@@ -121,31 +117,31 @@
                                   ToolTip="Add task... (Ctrl+O)"
                                   ToolTipDescription="Add the file(s) to be renamed..."
                                   SmallImageSource="{StaticResource FilesNew16}"
-                                  LargeImageSource="{StaticResource FilesNew32}"/>
+                                  LargeImageSource="{StaticResource FilesNew32}" />
 
                     <RibbonButton Label="Insert Task" Click="InsertFiles"
                                   IsEnabled="{Binding Data.AtLeastOneSelected}"
                                   ToolTip="Insert task... (Ctrl+I)"
                                   ToolTipDescription="Insert files to be renamed at the current position..."
                                   SmallImageSource="{StaticResource FilesInsert16}"
-                                  LargeImageSource="{StaticResource FilesInsert32}"/>
+                                  LargeImageSource="{StaticResource FilesInsert32}" />
 
                     <RibbonButton Label="Remove Task" Command="{Binding TaskRemoveCommand}"
                                   ToolTip="Remove task (Del)"
                                   ToolTipDescription="Remove selected task(s) from the task list"
                                   SmallImageSource="{StaticResource FilesRemove16}"
-                                  LargeImageSource="{StaticResource FilesRemove32}"/>
+                                  LargeImageSource="{StaticResource FilesRemove32}" />
                     <RibbonButton Command="{Binding TaskMoveUpCommand}"
                                   Label="Move Up"
                                   ToolTip=""
                                   ToolTipDescription=""
-                                  SmallImageSource="{StaticResource MoveUp16}"/>
+                                  SmallImageSource="{StaticResource MoveUp16}" />
 
                     <RibbonButton Command="{Binding TaskMoveDownCommand}"
                                   Label="Move Down"
                                   ToolTip=""
                                   ToolTipDescription=""
-                                  SmallImageSource="{StaticResource MoveDown16}"/>
+                                  SmallImageSource="{StaticResource MoveDown16}" />
 
                     <RibbonMenuButton Label="Move to"
                                       ToolTip=""
@@ -156,13 +152,13 @@
                                         Header="Move to Top"
                                         ToolTip=""
                                         ToolTipDescription=""
-                                        ImageSource="{StaticResource MoveToTop16}"/>
+                                        ImageSource="{StaticResource MoveToTop16}" />
 
                         <RibbonMenuItem Command="{Binding TaskMoveToBottomCommand}"
                                         Header="Move to Bottom"
                                         ToolTip=""
                                         ToolTipDescription=""
-                                        ImageSource="{StaticResource MoveToBottom16}"/>
+                                        ImageSource="{StaticResource MoveToBottom16}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
 
@@ -175,7 +171,7 @@
                                   ToolTip="Add name reference files... (Ctrl+Shift+O)"
                                   ToolTipDescription="Add the files from which the names will be copied. References will only be added to unreferenced tasks, starting at the first such task in the list."
                                   SmallImageSource="{StaticResource ReferenceAdd16}"
-                                  LargeImageSource="{StaticResource ReferenceAdd32}"/>
+                                  LargeImageSource="{StaticResource ReferenceAdd32}" />
 
                     <RibbonMenuButton Label="Replace"
                                       ToolTip="Insert name reference files... (Ctrl+Shift+I)"
@@ -187,31 +183,31 @@
                                         IsEnabled="{Binding Data.AtLeastOneSelected}"
                                         ToolTip="Insert name reference files and avoid existing... (Ctrl+Shift+I)"
                                         ToolTipDescription="Add the files from which the names will be copied. References will be added selected position onwards, and only to unreferenced tasks. Relative order is not maintained."
-                                        Icon="{StaticResource Hollow16Icon}"/>
+                                        Icon="{StaticResource Hollow16Icon}" />
 
                         <RibbonMenuItem Header="Replace All..." Click="ReplaceAllReferences"
                                         IsEnabled="{Binding Data.AtLeastOneTask}"
                                         ToolTip="Insert name reference files... (Ctrl+Shift+I)"
                                         ToolTipDescription="Add the files from which the names will be copied. References will be added selected position onwards, overwriting any existing references. Relative order is maintained."
-                                        Icon="{StaticResource Hollow16Icon}"/>
+                                        Icon="{StaticResource Hollow16Icon}" />
                     </RibbonMenuButton>
 
                     <RibbonButton Label="Clear"
                                   ToolTip="Clear References (shortcut unassigned)"
                                   ToolTipDescription="Clear naming references from selected task(s)"
                                   SmallImageSource="{StaticResource ReferenceRemove16}"
-                                  LargeImageSource="{StaticResource ReferenceRemove32}"/>
+                                  LargeImageSource="{StaticResource ReferenceRemove32}" />
                     <RibbonButton Command="{Binding ReferenceMoveUpCommand}"
                                   Label="Move Up"
                                   ToolTip=""
                                   ToolTipDescription=""
-                                  SmallImageSource="{StaticResource MoveUp16}"/>
+                                  SmallImageSource="{StaticResource MoveUp16}" />
 
                     <RibbonButton Command="{Binding ReferenceMoveDownCommand}"
                                   Label="Move Down"
                                   ToolTip=""
                                   ToolTipDescription=""
-                                  SmallImageSource="{StaticResource MoveDown16}"/>
+                                  SmallImageSource="{StaticResource MoveDown16}" />
 
                     <RibbonMenuButton Label="Move to"
                                       ToolTip=""
@@ -222,13 +218,13 @@
                                         Header="Move to Top"
                                         ToolTip=""
                                         ToolTipDescription=""
-                                        ImageSource="{StaticResource MoveToTop16}"/>
+                                        ImageSource="{StaticResource MoveToTop16}" />
 
                         <RibbonMenuItem Command="{Binding ReferenceMoveToBottomCommand}"
                                         Header="Move to Bottom"
                                         ToolTip=""
                                         ToolTipDescription=""
-                                        ImageSource="{StaticResource MoveToBottom16}"/>
+                                        ImageSource="{StaticResource MoveToBottom16}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
             </RibbonTab>
@@ -240,13 +236,13 @@
                                   ToolTip="Re-use the selected task"
                                   ToolTipDescription="Reset reference and prepare to rename again."
                                   SmallImageSource="{StaticResource Retask16}"
-                                  LargeImageSource="{StaticResource Retask32}"/>
+                                  LargeImageSource="{StaticResource Retask32}" />
 
                     <RibbonToggleButton IsChecked="{Binding Data.AutoRetask}"
                                         Label="Auto Retask" ToolTip="Auto Retask"
                                         ToolTipDescription="On rename, make the files available again. This clears their references, instead of marking them as Status:Done."
                                         SmallImageSource="{StaticResource AutoRetask16}"
-                                        LargeImageSource="{StaticResource AutoRetask32}"/>
+                                        LargeImageSource="{StaticResource AutoRetask32}" />
                 </RibbonGroup>
                 <RibbonGroup Header="Clean up">
                     <RibbonButton Label="Clear Completed"
@@ -254,22 +250,22 @@
                                   ToolTip="Clear completed tasks (Ctrl+Del)" IsEnabled="False"
                                   ToolTipDescription="Clear all tasks with completed status. They are of no further use as the original path is no longer valid."
                                   SmallImageSource="{StaticResource Hollow16Icon}"
-                                  LargeImageSource="{StaticResource Purge32}"/>
+                                  LargeImageSource="{StaticResource Purge32}" />
                     <RibbonButton Label="Clear Missing"
                                   Command="{Binding ClearMissingCommand}"
                                   ToolTip="Clear missing files (Ctrl+Shift+Del)" IsEnabled="False"
                                   ToolTipDescription="Clear tasks with missing original and/or reference files"
-                                  SmallImageSource="{StaticResource ClearMissing16}"/>
+                                  SmallImageSource="{StaticResource ClearMissing16}" />
                     <RibbonButton Label="Clear Unready"
                                   Command="{Binding ClearUnreadyCommand}"
                                   ToolTip="Clear unreferenced tasks (Ctrl+Shift+Del)" IsEnabled="False"
                                   ToolTipDescription="Clear tasks that haven't been assigned naming reference files"
-                                  SmallImageSource="{StaticResource ClearUnref16}"/>
+                                  SmallImageSource="{StaticResource ClearUnref16}" />
                     <RibbonButton Label="Clear All"
                                   Command="{Binding ClearAllCommand}"
                                   ToolTip="Clear unreferenced tasks (Ctrl+Shift+Del)" IsEnabled="False"
                                   ToolTipDescription="Clear tasks that haven't been assigned naming reference files"
-                                  SmallImageSource="{StaticResource ClearAll16}"/>
+                                  SmallImageSource="{StaticResource ClearAll16}" />
                 </RibbonGroup>
                 <!--Manage-->
                 <RibbonGroup Header="Manage">
@@ -278,8 +274,7 @@
                                   ToolTip="Evaluate errors" IsEnabled="False"
                                   ToolTipDescription="Revalidate tasks in error state for renaming"
                                   SmallImageSource="{StaticResource EvaluateErrors16}"
-                                  LargeImageSource="{StaticResource EvaluateErrors32}"/>
-
+                                  LargeImageSource="{StaticResource EvaluateErrors32}" />
                 </RibbonGroup>
                 <RibbonGroup Header="Help">
 
@@ -288,17 +283,15 @@
                                   ToolTipDescription="Open help with a few instructions on how to use this program."
                                   SmallImageSource="{StaticResource Instructions16}"
                                   LargeImageSource="{StaticResource Instructions32}"
-                                  Click="ShowTutor"/>
+                                  Click="ShowTutor" />
                     <RibbonButton Label="About RNT"
                                   ToolTip="About Referenced Naming Tool"
                                   SmallImageSource="{StaticResource About16}"
                                   LargeImageSource="{StaticResource About32}"
-                                  Click="ShowAbout"/>
-
+                                  Click="ShowAbout" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-
 
         <!--DataGrid-->
         <DataGrid x:Name="FileList" Grid.Row="1" SnapsToDevicePixels="True"
@@ -314,16 +307,16 @@
 
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridRow}">
-                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                 </Style>
             </DataGrid.Resources>
 
             <DataGrid.Style>
                 <Style TargetType="{x:Type DataGrid}">
-                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderThickness" Value="1" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=Window, Path=WindowState}" Value="Maximized">
-                            <Setter Property="BorderThickness" Value="0 1"/>
+                            <Setter Property="BorderThickness" Value="0 1" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -332,34 +325,33 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name Preview" Width="*"
                                     Binding="{Binding PreviewFilename}"
-                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}"/>
+                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}" />
                 <DataGridTextColumn Header="Status" Width="Auto"
                                     IsReadOnly="True"
                                     Binding="{Binding StatusIndex, Mode=OneWay, Converter={StaticResource StatusText}}"
                                     SortMemberPath="StatusIndex">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="TextAlignment" Value="Center"/>
-                            <Setter Property="Foreground" Value="{Binding StatusIndex, Mode=OneWay, Converter={StaticResource StatusColor}}"/>
+                            <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="{Binding StatusIndex, Mode=OneWay, Converter={StaticResource StatusColor}}" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Original File" Width="*"
                                     IsReadOnly="True" CellStyle="{StaticResource GrayCell}"
                                     Binding="{Binding OriginalFilename, Mode=OneWay}"
-                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}"/>
+                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}" />
                 <DataGridTextColumn Header="Reference File" Width="*"
                                     IsReadOnly="True" CellStyle="{StaticResource GrayCell}"
                                     Binding="{Binding ReferenceFilename, Mode=OneWay}"
-                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}"/>
+                                    sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}" />
                 <DataGridTextColumn Header="Directory" Width="2*"
                                     IsReadOnly="True" CellStyle="{StaticResource GrayCell}"
                                     Binding="{Binding OriginalDirectory, Mode=OneWay}"
                                     sorting:GridSortBehaviour.Sorter="{StaticResource NaturalSorter}"
-                                    SortMemberPath="OriginalPath"/>
+                                    SortMemberPath="OriginalPath" />
             </DataGrid.Columns>
         </DataGrid>
-
 
         <!--GridSplitter-->
         <GridSplitter Grid.Row="2" Height="6"
@@ -367,11 +359,11 @@
                       ResizeBehavior="PreviousAndNext" ResizeDirection="Rows">
             <GridSplitter.Style>
                 <Style TargetType="{x:Type GridSplitter}">
-                    <Setter Property="Foreground" Value="Transparent"/>
-                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Transparent" />
+                    <Setter Property="Background" Value="Transparent" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -379,49 +371,48 @@
         </GridSplitter>
         <Rectangle Grid.Row="2" IsHitTestVisible="False"
                    Height="2" Width="50" Margin="2" VerticalAlignment="Top"
-                   Fill="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-
+                   Fill="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
 
         <!-- Log -->
         <Grid x:Name="LogPartition" Grid.Row="3"
               d:DataContext="{d:DesignInstance Type=loglogic:LogManagerLogic, IsDesignTimeCreatable=True}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!--Log Header-->
             <Rectangle Grid.ColumnSpan="2" Margin="10 0" Height="4">
                 <Rectangle.Fill>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Offset="0" Color="Transparent"/>
-                        <GradientStop Offset="0.5" Color="{DynamicResource {x:Static SystemColors.InactiveBorderColorKey}}"/>
-                        <GradientStop Offset="1" Color="Transparent"/>
+                        <GradientStop Offset="0" Color="Transparent" />
+                        <GradientStop Offset="0.5" Color="{DynamicResource {x:Static SystemColors.InactiveBorderColorKey}}" />
+                        <GradientStop Offset="1" Color="Transparent" />
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
             <TextBlock Margin="10 0" Text="Log"
                        VerticalAlignment="Center" FontWeight="Bold"
-                       Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                       Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
 
             <!--Log Controls-->
             <StackPanel Grid.Column="1" Margin="10 0" Orientation="Horizontal">
-                <CheckBox Content="Save to disk" Foreground="DodgerBlue" VerticalAlignment="Center"/>
+                <CheckBox Content="Save to disk" Foreground="DodgerBlue" VerticalAlignment="Center" />
                 <Menu Background="Transparent">
                     <MenuItem>
                         <MenuItem.Header>
-                            <TextBlock Foreground="DodgerBlue" Text="V"/>
+                            <TextBlock Foreground="DodgerBlue" Text="V" />
                         </MenuItem.Header>
                         <MenuItem>
                             <MenuItem.Header>
                                 <StackPanel>
                                     <TextBlock>
-                                        <Run Text="Number of entries:"/>
-                                        <Run Text="{Binding LogCapacity, Mode=OneWay}"/>
+                                        <Run Text="Number of entries:" />
+                                        <Run Text="{Binding LogCapacity, Mode=OneWay}" />
                                     </TextBlock>
                                     <Slider x:Name="LogMax"
                                             Margin="0 3"
@@ -429,17 +420,16 @@
                                             Orientation="Horizontal"
                                             Minimum="{Binding StepIndexMinimum}"
                                             Maximum="{Binding StepIndexMaximum}"
-                                            Value="{Binding StepIndex}"/>
+                                            Value="{Binding StepIndex}" />
                                 </StackPanel>
                             </MenuItem.Header>
                         </MenuItem>
-                        <Separator/>
-                        <MenuItem Header="Cycle session"/>
-                        <MenuItem Header="Clear log"/>
+                        <Separator />
+                        <MenuItem Header="Cycle session" />
+                        <MenuItem Header="Clear log" />
                     </MenuItem>
                 </Menu>
             </StackPanel>
-
 
             <!--Entries-->
             <DataGrid Grid.Row="1" Grid.ColumnSpan="2" SnapsToDevicePixels="True"
@@ -457,25 +447,25 @@
                     <DataGridTextColumn Header="Time" Width="Auto" MinWidth="150"
                                         CanUserSort="False" IsReadOnly="True"
                                         Binding="{Binding TimeStamp, Mode=OneWay}"
-                                        CellStyle="{StaticResource GrayCell}"/>
+                                        CellStyle="{StaticResource GrayCell}" />
                     <DataGridTextColumn Header="Log type" Width="Auto" MinWidth="100"
                                         CanUserSort="False" IsReadOnly="True"
                                         Binding="{Binding Level, Mode=OneWay}"
-                                        CellStyle="{StaticResource GrayCell}"/>
+                                        CellStyle="{StaticResource GrayCell}" />
                     <DataGridTextColumn Header="Message" Width="*"
                                         CanUserSort="False" IsReadOnly="True"
-                                        Binding="{Binding Message, Mode=OneWay}"/>
+                                        Binding="{Binding Message, Mode=OneWay}" />
                     <DataGridTextColumn Header="Source" Width="Auto" MinWidth="150"
                                         CanUserSort="False" IsReadOnly="True"
                                         Binding="{Binding Source, Mode=OneWay}"
-                                        CellStyle="{StaticResource GrayCell}"/>
+                                        CellStyle="{StaticResource GrayCell}" />
                 </DataGrid.Columns>
                 <DataGrid.Style>
                     <Style TargetType="{x:Type DataGrid}">
-                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderThickness" Value="1" />
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=Window, Path=WindowState}" Value="Maximized">
-                                <Setter Property="BorderThickness" Value="0 1"/>
+                                <Setter Property="BorderThickness" Value="0 1" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -483,19 +473,17 @@
             </DataGrid>
         </Grid>
 
-
         <!--Status Bar-->
         <StatusBar Grid.Row="4" Background="Transparent">
             <!--Left-->
-            <StatusBarItem Content="Ready" HorizontalAlignment="Left"/>
+            <StatusBarItem Content="Ready" HorizontalAlignment="Left" />
 
             <!--Right-->
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal" Visibility="Hidden">
-                    <ProgressBar Width="100" Height="8" Margin="10 0"/>
-                    <ResizeGrip/>
+                    <ProgressBar Width="100" Height="8" Margin="10 0" />
+                    <ResizeGrip />
                 </StackPanel>
-
             </StatusBarItem>
         </StatusBar>
     </Grid>

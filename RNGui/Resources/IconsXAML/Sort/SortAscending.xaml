@@ -5,16 +5,16 @@
     <DrawingImage x:Shared="False" x:Key="SortAscending16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
 
                 <!--Stack-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderBrush}"
                                  Geometry="M14,10h-1V8c0-0.552-0.447-1-1-1h-1V5
                                  c0-0.552-0.447-1-1-1H9V2c0-0.552-0.448-1-1-1H6
                                  C5.448,1,5,1.448,5,2v11c0,0.553,0.448,1,1,1h8
-                                 c0.553,0,1-0.447,1-1v-2C15,10.447,14.553,10,14,10z"/>
+                                 c0.553,0,1-0.447,1-1v-2C15,10.447,14.553,10,14,10z" />
                 <GeometryDrawing Brush="{StaticResource StackSurfaceBrush}"
-                                 Geometry="M6,2h2v2H6V2z M6,7h4V5H6V7z M6,10h6V8H6V10z M6,13h8v-2H6V13z"/>
+                                 Geometry="M6,2h2v2H6V2z M6,7h4V5H6V7z M6,10h6V8H6V10z M6,13h8v-2H6V13z" />
 
                 <!--Arrow-->
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
@@ -22,9 +22,9 @@
                                  c-0.404,0-0.769,0.243-0.924,0.617s-0.069,0.804,0.217,1.09l3,3
                                  C4.488,14.902,4.744,15,5,15s0.512-0.098,0.707-0.293l3-3
                                  c0.286-0.286,0.372-0.716,0.217-1.09C8.769,10.243,8.404,10,8,10
-                                 H7V2C7,1.448,6.552,1,6,1L6,1z"/>
+                                 H7V2C7,1.448,6.552,1,6,1L6,1z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M4,2h2v9h2l-3,3l-3-3h2V2z"/>
+                                 Geometry="M4,2h2v9h2l-3,3l-3-3h2V2z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

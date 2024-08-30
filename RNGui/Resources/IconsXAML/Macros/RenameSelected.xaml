@@ -5,12 +5,12 @@
     <DrawingImage x:Shared="False" x:Key="RenameSelected32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Borders-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
                                  Geometry="M29,1H9C7.896,1,7,1.895,7,3v26c0,1.104,0.896,2,2,2
-                                 h20c1.104,0,2-0.896,2-2V3C31,1.895,30.104,1,29,1L29,1z"/>
+                                 h20c1.104,0,2-0.896,2-2V3C31,1.895,30.104,1,29,1L29,1z" />
                 <GeometryDrawing Brush="{StaticResource FilenameWhiteBrush}"
                                  Geometry="M9,7C8.633,7,8.295,7.105,8,7.277V3c0-0.552,0.448-1,1-1
                                  h20c0.553,0,1,0.448,1,1v4.277C29.705,7.105,29.366,7,29,7H9z
@@ -19,80 +19,79 @@
                                  M9,24.999c-0.366,0-0.705-0.105-1-0.277v4.277c0,0.553,0.448,1,1,1
                                  h20c0.553,0,1-0.447,1-1v-4.277c-0.295,0.172-0.634,0.277-1,0.277H9z
                                  M29,15c0.553,0,1,0.448,1,1v7c0,0.553-0.447,1-1,1
-                                 H9c-0.552,0-1-0.447-1-1v-7c0-0.552,0.448-1,1-1H29L29,15z"/>
-                
+                                 H9c-0.552,0-1-0.447-1-1v-7c0-0.552,0.448-1,1-1H29L29,15z" />
+
                 <!--Filename-->
                 <GeometryDrawing Brush="{StaticResource FilenameOldSmallBrush}"
-                                 Geometry="M21,7H9V3h12V7z M20,9H9v5h11V9z M21,25H9v4h12V25z"/>
+                                 Geometry="M21,7H9V3h12V7z M20,9H9v5h11V9z M21,25H9v4h12V25z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewSmallBrush}"
                                  Geometry="M18,14h11V9h-9l-2,2C17,12,17,13,18,14z
                                  M18.344,25H29v4h-8l-2-2C18.333,26.333,18.121,25.667,18.344,25z
-                                 M29,3h-8l-2,2c-0.667,0.667-0.879,1.333-0.656,2H29V3z"/>
+                                 M29,3h-8l-2,2c-0.667,0.667-0.879,1.333-0.656,2H29V3z" />
                 <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
-                                 Geometry="M19,16H9v7h10V16z"/>
+                                 Geometry="M19,16H9v7h10V16z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
-                                 Geometry="M19,23h10v-7H19l-2,2c-1,1-1,2,0,3L19,23z"/>
-                
+                                 Geometry="M19,23h10v-7H19l-2,2c-1,1-1,2,0,3L19,23z" />
+
                 <!--Selection-->
                 <GeometryDrawing Brush="{StaticResource MarkedColorBrush}"
-                                 Geometry="M4,25H3V7h1V25z"/>
+                                 Geometry="M4,25H3V7h1V25z" />
                 <GeometryDrawing Brush="{StaticResource MarkedBorderBrush}"
                                  Geometry="M3.5,3C2.119,3,1,4.119,1,5.5
-                                 S2.119,8,3.5,8S6,6.881,6,5.5S4.88,3,3.5,3z"/>
+                                 S2.119,8,3.5,8S6,6.881,6,5.5S4.88,3,3.5,3z" />
                 <GeometryDrawing Brush="{StaticResource MarkedBorderBrush}"
                                  Geometry="M3.5,10C2.119,10,1,11.119,1,12.5
-                                 S2.119,15,3.5,15S6,13.881,6,12.5S4.88,10,3.5,10z"/>
+                                 S2.119,15,3.5,15S6,13.881,6,12.5S4.88,10,3.5,10z" />
                 <GeometryDrawing Brush="{StaticResource MarkedBorderBrush}"
                                  Geometry="M3.5,17C2.119,17,1,18.119,1,19.5
-                                 S2.119,22,3.5,22S6,20.881,6,19.5S4.88,17,3.5,17z"/>
+                                 S2.119,22,3.5,22S6,20.881,6,19.5S4.88,17,3.5,17z" />
                 <GeometryDrawing Brush="{StaticResource MarkedBorderBrush}"
                                  Geometry="M3.5,29C2.119,29,1,27.881,1,26.5
-                                 S2.119,24,3.5,24S6,25.119,6,26.5S4.88,29,3.5,29z"/>
+                                 S2.119,24,3.5,24S6,25.119,6,26.5S4.88,29,3.5,29z" />
                 <GeometryDrawing Brush="{StaticResource MarkedSurfaceBrush}"
                                  Geometry="M5,5.5C5,6.329,4.328,7,3.5,7
-                                 S2,6.329,2,5.5S2.671,4,3.5,4S5,4.671,5,5.5z"/>
+                                 S2,6.329,2,5.5S2.671,4,3.5,4S5,4.671,5,5.5z" />
                 <GeometryDrawing Brush="{StaticResource MarkedSurfaceBrush}"
                                  Geometry="M3.5,11C2.671,11,2,11.671,2,12.5
-                                 S2.671,14,3.5,14S5,13.329,5,12.5S4.328,11,3.5,11z"/>
+                                 S2.671,14,3.5,14S5,13.329,5,12.5S4.328,11,3.5,11z" />
                 <GeometryDrawing Brush="{StaticResource MarkedSurfaceBrush}"
                                  Geometry="M3.5,18C2.671,18,2,18.672,2,19.5
-                                 S2.671,21,3.5,21S5,20.328,5,19.5S4.328,18,3.5,18z"/>
+                                 S2.671,21,3.5,21S5,20.328,5,19.5S4.328,18,3.5,18z" />
                 <GeometryDrawing Brush="{StaticResource MarkedSurfaceBrush}"
                                  Geometry="M3.5,25C2.671,25,2,25.672,2,26.5
-                                 S2.671,28,3.5,28S5,27.328,5,26.5S4.328,25,3.5,25z"/>
+                                 S2.671,28,3.5,28S5,27.328,5,26.5S4.328,25,3.5,25z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="RenameSelected16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
 
                 <!--Filename-Back-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
                                  Geometry="M14,1H5C4.448,1,4,1.448,4,2v12c0,0.553,0.448,1,1,1
-                                 h9c0.553,0,1-0.447,1-1V2C15,1.448,14.553,1,14,1L14,1z"/>
+                                 h9c0.553,0,1-0.447,1-1V2C15,1.448,14.553,1,14,1L14,1z" />
                 <GeometryDrawing Brush="{StaticResource FilenameOldSmallBrush}"
-                                 Geometry="M11,14H5V2h6V14z"/>
+                                 Geometry="M11,14H5V2h6V14z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewSmallBrush}"
-                                 Geometry="M10,11c-1,1-1,1,0,2l1,1h3V2h-3l-1,1c-1,1-1,1,0,2V11z"/>
-                
+                                 Geometry="M10,11c-1,1-1,1,0,2l1,1h3V2h-3l-1,1c-1,1-1,1,0,2V11z" />
+
                 <!--Filename-Front-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
                                  Geometry="M14,5H5C4.448,5,4,5.448,4,6v4c0,0.553,0.448,1,1,1
-                                 h9c0.553,0,1-0.447,1-1V6C15,5.448,14.553,5,14,5L14,5z"/>
+                                 h9c0.553,0,1-0.447,1-1V6C15,5.448,14.553,5,14,5L14,5z" />
                 <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
-                                 Geometry="M10,10H5V6h5V10z"/>
+                                 Geometry="M10,10H5V6h5V10z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
-                                 Geometry="M14,6h-4L9,7C8,8,8,8,9,9l1,1h4V6z"/>
-                
+                                 Geometry="M14,6h-4L9,7C8,8,8,8,9,9l1,1h4V6z" />
+
                 <!--Mark-->
                 <GeometryDrawing Brush="{StaticResource MarkedColorBrush}"
                                  Geometry="M3,13H2V3h1V2l0,0H2C1.448,2,1,2.448,1,3
-                                 v10c0,0.553,0.448,1,1,1h1V13z"/>
+                                 v10c0,0.553,0.448,1,1,1h1V13z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

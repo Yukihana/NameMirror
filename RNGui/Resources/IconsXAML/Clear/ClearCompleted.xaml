@@ -5,15 +5,15 @@
     <DrawingImage x:Shared="False" x:Key="Purge32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Content and Strikethrough-->
                 <GeometryDrawing Brush="{StaticResource ContentTextBrush}"
                                  Geometry="M11,26h18v4H11V26z M11,22h18v-4H11V22z
-                                 M29,10H11v4h18V10z M29,2H11v4h18V2z"/>
+                                 M29,10H11v4h18V10z M29,2H11v4h18V2z" />
                 <GeometryDrawing Brush="{StaticResource MarkedBorderBrush}"
                                  Geometry="M31,5H9V4h22V5z M31,12H9v1h22V12z
-                                 M31,20H9v1h22V20z M31,28H9v1h22V28z"/>
+                                 M31,20H9v1h22V20z M31,28H9v1h22V28z" />
 
                 <!--Checkboxes-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderBrush}"
@@ -24,7 +24,7 @@
                                  M5,25H3c-1.104,0-2,0.896-2,2v2c0,1.105,0.896,2,2,2
                                  h2c1.104,0,2-0.895,2-2v-2C7,25.896,6.104,25,5,25L5,25z
                                  M5,9H3c-1.104,0-2,0.896-2,2v2c0,1.106,0.896,2,2,2
-                                 h2c1.104,0,2-0.895,2-2v-2C7,9.896,6.104,9,5,9L5,9z"/>
+                                 h2c1.104,0,2-0.895,2-2v-2C7,9.896,6.104,9,5,9L5,9z" />
                 <GeometryDrawing Brush="{StaticResource SheetSurfaceBrush}"
                                  Geometry="M5,2H3C2.448,2,2,2.448,2,3v2c0,0.552,0.448,1,1,1
                                  h2c0.552,0,1-0.448,1-1V3C6,2.448,5.552,2,5,2L5,2z
@@ -33,7 +33,7 @@
                                  M5,26H3c-0.552,0-1,0.447-1,1v2c0,0.553,0.448,1,1,1
                                  h2c0.552,0,1-0.447,1-1v-2C6,26.447,5.552,26,5,26L5,26z
                                  M5,10H3c-0.552,0-1,0.448-1,1v2c0,0.553,0.448,1,1,1
-                                 h2c0.552,0,1-0.447,1-1v-2C6,10.448,5.552,10,5,10L5,10z"/>
+                                 h2c0.552,0,1-0.447,1-1v-2C6,10.448,5.552,10,5,10L5,10z" />
 
                 <!--Checks-->
                 <GeometryDrawing Brush="{StaticResource DirectiveColorBrush}"
@@ -56,21 +56,17 @@
                                  s0.512-0.195,0.707,0l1.531,1.531c0.707-1.199,2.492-3.83,4.958-4.651
                                  C9.107,0.438,9.387,0.58,9.474,0.842C9.562,1.104,9.42,1.387,9.158,1.474
                                  c-2.771,0.924-4.692,4.711-4.711,4.75C4.375,6.367,4.239,6.468,4.08,6.494
-                                 C4.053,6.498,4.026,6.5,4,6.5z"/>
-
+                                 C4.053,6.498,4.026,6.5,4,6.5z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="Purge16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z"/>
-
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h16v16H0z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

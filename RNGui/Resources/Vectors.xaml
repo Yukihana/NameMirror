@@ -2,25 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--Hollow-->
-    <PathGeometry x:Key="Hollow16Figures" Figures="M0,0h16v16h-16v-16z M15,15v-14h-14v14h14z"/>
-    <GeometryDrawing x:Shared="False" x:Key="Hollow16Geometry" Brush="#8000" Geometry="{StaticResource Hollow16Figures}"/>
-    <DrawingImage x:Shared="False" x:Key="Hollow16Icon" Drawing="{StaticResource Hollow16Geometry}"/>
-    
-    <PathGeometry x:Key="Hollow32Figures" Figures="M0,0h32v32h-32v-32z M31,31v-30h-30v30h30z"/>
-    <GeometryDrawing x:Shared="False" x:Key="Hollow32Geometry" Brush="#8000" Geometry="{StaticResource Hollow32Figures}"/>
-    <DrawingImage x:Shared="False" x:Key="Hollow32Icon" Drawing="{StaticResource Hollow32Geometry}"/>
+    <PathGeometry x:Key="Hollow16Figures" Figures="M0,0h16v16h-16v-16z M15,15v-14h-14v14h14z" />
+    <GeometryDrawing x:Shared="False" x:Key="Hollow16Geometry" Brush="#8000" Geometry="{StaticResource Hollow16Figures}" />
+    <DrawingImage x:Shared="False" x:Key="Hollow16Icon" Drawing="{StaticResource Hollow16Geometry}" />
+
+    <PathGeometry x:Key="Hollow32Figures" Figures="M0,0h32v32h-32v-32z M31,31v-30h-30v30h30z" />
+    <GeometryDrawing x:Shared="False" x:Key="Hollow32Geometry" Brush="#8000" Geometry="{StaticResource Hollow32Figures}" />
+    <DrawingImage x:Shared="False" x:Key="Hollow32Icon" Drawing="{StaticResource Hollow32Geometry}" />
 
     <!--Hamburger-->
-    <PathGeometry x:Key="Hamburger16Figures" Figures="M0,0h16h-16v16v-16z M3,3h10v2h-10v-2z M3,7h10v2h-10v-2z M3,11h10v2h-10v-2z"/>
-    <GeometryDrawing x:Shared="False" x:Key="Hamburger16Geometry" Brush="#FFFF" Geometry="{StaticResource Hamburger16Figures}"/>
-    <DrawingImage x:Shared="False" x:Key="Hamburger16Icon" Drawing="{StaticResource Hamburger16Geometry}"/>
+    <PathGeometry x:Key="Hamburger16Figures" Figures="M0,0h16h-16v16v-16z M3,3h10v2h-10v-2z M3,7h10v2h-10v-2z M3,11h10v2h-10v-2z" />
+    <GeometryDrawing x:Shared="False" x:Key="Hamburger16Geometry" Brush="#FFFF" Geometry="{StaticResource Hamburger16Figures}" />
+    <DrawingImage x:Shared="False" x:Key="Hamburger16Icon" Drawing="{StaticResource Hamburger16Geometry}" />
 
     <!--Info-->
-    <PathGeometry x:Key="Info32Figures" Figures="M31,16c0,8.284-6.716,15-15,15S1,24.284,1,16C1,7.716,7.716,1,16,1S31,7.716,31,16z M16,11c1.657,0,3-1.343,3-3s-1.343-3-3-3c-1.657,0-3,1.343-3,3S14.343,11,16,11z M14,24c0,1.104,0.896,2,2,2l0,0c1.104,0,2-0.896,2-2v-9c0-1.104-0.896-2-2-2l0,0c-1.104,0-2,0.896-2,2V24z"/>
+    <PathGeometry x:Key="Info32Figures" Figures="M31,16c0,8.284-6.716,15-15,15S1,24.284,1,16C1,7.716,7.716,1,16,1S31,7.716,31,16z M16,11c1.657,0,3-1.343,3-3s-1.343-3-3-3c-1.657,0-3,1.343-3,3S14.343,11,16,11z M14,24c0,1.104,0.896,2,2,2l0,0c1.104,0,2-0.896,2-2v-9c0-1.104-0.896-2-2-2l0,0c-1.104,0-2,0.896-2,2V24z" />
     <LinearGradientBrush x:Key="SystemBlueGradient" StartPoint="0.3,0" EndPoint="0.5,1">
-        <GradientStop Color="SteelBlue" Offset="0.3"/>
-        <GradientStop Color="Navy" Offset="0.7"/>
+        <GradientStop Color="SteelBlue" Offset="0.3" />
+        <GradientStop Color="Navy" Offset="0.7" />
     </LinearGradientBrush>
-    
-    
 </ResourceDictionary>

@@ -5,7 +5,7 @@
     <DrawingImage x:Shared="False"  x:Key="MoveUp16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0H16V16H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0H16V16H0z" Brush="Transparent" />
 
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
                                  Geometry="M8,1C7.744,1,7.488,1.098,7.293,1.293
@@ -13,13 +13,12 @@
                                  C1.231,8.756,1.596,9,2,9h3v5c0,0.553,0.448,1,1,1
                                  h4c0.553,0,1-0.447,1-1V9h3c0.404,0,0.77-0.244,0.924-0.617
                                  c0.155-0.374,0.069-0.804-0.217-1.09l-6-6
-                                 C8.512,1.098,8.256,1,8,1L8,1z"/>
+                                 C8.512,1.098,8.256,1,8,1L8,1z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M10,8v6H6V8H2l6-6l6,6H10z"/>
+                                 Geometry="M10,8v6H6V8H2l6-6l6,6H10z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
-                                 Geometry="M2,8l6-6l1,1c-2,3-2,7-1,11H6V8H2z"/>
+                                 Geometry="M2,8l6-6l1,1c-2,3-2,7-1,11H6V8H2z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

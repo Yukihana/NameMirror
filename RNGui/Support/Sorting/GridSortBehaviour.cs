@@ -13,8 +13,6 @@ internal class GridSortBehaviour
 {
     // Properties
 
-    #region DProp : Sorter
-
     public static readonly DependencyProperty SorterProperty =
         DependencyProperty.RegisterAttached(
             "Sorter",
@@ -24,10 +22,6 @@ internal class GridSortBehaviour
     public static IComparer GetSorter(DataGridColumn column) => (IComparer)column.GetValue(SorterProperty);
 
     public static void SetSorter(DataGridColumn column, IComparer value) => column.SetValue(SorterProperty, value);
-
-    #endregion DProp : Sorter
-
-    #region DProp : EnableNaturalSort
 
     public static readonly DependencyProperty SortingEnabledProperty =
        DependencyProperty.RegisterAttached(
@@ -43,8 +37,6 @@ internal class GridSortBehaviour
     // Setter
     public static void SetSortingEnabled(DataGrid grid, bool value)
         => grid.SetValue(SortingEnabledProperty, value);
-
-    #endregion DProp : EnableNaturalSort
 
     // Methods
     private static void OnEnableNaturalSortChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

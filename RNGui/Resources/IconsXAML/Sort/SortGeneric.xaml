@@ -5,7 +5,7 @@
     <DrawingImage x:Shared="False" x:Key="SortGeneric32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent"/>
+                <GeometryDrawing Geometry="M0,0h32v32H0z" Brush="Transparent" />
 
                 <!--Stack-->
                 <GeometryDrawing Brush="{StaticResource SheetBorderBrush}"
@@ -13,14 +13,14 @@
                                  v-4c0-0.552-0.447-1-1-1h-3c0,0,0,0,0,0V9
                                  c0-0.552-0.447-1-1-1h-3v0V4c0-0.552-0.448-1-1-1
                                  H7C6.448,3,6,3.448,6,4v24c0,0.553,0.448,1,1,1
-                                 h23c0.553,0,1-0.447,1-1v-4C31,23.447,30.553,23,30,23z"/>
+                                 h23c0.553,0,1-0.447,1-1v-4C31,23.447,30.553,23,30,23z" />
                 <GeometryDrawing Brush="{StaticResource StackSurfaceBrush}"
                                  Geometry="M7,14h15v4H7V14z M7,28h23v-4H7V28z
-                                 M7,13h11V9H7V13z M7,8h7V4H7V8z M7,23h19v-4H7V23z"/>
+                                 M7,13h11V9H7V13z M7,8h7V4H7V8z M7,23h19v-4H7V23z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossSolidFog75Brush}"
                                  Geometry="M7,4h7c0,0-4,0-7,4V4z M7,9v4C10,9,18,9,18,9H7z
                                  M7,14v4c3-4,15-4,15-4L7,14z M7,19v4c3-4,19-4,19-4H7z
-                                 M7,24v4c3-4,23-4,23-4H7z"/>
+                                 M7,24v4c3-4,23-4,23-4H7z" />
 
                 <!--Arrows-->
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
@@ -29,22 +29,21 @@
                                  C1.231,7.757,1.596,8,2,8h2v3c0,0.552,0.448,1,1,1
                                  h4c0.552,0,1-0.448,1-1V8h2c0.404,0,0.769-0.244,0.924-0.617
                                  c0.155-0.374,0.069-0.804-0.217-1.09l-5-5
-                                 C7.512,1.098,7.256,1,7,1L7,1z"/>
+                                 C7.512,1.098,7.256,1,7,1L7,1z" />
                 <GeometryDrawing Brush="{StaticResource MotiveBorderBrush}"
                                  Geometry="M9,20H5c-0.552,0-1,0.447-1,1v3H2
                                  c-0.404,0-0.769,0.243-0.924,0.617s-0.069,0.804,0.217,1.09l5,5
                                  C6.488,30.902,6.744,31,7,31s0.512-0.098,0.707-0.293
                                  l5-5c0.286-0.286,0.372-0.716,0.217-1.09S12.404,24,12,24
-                                 h-2v-3C10,20.447,9.552,20,9,20L9,20z"/>
+                                 h-2v-3C10,20.447,9.552,20,9,20L9,20z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M12,7H9v4H5V7H2l5-5L12,7z"/>
+                                 Geometry="M12,7H9v4H5V7H2l5-5L12,7z" />
                 <GeometryDrawing Brush="{StaticResource MotiveSurfaceBrush}"
-                                 Geometry="M9,21v4h3l-5,5l-5-5h3v-4H9z"/>
+                                 Geometry="M9,21v4h3l-5,5l-5-5h3v-4H9z" />
                 <GeometryDrawing Brush="{StaticResource ContentGlossEastFog30Brush}"
                                  Geometry="M7,11H5V7H2l5-5l1,1C6,6,7,11,7,11z
-                                 M5,21v4H2l5,5c0,0-1-4,1-9H5z"/>
+                                 M5,21v4H2l5,5c0,0-1-4,1-9H5z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 </ResourceDictionary>

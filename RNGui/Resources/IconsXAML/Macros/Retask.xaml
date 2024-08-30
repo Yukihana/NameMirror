@@ -5,21 +5,21 @@
     <DrawingImage x:Shared="False" x:Key="Retask32">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z"/>
+                <GeometryDrawing Brush="Transparent" Geometry="M0,0h32v32H0z" />
 
                 <!--Task-->
                 <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
                                  Geometry="M29,12c1.104,0,2,0.896,2,2v14
                                  c0,1.104-0.896,2-2,2H3c-1.104,0-2-0.896-2-2V14
-                                 c0-1.104,0.896-2,2-2H29L29,12z"/>
+                                 c0-1.104,0.896-2,2-2H29L29,12z" />
                 <GeometryDrawing Brush="{StaticResource FilenameWhiteBrush}"
                                  Geometry="M29,13c0.553,0,1,0.448,1,1v14
                                  c0,0.553-0.447,1-1,1H3c-0.552,0-1-0.447-1-1V14
-                                 c0-0.552,0.448-1,1-1H29L29,13z"/>
+                                 c0-0.552,0.448-1,1-1H29L29,13z" />
                 <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
-                                 Geometry="M18,28H3V14l15,0V28z"/>
+                                 Geometry="M18,28H3V14l15,0V28z" />
                 <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
-                                 Geometry="M29,14v14H18l-4-4c-2-2-2-4,0-6l4-4H29z"/>
+                                 Geometry="M29,14v14H18l-4-4c-2-2-2-4,0-6l4-4H29z" />
 
                 <!--Directive-->
                 <GeometryDrawing Brush="{StaticResource DirectiveBorderBrush}"
@@ -30,22 +30,20 @@
                                  c-0.286,0.286-0.372,0.716-0.217,1.09C21.23,10.756,21.596,11,22,11
                                  h5c0.553,0,1-0.448,1-1V5c0-0.404-0.243-0.769-0.617-0.924
                                  C27.259,4.025,27.129,4,27,4c-0.26,0-0.516,0.102-0.707,0.293
-                                 L25.32,5.266C22.667,3.153,19.393,2,16,2L16,2z"/>
+                                 L25.32,5.266C22.667,3.153,19.393,2,16,2L16,2z" />
                 <GeometryDrawing Brush="{StaticResource DirectiveSurfaceBrush}"
                                  Geometry="M3.888,10C6.31,5.819,10.821,3,16,3
                                  c3.611,0,6.893,1.379,9.376,3.624L27,5v5h-5l1.961-1.961
-                                 C21.842,6.154,19.059,5,16,5c-4.012,0-7.555,1.976-9.733,5H3.888z"/>
+                                 C21.842,6.154,19.059,5,16,5c-4.012,0-7.555,1.976-9.733,5H3.888z" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
-
 
     <!--16x16-->
     <DrawingImage x:Shared="False" x:Key="Retask16">
         <DrawingImage.Drawing>
             <DrawingGroup>
-                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent"/>
-
+                <GeometryDrawing Geometry="M0,0h16v16H0z" Brush="Transparent" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

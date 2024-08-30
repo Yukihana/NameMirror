@@ -12,8 +12,8 @@ namespace ReferencedNaming.Logic;
 public partial class RNLogic : INotifyPropertyChanged
 {
     // Components
-    #region Data
     private RNData data = new();
+
     public RNData Data
     {
         get => data;
@@ -26,26 +26,20 @@ public partial class RNLogic : INotifyPropertyChanged
             }
         }
     }
-    #endregion
-    #region Events
-    public event PropertyChangedEventHandler? PropertyChanged;
-    #endregion
 
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     // Handler
-    #region Handler
     private readonly IHandler _handler;
+
     public IHandler Handler => _handler;
-    #endregion
-    #region Log
+
     public Action<string, string, object?>? LogAction = null;
+
     private void LogAdd(string message, string level = "information", object? sender = null)
         => LogAction?.Invoke(message, level, sender ?? this);
-    #endregion
-
 
     // Validations
-    #region Tasks Changed
     private void Data_TasksChanged(object? sender, EventArgs e)
     {
         // Rename
@@ -60,8 +54,7 @@ public partial class RNLogic : INotifyPropertyChanged
         ClearAllCommand.UpdateCanExecute();
         ClearCompletedCommand.UpdateCanExecute();
     }
-    #endregion
-    #region Selection Changed
+
     private void Data_SelectionChanged(object? sender, EventArgs e)
     {
         // Rename
@@ -84,14 +77,14 @@ public partial class RNLogic : INotifyPropertyChanged
         ReferenceMoveToTopCommand.UpdateCanExecute();
         ReferenceMoveToBottomCommand.UpdateCanExecute();
     }
-    #endregion
-
 
     // Commands : Task
-    #region Command : Remove
     private readonly ActionCommand taskRemoveCommand;
+
     public ActionCommand TaskRemoveCommand => taskRemoveCommand;
+
     private bool CanRemoveTask(object? parameter) => Data.AtLeastOneSelected;
+
     private void RemoveTask(object? parameter)
     {
         // Adding confirmation to prevent accidents
@@ -117,13 +110,13 @@ public partial class RNLogic : INotifyPropertyChanged
 
         LogAdd($"Removed {successes} tasks.");
     }
-    #endregion
 
-    #region Command : Move Up
     private readonly ActionCommand taskMoveUpCommand;
     public ActionCommand TaskMoveUpCommand => taskMoveUpCommand;
+
     private bool CanMoveTaskUp(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
+
     private void MoveTaskUp(object? parameter)
     {
         // Snapshot
@@ -145,12 +138,13 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, selected);
     }
-    #endregion
-    #region Command : Move Down
+
     private readonly ActionCommand taskMoveDownCommand;
     public ActionCommand TaskMoveDownCommand => taskMoveDownCommand;
+
     private bool CanMoveTaskDown(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
+
     private void MoveTaskDown(object? parameter)
     {
         // Snapshot
@@ -172,12 +166,13 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, selected);
     }
-    #endregion
-    #region Command : Move to Top
+
     private readonly ActionCommand taskMoveToTopCommand;
     public ActionCommand TaskMoveToTopCommand => taskMoveToTopCommand;
+
     private bool CanMoveTaskToTop(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
+
     private void MoveTaskToTop(object? parameter)
     {
         // Snapshot and prepare
@@ -206,12 +201,13 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, selected.ToArray());
     }
-    #endregion
-    #region Command : Move to Bottom
+
     private readonly ActionCommand taskMoveToBottomCommand;
     public ActionCommand TaskMoveToBottomCommand => taskMoveToBottomCommand;
+
     private bool CanMoveTaskToBottom(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
+
     private void MoveTaskToBottom(object? parameter)
     {
         // Snapshot and prepare
@@ -242,14 +238,14 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, selected.ToArray());
     }
-    #endregion
-
 
     // Commands : References
-    #region Command : Remove
     private readonly ActionCommand referenceRemoveCommand;
+
     public ActionCommand ReferenceRemoveCommand => referenceRemoveCommand;
+
     private bool CanRemoveReference(object? parameter) => Data.AtLeastOneSelected;
+
     private void RemoveReference(object? parameter)
     {
         foreach (RNTask task in Data.Selection)
@@ -257,13 +253,13 @@ public partial class RNLogic : INotifyPropertyChanged
             task.ReferencePath = string.Empty;
         }
     }
-    #endregion
 
-    #region Command : Move Up
     private readonly ActionCommand referenceMoveUpCommand;
     public ActionCommand ReferenceMoveUpCommand => referenceMoveUpCommand;
+
     private bool CanMoveReferenceUp(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
+
     private void MoveReferenceUp(object? parameter)
     {
         // Snapshot and prepare (No need to snapshot for references but it doesn't make a difference with this method anyway)
@@ -285,12 +281,13 @@ public partial class RNLogic : INotifyPropertyChanged
         // Conclude
         ConcludeReordering(successes, selected.ToArray());
     }
-    #endregion
-    #region Command : Move Down
+
     private readonly ActionCommand referenceMoveDownCommand;
     public ActionCommand ReferenceMoveDownCommand => referenceMoveDownCommand;
+
     private bool CanMoveReferenceDown(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
+
     private void MoveReferenceDown(object? parameter)
     {
         // Snapshot and prepare (No need to snapshot for references but it doesn't make a difference with this method anyway)
@@ -312,11 +309,12 @@ public partial class RNLogic : INotifyPropertyChanged
         // Conclude
         ConcludeReordering(successes, selected.ToArray());
     }
-    #endregion
-    #region Command : Move to Top
+
     private readonly ActionCommand referenceMoveToTopCommand;
     public ActionCommand ReferenceMoveToTopCommand => referenceMoveToTopCommand;
+
     private bool CanMoveReferenceToTop(object? parameter) => Data.AtLeastOneSelected;
+
     private void MoveReferenceToTop(object? parameter)
     {
         // Prepare
@@ -369,11 +367,12 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, newSelection.ToArray());
     }
-    #endregion
-    #region Command : Move to Bottom
+
     private readonly ActionCommand referenceMoveToBottomCommand;
     public ActionCommand ReferenceMoveToBottomCommand => referenceMoveToBottomCommand;
+
     private bool CanMoveReferenceToBottom(object? parameter) => Data.AtLeastOneSelected;
+
     private void MoveReferenceToBottom(object? parameter)
     {
         RNTask[] selected = GetSelection().ToArray();
@@ -426,31 +425,32 @@ public partial class RNLogic : INotifyPropertyChanged
         // Finish
         ConcludeReordering(successes, newSelection.ToArray());
     }
-    #endregion
-
 
     // Commands : Rename
-    #region Command : Rename All
     private readonly ActionCommand renameAllCommand;
+
     public ActionCommand RenameAllCommand => renameAllCommand;
+
     private bool CanRenameAll(object? parameter) => Data.AtLeastOneTask; // Create AtleastOneTaskReady
+
     private void RenameAll(object? parameter)
         => RenameFiles(Data.Tasks.Where(x => x.Ready));
-    #endregion
-    #region Command : Rename Selected
+
     private readonly ActionCommand renameSelectedCommand;
     public ActionCommand RenameSelectedCommand => renameSelectedCommand;
+
     private bool CanRenameSelected(object? parameter) => Data.AtLeastOneSelected; // Use AtleastOneSelected + Ready
+
     private void RenameSelected(object? parameter)
         => RenameFiles(Data.Selection.Where(x => x.Ready));
-    #endregion
-
 
     // Commands : Manage
-    #region Command : EvaluateErrors
     private readonly ActionCommand evaluateErrorsCommand;
+
     public ActionCommand EvaluateErrorsCommand => evaluateErrorsCommand;
+
     private bool CanEvaluateErrors(object? parameter) => Data.AtLeastOneTask;
+
     private void EvaluateErrors(object? parameter)
     {
         int completed = 0;
@@ -459,7 +459,7 @@ public partial class RNLogic : INotifyPropertyChanged
         int failed = 0;
         int uncat = 0;
 
-        foreach(RNTask task in Data.Tasks)
+        foreach (RNTask task in Data.Tasks)
         {
             if (task.SuccessStatus == true)
                 completed++;
@@ -473,18 +473,18 @@ public partial class RNLogic : INotifyPropertyChanged
                 uncat++;
         }
 
-
         LogAdd(
             $"Evaluation Completed:\n"
             + $"Completed={completed}\n"
             + $"NotReady={notready}\n"
             + $"Failed={failed}");
     }
-    #endregion
-    #region Command : Retask
+
     private readonly ActionCommand retaskCommand;
     public ActionCommand RetaskCommand => retaskCommand;
+
     private bool CanRetask(object? parameter) => Data.AtLeastOneTask;
+
     private void Retask(object? parameter)
     {
         foreach (RNTask task in Data.Selection)
@@ -492,14 +492,14 @@ public partial class RNLogic : INotifyPropertyChanged
             task.SuccessStatus = null;
         }
     }
-    # endregion
-
 
     // Commands : Clear
-    #region Clear : Completed
     private readonly ActionCommand clearCompletedCommand;
+
     public ActionCommand ClearCompletedCommand => clearCompletedCommand;
+
     private bool CanClearCompleted(object? parameter) => Data.AtLeastOneTask;
+
     private void ClearCompleted(object? parameter = null)
     {
         // Adding confirmation to prevent accidents
@@ -516,11 +516,12 @@ public partial class RNLogic : INotifyPropertyChanged
             }
         }
     }
-    #endregion
-    #region Clear : Missing
+
     private readonly ActionCommand clearMissingCommand;
     public ActionCommand ClearMissingCommand => clearMissingCommand;
+
     private bool CanClearMissing(object? parameter) => Data.AtLeastOneTask;
+
     private void ClearMissing(object? parameter = null)
     {
         if (Handler.PromptAgent.Validate(
@@ -536,11 +537,12 @@ public partial class RNLogic : INotifyPropertyChanged
             }
         }
     }
-    #endregion
-    #region Clear : Unready
+
     private readonly ActionCommand clearUnreadyCommand;
     public ActionCommand ClearUnreadyCommand => clearUnreadyCommand;
+
     private bool CanClearUnready(object? parameter) => Data.AtLeastOneTask;
+
     private void ClearUnready(object? parameter = null)
     {
         if (Handler.PromptAgent.Validate(
@@ -556,11 +558,12 @@ public partial class RNLogic : INotifyPropertyChanged
             }
         }
     }
-    #endregion
-    #region Clear : All
+
     private readonly ActionCommand clearAllCommand;
     public ActionCommand ClearAllCommand => clearAllCommand;
+
     private bool CanClearAll(object? parameter) => Data.AtLeastOneTask;
+
     private void ClearAll(object? parameter = null)
     {
         if (Handler.PromptAgent.Validate(
@@ -573,12 +576,10 @@ public partial class RNLogic : INotifyPropertyChanged
             }
         }
     }
-    #endregion
-
 
     // LifeTime
-    #region Initialize
     public RNLogic() : this(new Dummy()) { }
+
     public RNLogic(IHandler handler)
     {
         // Handler
@@ -624,11 +625,8 @@ public partial class RNLogic : INotifyPropertyChanged
         LogAdd("Program loaded.");
         LogAdd("How-To basics:\n1. Add tasks - Files to be renamed,\n2. Append references - Files to copy names from,\n3. Apply rename.", "notes");
     }
-    #endregion
-
 
     // Base Functions
-    #region Rename
     private void RenameFiles(IEnumerable<RNTask> tasks)
     {
         int count = 0, successes = 0, errors = 0;
@@ -668,8 +666,7 @@ public partial class RNLogic : INotifyPropertyChanged
 
         LogAdd($"{successes} of {count} files were renamed. Errors: {errors}.");
     }
-    #endregion
-    #region GetSelection
+
     // Move this to the model and change to property? (Data.Selection replacement?)
     private List<RNTask> GetSelection()
     {
@@ -681,8 +678,7 @@ public partial class RNLogic : INotifyPropertyChanged
         }
         return result;
     }
-    #endregion
-    #region PostMove
+
     private void ConcludeReordering(int successes, RNTask[] selected)
     {
         // Beep if nothing was moved
@@ -699,15 +695,11 @@ public partial class RNLogic : INotifyPropertyChanged
                 task.IsSelected = true;
         }
     }
-    #endregion
-
 
     // Direct Functions
-    #region Exit
     public bool IsExitReady()
-        => !Data.Tasks.Any(x => x.SuccessStatus != true);
-    #endregion
-    #region Add : Tasks
+    => !Data.Tasks.Any(x => x.SuccessStatus != true);
+
     public void AddTasks(string[] paths, bool insert = false)
     {
         // Validate
@@ -764,8 +756,7 @@ public partial class RNLogic : INotifyPropertyChanged
             + (n - successes > 0 ? $" {repeats} duplicates, {invalids} bad Uri and {absentees} missing files were not added." : "")
         );
     }
-    #endregion
-    #region Add : References
+
     public void AddReferences(string[] paths, AddReferencesMode mode = AddReferencesMode.Append)
     {
         switch (mode)
@@ -778,6 +769,7 @@ public partial class RNLogic : INotifyPropertyChanged
                 AppendReference(paths); break;
         };
     }
+
     private void AppendReference(string[] paths)
     {
         // Validate
@@ -826,6 +818,7 @@ public partial class RNLogic : INotifyPropertyChanged
             + (uncount < fcount ? $" {fcount - uncount} excess references files were ignored. If this was not intended, clear reference(s) and try again." : "")
             );
     }
+
     private void ReplaceReferencesAt(string[] paths)
     {
         // Validate
@@ -853,6 +846,7 @@ public partial class RNLogic : INotifyPropertyChanged
             + (i < k ? $" {k - i} excess remaining. Reached end of tasks list. Unable to continue without adding more tasks." : "")
             );
     }
+
     private void ReplaceAllReferences(string[] paths)
     {
         // Validate
@@ -874,8 +868,7 @@ public partial class RNLogic : INotifyPropertyChanged
             + (c < l ? $" {l - c} excess references files were ignored. If this was not intended, clear reference(s) and try again." : "")
             );
     }
-    #endregion
-    #region Invalidations
+
     private bool Invalid(string[] paths)
     {
         bool result = paths.Length > 0;
@@ -883,6 +876,7 @@ public partial class RNLogic : INotifyPropertyChanged
             LogAdd("No files were provided. Possible internal error.", "information");
         return result;
     }
+
     private bool InvalidTasks()
     {
         bool result = Data.Tasks.Count < 1;
@@ -890,6 +884,7 @@ public partial class RNLogic : INotifyPropertyChanged
             LogAdd("There are no tasks. Add some tasks and try again.", "information");
         return result;
     }
+
     private bool InvalidSelection()
     {
         bool result = Data.SelectedIndex == -1;
@@ -897,5 +892,4 @@ public partial class RNLogic : INotifyPropertyChanged
             LogAdd("Nothing is selected. Select a task and try again.", "information");
         return result;
     }
-    #endregion
 }
