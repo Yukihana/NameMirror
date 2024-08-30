@@ -1,24 +1,26 @@
-﻿using CSX.DotNet6.Logging.Types;
+﻿using CSX.DotNet.Logging.Types;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSX.DotNet6.Logging
+namespace CSX.DotNet.Logging
 {
     internal class Logger
     {
         #region Fields
+
         private readonly string Location;
         private readonly string SessionTime;
         private readonly string Prefix;
         private string TargetLog = string.Empty;
         private ulong SubSessionIndex = 0;
-        #endregion
 
+        #endregion Fields
 
         #region LifeTime
+
         internal Logger(string directory, string prefix)
         {
             Location = directory;
@@ -26,12 +28,14 @@ namespace CSX.DotNet6.Logging
             SessionTime = DateTime.Now.ToString(format: "yyyyMMdd_HHmmss");
             TargetLog = GetNewLogName();
         }
-        #endregion
 
+        #endregion LifeTime
 
         #region Cycle
+
         public void CycleLog()
            => TargetLog = GetNewLogName();
+
         private string GetNewLogName()
         {
             string path;
@@ -46,9 +50,8 @@ namespace CSX.DotNet6.Logging
 
             return path;
         }
-        #endregion
 
-
+        #endregion Cycle
 
         // Async operations
         internal async Task<bool> WriteAsync(IEnumerable<LogEntry> logEntries)
@@ -70,7 +73,7 @@ namespace CSX.DotNet6.Logging
                 }
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }

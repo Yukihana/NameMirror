@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSX.DotNet6.Logging
+namespace CSX.DotNet.Logging
 {
     internal static class AssemblyConfig
     {

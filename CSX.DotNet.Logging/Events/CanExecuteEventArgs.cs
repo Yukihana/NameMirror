@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSX.DotNet6.Logging.Events
+namespace CSX.DotNet.Logging.Events
 {
     public class CanExecuteEventArgs : EventArgs
     {

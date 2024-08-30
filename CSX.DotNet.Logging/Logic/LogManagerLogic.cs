@@ -1,6 +1,6 @@
-﻿using CSX.DotNet6.Logging.Commands;
-using CSX.DotNet6.Logging.Support;
-using CSX.DotNet6.Logging.Types;
+﻿using CSX.DotNet.Logging.Commands;
+using CSX.DotNet.Logging.Support;
+using CSX.DotNet.Logging.Types;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace CSX.DotNet6.Logging.Logic
+namespace CSX.DotNet.Logging.Logic
 {
     public class LogManagerLogic : INotifyPropertyChanged
     {

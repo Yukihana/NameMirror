@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace CSX.DotNet6.Y2022.ReferencedNaming.Commands
+namespace ReferencedNaming.Commands
 {
     public class ActionCommand : ICommand
     {

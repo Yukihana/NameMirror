@@ -1,8 +1,8 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Agents;
+﻿using ReferencedNaming.Agents;
 using System;
 using System.ComponentModel;
 
-namespace CSX.DotNet6.Y2022.ReferencedNaming.Types
+namespace ReferencedNaming.Types
 {
     public class RNTask : INotifyPropertyChanged
     {

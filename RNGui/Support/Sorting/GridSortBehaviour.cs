@@ -1,4 +1,4 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Types;
+﻿using ReferencedNaming.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;

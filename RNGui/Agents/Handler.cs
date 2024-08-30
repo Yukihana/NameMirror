@@ -1,4 +1,4 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Agents;
+﻿using ReferencedNaming.Agents;
 
 namespace CSX.Wpf.Y2022.RNGui.Agents;
 

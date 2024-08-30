@@ -1,9 +1,9 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Types;
+﻿using ReferencedNaming.Types;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace CSX.DotNet6.Y2022.ReferencedNaming.Models
+namespace ReferencedNaming.Models
 {
     public class RNData : INotifyPropertyChanged
     {

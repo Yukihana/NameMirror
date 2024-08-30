@@ -1,6 +1,6 @@
-﻿using CSX.DotNet6.Logging.Logic;
-using CSX.DotNet6.Y2022.ReferencedNaming.Logic;
-using CSX.DotNet6.Y2022.ReferencedNaming.Types;
+﻿using CSX.DotNet.Logging.Logic;
+using ReferencedNaming.Logic;
+using ReferencedNaming.Types;
 using CSX.Wpf.Y2022.RNGui.Agents;
 using CSX.Wpf.Y2022.RNGui.GUI.Windows;
 using System;

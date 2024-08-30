@@ -1,13 +1,13 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Agents;
-using CSX.DotNet6.Y2022.ReferencedNaming.Commands;
-using CSX.DotNet6.Y2022.ReferencedNaming.Models;
-using CSX.DotNet6.Y2022.ReferencedNaming.Types;
+﻿using ReferencedNaming.Agents;
+using ReferencedNaming.Commands;
+using ReferencedNaming.Models;
+using ReferencedNaming.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace CSX.DotNet6.Y2022.ReferencedNaming.Logic;
+namespace ReferencedNaming.Logic;
 
 public partial class RNLogic : INotifyPropertyChanged
 {

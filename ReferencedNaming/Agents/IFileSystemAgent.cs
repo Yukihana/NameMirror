@@ -1,4 +1,4 @@
-﻿namespace CSX.DotNet6.Y2022.ReferencedNaming.Agents
+﻿namespace ReferencedNaming.Agents
 {
     public interface IFileSystemAgent
     {

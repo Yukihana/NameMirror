@@ -1,4 +1,4 @@
-﻿using CSX.DotNet6.Y2022.ReferencedNaming.Agents;
+﻿using ReferencedNaming.Agents;
 using Microsoft.Win32;
 using System;
 using System.IO;

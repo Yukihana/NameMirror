@@ -1,4 +1,4 @@
-﻿namespace CSX.DotNet6.Y2022.ReferencedNaming.Types;
+﻿namespace ReferencedNaming.Types;
 
 public enum AddReferencesMode : byte
 {

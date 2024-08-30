@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace CSX.DotNet6.Logging.Types
+namespace CSX.DotNet.Logging.Types
 {
     public class LogEntry : INotifyPropertyChanged
     {

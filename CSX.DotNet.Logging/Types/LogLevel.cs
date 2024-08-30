@@ -1,4 +1,4 @@
-﻿namespace CSX.DotNet6.Logging.Types
+﻿namespace CSX.DotNet.Logging.Types
 {
     public enum LogLevel : byte
     {

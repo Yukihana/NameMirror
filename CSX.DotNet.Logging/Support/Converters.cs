@@ -1,6 +1,6 @@
-﻿using CSX.DotNet6.Logging.Types;
+﻿using CSX.DotNet.Logging.Types;
 
-namespace CSX.DotNet6.Logging.Support
+namespace CSX.DotNet.Logging.Support
 {
     internal static class Converters
     {
