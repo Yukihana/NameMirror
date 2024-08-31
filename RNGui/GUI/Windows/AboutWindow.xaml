@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" ResizeMode="NoResize"
-        Title="About RNT" Height="400" Width="600">
+        Title="{StaticResource AboutTitle}" Height="400" Width="600">
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -13,62 +13,93 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <Grid>
-        <Image />
-        <DockPanel>
-            <DockPanel DockPanel.Dock="Top" Background="#EEE">
-                <TextBlock Text="{StaticResource AboutName}"
-                           FontSize="20" FontStyle="Italic" FontWeight="SemiBold" Margin="20" />
-                <Image />
-            </DockPanel>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" Background="#216">
+            <Image Source="{StaticResource RenameAll32}"
+                       DockPanel.Dock="Right"
+                       VerticalAlignment="Center"
+                       Height="48"
+                       Width="48"
+                       Margin="8" />
+            <TextBlock Text="{StaticResource CreativeBranding}"
+                           VerticalAlignment="Center"
+                           Margin="20 0"
+                           Foreground="White"
+                           FontSize="20"
+                           FontStyle="Italic"
+                           FontWeight="SemiBold" />
+        </DockPanel>
 
-            <DockPanel DockPanel.Dock="Bottom" Margin="10">
-                <Button Height="25" Width="100" DockPanel.Dock="Right" BorderBrush="#BBB">Close</Button>
-                <Border VerticalAlignment="Center" HorizontalAlignment="Left"
-                        Background="#AAC" Padding="8 3" CornerRadius="5">
-                    <TextBlock Foreground="White" FontSize="14" Text="RiA#0169" />
-                </Border>
-            </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Margin="10 0 10 10">
+            <Button Height="25"
+                        Width="100"
+                        DockPanel.Dock="Right"
+                        BorderBrush="#BBB">
+                <TextBlock Text="Close" />
+            </Button>
+            <TextBox Text="{StaticResource FrameworkVersion}"
+                     IsReadOnly="True"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     Foreground="#888" />
+        </DockPanel>
 
-            <TabControl Margin="10" Background="Transparent">
-                <TabItem Header="Information">
-                    <DockPanel>
-                        <!--Version Info-->
-                        <TextBlock DockPanel.Dock="Bottom" Margin="5">
-                                <Run Text="CS-X" FontWeight="Bold" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutName}" FontSize="16" />
-                            <LineBreak />
-                                <Run Text="Version 0-8-0-0 Build 2022/08/29" Foreground="#888" />
-                                <LineBreak />
-                                <Run Text="CherrySoft 2022" Foreground="#888" />
-                        </TextBlock>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel.Resources>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Margin" Value="5" />
-                                        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
-                                    </Style>
-                                </StackPanel.Resources>
-                                <TextBlock>
-                                <Run Text="{StaticResource AboutDescription0}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription1}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription2}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription3}" />
-                                </TextBlock>
-                                <TextBlock>
-                                <Run Text="Tip:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutTip}" />
-                                </TextBlock>
-                            </StackPanel>
-                        </ScrollViewer>
+        <TabControl Margin="10" Background="Transparent">
+            <TabItem Header="Information">
+                <DockPanel>
+                    <!--Product Info-->
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <!--Replace this image with cherry branding logo-->
+                        <!--After making the application icon, put that in the banner at the top, at the right side-->
+                        <!--Ensure the banner also has that pattern. Blue arrow progress coming in from the right over an existing hotpink background. Whitewashed.-->
+                        <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="{StaticResource RenameAll32}" Height="64" Width="64" Margin="10" />
+
+                        <UniformGrid Margin="5"
+                                         Columns="2"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Bottom">
+                            <UniformGrid.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="#888" />
+                                </Style>
+                            </UniformGrid.Resources>
+                            <TextBlock Text="{StaticResource ProductNameHeader}" />
+                            <TextBlock>
+                                    <Run Text=":" />
+                                    <Run Text="{StaticResource ProductNameValue}"
+                                         Foreground="#000"
+                                         FontWeight="Bold" />
+                            </TextBlock>
+
+                            <TextBlock Text="{StaticResource ProductVersionHeader}" />
+                            <TextBlock>
+                                    <Run Text=":" />
+                                    <Run Text="{StaticResource AssemblyVersion}"
+                                         Foreground="#000" />
+                            </TextBlock>
+
+                            <TextBlock Text="{StaticResource ProductSeriesHeader}" />
+                            <TextBlock>
+                                    <Run Text=":" />
+                                    <Run Text="{StaticResource ProductSeriesValue}" />
+                            </TextBlock>
+
+                            <TextBlock Text="{StaticResource ProductAuthorHeader}" />
+                            <TextBlock>
+                                    <Run Text=":" />
+                                    <Run Text="{StaticResource CreativeBranding}" />
+                            </TextBlock>
+
+                            <TextBlock Text="{StaticResource MakerContactPlatform0}" />
+                            <TextBlock>
+                                    <Run Text=":" />
+                                    <Run Text="{StaticResource MakerContactData0}" />
+                            </TextBlock>
+                        </UniformGrid>
                     </DockPanel>
-                </TabItem>
-                <TabItem Header="Licensing and Terms">
+
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical">
                             <StackPanel.Resources>
@@ -77,27 +108,52 @@
                                     <Setter Property="TextWrapping" Value="WrapWithOverflow" />
                                 </Style>
                             </StackPanel.Resources>
-
                             <TextBlock>
-                                <Run Text="Terms of Use:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutTermsOfUse}" />
+                                <Run Text="{StaticResource AboutDescription0}" />
+                                <LineBreak />
+                                <Run Text="{StaticResource AboutDescription1}" />
+                                <LineBreak />
+                                <Run Text="{StaticResource AboutDescription2}" />
+                                <LineBreak />
+                                <Run Text="{StaticResource AboutDescription3}" />
                             </TextBlock>
                             <TextBlock>
-                                <Run Text="Disclaimer:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutDisclaimer}" />
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="Copyrights:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutCopyrights}" />
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="Accreditations:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutAccreditations}" />
+                                <Run Text="Tip:" FontWeight="Bold" />
+                                <Run Text="{StaticResource AboutTip}" />
                             </TextBlock>
                         </StackPanel>
                     </ScrollViewer>
-                </TabItem>
-            </TabControl>
-        </DockPanel>
-    </Grid>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Licensing and Terms">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="5" />
+                                <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <TextBlock>
+                                <Run Text="Terms of Use:" FontWeight="Bold" />
+                                <Run Text="{StaticResource AboutTermsOfUse}" />
+                        </TextBlock>
+                        <TextBlock>
+                                <Run Text="Accreditations:" FontWeight="Bold" />
+                                <Run Text="{StaticResource AboutAccreditations}" />
+                        </TextBlock>
+                        <TextBlock>
+                                <Run Text="Disclaimer:" FontWeight="Bold" />
+                                <Run Text="{StaticResource AboutDisclaimer}" />
+                        </TextBlock>
+                        <TextBlock>
+                                <Run Text="Copyrights:" FontWeight="Bold" />
+                                <Run Text="{StaticResource AboutCopyrights}" />
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>

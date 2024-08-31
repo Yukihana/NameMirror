@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net481-windows</TargetFramework>
 
+    <Product>NameMirror</Product>
     <Version>0.$([System.DateTime]::UtcNow.ToString("yyyy.MMdd.Hmm"))</Version>
 
     <LangVersion>Latest</LangVersion>
@@ -18,29 +19,6 @@
     <ProjectReference Include="..\CSX.DotNet.Logging\CSX.DotNet.Logging.csproj" />
     <ProjectReference Include="..\CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj" />
     <ProjectReference Include="..\ReferencedNaming\ReferencedNaming.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ApplicationDefinition Update="App.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </ApplicationDefinition>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="GUI\Windows\RNWindow.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Resources\IconsXAML\Clear\ClearUnreferenced.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Resources\IconsXAML\Clear\ClearAll.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
 </Project>

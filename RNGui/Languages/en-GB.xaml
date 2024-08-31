@@ -3,15 +3,29 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--About-Info-->
-    <system:String x:Key="AboutName">Referenced Naming Tool</system:String>
+    <system:String x:Key="CreativeBranding">CherrySoft</system:String>
+
+    <system:String x:Key="ProductSeriesHeader">Series</system:String>
+    <system:String x:Key="ProductSeriesValue">CS-X</system:String>
+    <system:String x:Key="ProductNameHeader">Title</system:String>
+    <system:String x:Key="ProductNameValue">NameMirror</system:String>
+    <system:String x:Key="ProductVersionHeader">Version</system:String>
+    <system:String x:Key="ProductAuthorHeader">Author</system:String>
+    <system:String x:Key="ProductAuthorContact">x</system:String>
+
+    <system:String x:Key="MakerContactPlatform0">Discord</system:String>
+    <system:String x:Key="MakerContactData0">lilyflowerangel</system:String>
+
+    <system:String x:Key="AboutTitle">About NameMirror...</system:String>
+
     <system:String x:Key="AboutDescription0">Renames files based on the names of other files.</system:String>
     <system:String x:Key="AboutDescription1">Use the wizard or add files and naming reference files manually.</system:String>
     <system:String x:Key="AboutDescription2">Optionally reorder them before applying rename.</system:String>
-    <system:String x:Key="AboutDescription3">Use the logger to trace steps back in case there's a mistake renaming.</system:String>
+    <system:String x:Key="AboutDescription3">Use the logger to trace steps back in case there's a mistake in renaming.</system:String>
     <system:String x:Key="AboutTip">Even though the logger will help trace back steps, it's always better to create a backup before attempting to rename files in bulk.</system:String>
 
-    <system:String x:Key="AboutTermsOfUse">You may use this program at your convenience, but you may not use this program to cause intentional harm to other people, self aware entities, and/or their assets.</system:String>
+    <system:String x:Key="AboutTermsOfUse">You may use this program at your convenience. However, by using this program, you agree not to use it, or any part of it, to intentionally cause, direct or indirect, malicious harm to individuals, entities with self-awareness, self-aware artificial intelligences, other sentient beings, or their assets. This includes avoiding any malicious harm to livestock.</system:String>
     <system:String x:Key="AboutDisclaimer">By using this program you agree that this program and its creator are not responsible for any damage caused or losses incurred by the use and/or misuse of this program.</system:String>
-    <system:String x:Key="AboutCopyrights">You may not distribute 'modified' copies of this program with or without profit.</system:String>
-    <system:String x:Key="AboutAccreditations">This program was created using Visual Studio Community without using any third party dependencies and packages. Vector graphics used in this program are originals created solely by the creator of this program. Any resemblance to assets outside this program, or from other products, is entirely coincidental. The only exceptions include WPF, .NET and Windows specific assets, provided free of cost at the time, by Microsoft. The icon was created with a rasterized vector image using IcoFX 1.6.</system:String>
+    <system:String x:Key="AboutAccreditations">Resources used: Visual Studio Community, IcoFX, various third party packages, and possibly some material icon remnants. Most vectors images were created solely by the creator of this program. Conceptual resemblance aside, any resemblance to data is, at best, coincidental.</system:String>
+    <system:String x:Key="AboutCopyrights">You may share or distribute this program in its original form, provided no profit is made. However, you may not distribute modified versions of this program, whether for profit or not.</system:String>
 </ResourceDictionary>
