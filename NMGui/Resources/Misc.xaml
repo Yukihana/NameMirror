@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:NMGui.Support.Converters"
+                    xmlns:sorting="clr-namespace:NMGui.Support.Sorting">
+
+    <sorting:NaturalSorter x:Key="NaturalSorter" />
+    <sorting:GridSortBehaviour x:Key="GridSorting" />
+
+    <converters:XAMLStatusColor x:Key="StatusColor" />
+    <converters:XAMLStatusText x:Key="StatusText" />
+</ResourceDictionary>
