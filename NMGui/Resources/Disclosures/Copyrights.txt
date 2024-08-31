@@ -1,0 +1,5 @@
+﻿You may share or redistribute this program in its original form (source code) or as a compiled version, provided that no profit is made and the software remains unmodified. The "original form" refers to the source code and any compiled binary exactly as provided.
+
+You are not permitted to distribute any modified versions of the program, whether in source code or compiled form. Additionally, you may not distribute compiled versions of the program that were created from modified source code.
+
+All distributed versions of the program, whether original or compiled, must retain the original functionality, attribution, terms of use, disclaimer, and copyright information. Recipients of the program must adhere to these same terms if they choose to redistribute it.

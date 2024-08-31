@@ -16,6 +16,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Disclosures\Accreditations.txt" />
+    <None Remove="Resources\Disclosures\Attribution.txt" />
+    <None Remove="Resources\Disclosures\Copyrights.txt" />
+    <None Remove="Resources\Disclosures\Disclaimer.txt" />
+    <None Remove="Resources\Disclosures\Features.txt" />
+    <None Remove="Resources\Disclosures\UsageTerms.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Disclosures\Accreditations.txt" />
+    <EmbeddedResource Include="Resources\Disclosures\Attribution.txt" />
+    <EmbeddedResource Include="Resources\Disclosures\Copyrights.txt" />
+    <EmbeddedResource Include="Resources\Disclosures\Disclaimer.txt" />
+    <EmbeddedResource Include="Resources\Disclosures\Features.txt" />
+    <EmbeddedResource Include="Resources\Disclosures\UsageTerms.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CSX.DotNet.Logging\CSX.DotNet.Logging.csproj" />
     <ProjectReference Include="..\CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj" />
     <ProjectReference Include="..\NameMirror\NameMirror.csproj" />

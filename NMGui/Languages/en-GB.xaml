@@ -17,15 +17,4 @@
     <system:String x:Key="MakerContactData0">lilyflowerangel</system:String>
 
     <system:String x:Key="AboutTitle">About NameMirror...</system:String>
-
-    <system:String x:Key="AboutDescription0">Renames files based on the names of other files.</system:String>
-    <system:String x:Key="AboutDescription1">Use the wizard or add files and naming reference files manually.</system:String>
-    <system:String x:Key="AboutDescription2">Optionally reorder them before applying rename.</system:String>
-    <system:String x:Key="AboutDescription3">Use the logger to trace steps back in case there's a mistake in renaming.</system:String>
-    <system:String x:Key="AboutTip">Even though the logger will help trace back steps, it's always better to create a backup before attempting to rename files in bulk.</system:String>
-
-    <system:String x:Key="AboutTermsOfUse">You may use this program at your convenience. However, by using this program, you agree not to use it, or any part of it, to intentionally cause, direct or indirect, malicious harm to individuals, entities with self-awareness, self-aware artificial intelligences, other sentient beings, or their assets. This includes avoiding any malicious harm to livestock.</system:String>
-    <system:String x:Key="AboutDisclaimer">By using this program you agree that this program and its creator are not responsible for any damage caused or losses incurred by the use and/or misuse of this program.</system:String>
-    <system:String x:Key="AboutAccreditations">Resources used: Visual Studio Community, IcoFX, various third party packages, and possibly some material icon remnants. Most vectors images were created solely by the creator of this program. Conceptual resemblance aside, any resemblance to data is, at best, coincidental.</system:String>
-    <system:String x:Key="AboutCopyrights">You may share or distribute this program in its original form, provided no profit is made. However, you may not distribute modified versions of this program, whether for profit or not.</system:String>
 </ResourceDictionary>

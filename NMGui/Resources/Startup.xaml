@@ -2,6 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="AssemblyVersion">0.0.0.0</system:String>
-    <system:String x:Key="FrameworkVersion">NETVERSION</system:String>
+    <system:String x:Key="AssemblyVersion">VERSION_PLACEHOLDER</system:String>
+    <system:String x:Key="FrameworkVersion">NETVERSION_PLACEHOLDER</system:String>
+
+    <system:String x:Key="NameMirrorFeatures">FEATURES_PLACEHOLDER</system:String>
+    <system:String x:Key="NameMirrorUsageTerms">USAGE_TERMS_PLACEHOLDER</system:String>
+    <system:String x:Key="NameMirrorDisclaimer">DISCLAIMER_PLACEHOLDER</system:String>
+    <system:String x:Key="NameMirrorCopyrights">COPYRIGHTS_PLACEHOLDER</system:String>
+    <system:String x:Key="NameMirrorAttribution">ATTRIBUTION_PLACEHOLDER</system:String>
+    <system:String x:Key="NameMirrorAccreditations">ACCREDITATIONS_PLACEHOLDER</system:String>
 </ResourceDictionary>

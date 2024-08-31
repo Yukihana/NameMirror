@@ -1,0 +1,6 @@
+﻿Renames files based on the names of other files.
+Use the wizard or add files and naming reference files manually.
+Optionally reorder them before applying rename.
+Use the logger to trace steps back in case there's a mistake in renaming.
+
+Note: Even though the logger will help trace back steps, it's always better to create a backup before attempting to rename files in bulk.

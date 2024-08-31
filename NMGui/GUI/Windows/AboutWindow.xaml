@@ -108,19 +108,7 @@
                                     <Setter Property="TextWrapping" Value="WrapWithOverflow" />
                                 </Style>
                             </StackPanel.Resources>
-                            <TextBlock>
-                                <Run Text="{StaticResource AboutDescription0}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription1}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription2}" />
-                                <LineBreak />
-                                <Run Text="{StaticResource AboutDescription3}" />
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="Tip:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutTip}" />
-                            </TextBlock>
+                            <TextBlock Text="{StaticResource NameMirrorFeatures}" />
                         </StackPanel>
                     </ScrollViewer>
                 </DockPanel>
@@ -135,22 +123,30 @@
                             </Style>
                         </StackPanel.Resources>
 
-                        <TextBlock>
-                                <Run Text="Terms of Use:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutTermsOfUse}" />
-                        </TextBlock>
-                        <TextBlock>
-                                <Run Text="Accreditations:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutAccreditations}" />
-                        </TextBlock>
-                        <TextBlock>
-                                <Run Text="Disclaimer:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutDisclaimer}" />
-                        </TextBlock>
-                        <TextBlock>
-                                <Run Text="Copyrights:" FontWeight="Bold" />
-                                <Run Text="{StaticResource AboutCopyrights}" />
-                        </TextBlock>
+                        <TextBlock Text="Terms of Use:"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{StaticResource NameMirrorUsageTerms}"
+                                   TextAlignment="Justify" />
+
+                        <TextBlock Text="Disclaimer:"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{StaticResource NameMirrorDisclaimer}"
+                                   TextAlignment="Justify" />
+
+                        <TextBlock Text="Copyrights:"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{StaticResource NameMirrorCopyrights}"
+                                   TextAlignment="Justify" />
+
+                        <TextBlock Text="Attribution:"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{StaticResource NameMirrorAttribution}"
+                                   TextAlignment="Justify" />
+
+                        <TextBlock Text="Accreditations:"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{StaticResource NameMirrorAccreditations}"
+                                   TextAlignment="Justify" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

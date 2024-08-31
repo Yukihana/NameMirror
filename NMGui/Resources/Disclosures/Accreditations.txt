@@ -1,0 +1,1 @@
+﻿Resources used: Visual Studio Community, IcoFX, various third party packages, and possibly some material icon remnants. Most vectors images were created solely by the creator of this program. Conceptual resemblance aside, any resemblance to data is, at best, coincidental.

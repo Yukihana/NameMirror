@@ -1,0 +1,2 @@
+﻿This project, NameMirror, is a part of the CS-X series of projects, created under the branding 'CherrySoft' by RiA (me).
+Until an online product page is dedicated for this program, temporarily, for verification and support purposes, I can be reached at any of these places: lilyflowerangel (discord) or my github page: https://github.com/Yukihana.
