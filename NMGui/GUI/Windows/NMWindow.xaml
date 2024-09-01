@@ -9,7 +9,7 @@
               x:Name="Window" mc:Ignorable="d" Loaded="Window_Loaded"
               d:DataContext="{d:DesignInstance Type={x:Type logic:NMLogic}, IsDesignTimeCreatable=True}"
               SnapsToDevicePixels="True" UseLayoutRounding="True"
-              Title="Referenced Naming Tool" Height="600" Width="900">
+              Title="NameMirror" Height="600" Width="900">
 
     <Grid>
         <Grid.Style>

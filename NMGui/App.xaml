@@ -6,7 +6,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Startup.xaml" />
                 <ResourceDictionary Source="Languages/en-GB.xaml" />
                 <ResourceDictionary Source="Resources/Misc.xaml" />
                 <ResourceDictionary Source="Resources/Vectors.xaml" />

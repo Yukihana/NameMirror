@@ -3,8 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" ResizeMode="NoResize"
-        Title="{StaticResource AboutTitle}" Height="400" Width="600">
+        xmlns:logic="clr-namespace:NameMirror.ViewContexts.AboutViewContext;assembly=NameMirror"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=logic:AboutContextLogic, IsDesignTimeCreatable=True}"
+        ResizeMode="NoResize" Height="400" Width="600"
+        Title="{StaticResource AboutTitle}"
+        Loaded="Window_Loaded">
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -37,7 +41,7 @@
                         BorderBrush="#BBB">
                 <TextBlock Text="Close" />
             </Button>
-            <TextBox Text="{StaticResource FrameworkVersion}"
+            <TextBox Text="{Binding DotNetVersion}"
                      IsReadOnly="True"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
@@ -76,7 +80,7 @@
                             <TextBlock Text="{StaticResource ProductVersionHeader}" />
                             <TextBlock>
                                     <Run Text=":" />
-                                    <Run Text="{StaticResource AssemblyVersion}"
+                                    <Run Text="{Binding ProductVersion}"
                                          Foreground="#000" />
                             </TextBlock>
 
@@ -92,10 +96,10 @@
                                     <Run Text="{StaticResource CreativeBranding}" />
                             </TextBlock>
 
-                            <TextBlock Text="{StaticResource MakerContactPlatform0}" />
+                            <TextBlock Text="{StaticResource AuthorContactPlatform0}" />
                             <TextBlock>
                                     <Run Text=":" />
-                                    <Run Text="{StaticResource MakerContactData0}" />
+                                    <Run Text="{StaticResource AuthorContactInfo0}" />
                             </TextBlock>
                         </UniformGrid>
                     </DockPanel>
@@ -108,47 +112,87 @@
                                     <Setter Property="TextWrapping" Value="WrapWithOverflow" />
                                 </Style>
                             </StackPanel.Resources>
-                            <TextBlock Text="{StaticResource NameMirrorFeatures}" />
+                            <TextBlock Text="{Binding FeaturesContent}" />
                         </StackPanel>
                     </ScrollViewer>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Licensing and Terms">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel.Resources>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Margin" Value="5" />
-                                <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                <DockPanel Margin="5">
+                    <UniformGrid Columns="1"
+                                 Margin="5"
+                                 DockPanel.Dock="Left">
+                        <UniformGrid.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Margin" Value="2" />
+                                <Setter Property="Padding" Value="20 0" />
                             </Style>
-                        </StackPanel.Resources>
+                        </UniformGrid.Resources>
+                        <Button Content="{StaticResource UsageTermsHeader}" Click="ScrollTo" Tag="UsageTermsHeader" />
+                        <Button Content="{StaticResource DisclaimerHeader}" Click="ScrollTo" Tag="DisclaimerHeader" />
+                        <Button Content="{StaticResource CopyrightsHeader}" Click="ScrollTo" Tag="CopyrightsHeader" />
+                        <Button Content="{StaticResource AttributionHeader}" Click="ScrollTo" Tag="AttributionsHeader" />
+                        <Button Content="{StaticResource AccreditationsHeader}" Click="ScrollTo" Tag="AccreditationsHeader" />
+                    </UniformGrid>
+                    <ScrollViewer Margin="5"
+                                  x:Name="DisclosuresScroller"
+                                  VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical"
+                                    x:Name="DisclosuresContainer">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="IsReadOnly" Value="True" />
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="TextAlignment" Value="Justify" />
+                                    <Setter Property="Margin" Value="0 0 0 10" />
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="TextAlignment" Value="Justify" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <!--Usage Terms-->
+                            <TextBlock x:Name="UsageTermsHeader"
+                                       FontWeight="Bold">
+                                <Run Text="{StaticResource UsageTermsHeader}" />
+                                <Run Text=":" />
+                            </TextBlock>
+                            <TextBox Text="{Binding UsageTermsContent}" />
 
-                        <TextBlock Text="Terms of Use:"
-                                   FontWeight="Bold" />
-                        <TextBlock Text="{StaticResource NameMirrorUsageTerms}"
-                                   TextAlignment="Justify" />
+                            <!--Disclaimer-->
+                            <TextBlock x:Name="DisclaimerHeader"
+                                       FontWeight="Bold">
+                                <Run Text="{StaticResource DisclaimerHeader}" />
+                                <Run Text=":" />
+                            </TextBlock>
+                            <TextBox Text="{Binding DisclaimerContent}" />
 
-                        <TextBlock Text="Disclaimer:"
-                                   FontWeight="Bold" />
-                        <TextBlock Text="{StaticResource NameMirrorDisclaimer}"
-                                   TextAlignment="Justify" />
+                            <!--Copyrights-->
+                            <TextBlock x:Name="CopyrightsHeader"
+                                       FontWeight="Bold">
+                                <Run Text="{StaticResource CopyrightsHeader}" />
+                                <Run Text=":" />
+                            </TextBlock>
+                            <TextBox Text="{Binding CopyrightsContent}" />
 
-                        <TextBlock Text="Copyrights:"
-                                   FontWeight="Bold" />
-                        <TextBlock Text="{StaticResource NameMirrorCopyrights}"
-                                   TextAlignment="Justify" />
+                            <!--Attribution-->
+                            <TextBlock x:Name="AttributionsHeader"
+                                       FontWeight="Bold">
+                                <Run Text="{StaticResource AttributionHeader}" />
+                                <Run Text=":" />
+                            </TextBlock>
+                            <TextBox Text="{Binding AttributionContent}" />
 
-                        <TextBlock Text="Attribution:"
-                                   FontWeight="Bold" />
-                        <TextBlock Text="{StaticResource NameMirrorAttribution}"
-                                   TextAlignment="Justify" />
-
-                        <TextBlock Text="Accreditations:"
-                                   FontWeight="Bold" />
-                        <TextBlock Text="{StaticResource NameMirrorAccreditations}"
-                                   TextAlignment="Justify" />
-                    </StackPanel>
-                </ScrollViewer>
+                            <!--Accreditations-->
+                            <TextBlock x:Name="AccreditationsHeader"
+                                       FontWeight="Bold">
+                                <Run Text="{StaticResource AccreditationsHeader}" />
+                                <Run Text=":" />
+                            </TextBlock>
+                            <TextBox Text="{Binding AccreditationsContent, Mode=OneWay}" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </DockPanel>

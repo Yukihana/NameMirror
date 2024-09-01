@@ -3,6 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--About-Info-->
+    <system:String x:Key="AboutTitle">About NameMirror...</system:String>
     <system:String x:Key="CreativeBranding">CherrySoft</system:String>
 
     <system:String x:Key="ProductSeriesHeader">Series</system:String>
@@ -11,10 +12,16 @@
     <system:String x:Key="ProductNameValue">NameMirror</system:String>
     <system:String x:Key="ProductVersionHeader">Version</system:String>
     <system:String x:Key="ProductAuthorHeader">Author</system:String>
-    <system:String x:Key="ProductAuthorContact">x</system:String>
+    <system:String x:Key="AuthorContactPlatform0">Discord</system:String>
+    <system:String x:Key="AuthorContactInfo0">lilyflowerangel</system:String>
 
-    <system:String x:Key="MakerContactPlatform0">Discord</system:String>
-    <system:String x:Key="MakerContactData0">lilyflowerangel</system:String>
-
-    <system:String x:Key="AboutTitle">About NameMirror...</system:String>
+    <!--Disclosures-->
+    <system:String x:Key="UsageTermsHeader">Terms of use</system:String>
+    <system:String x:Key="DisclaimerHeader">Disclaimer</system:String>
+    <system:String x:Key="CopyrightsHeader">Copyrights</system:String>
+    <system:String x:Key="AccreditationsHeader">Accreditations</system:String>
+    <system:String x:Key="AttributionHeader">Attribution</system:String>
+    <!--
+    <system:String x:Key="FeaturesHeader">Terms of use</system:String>
+    -->
 </ResourceDictionary>
