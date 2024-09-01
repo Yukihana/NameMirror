@@ -1,7 +1,6 @@
 ﻿using CSX.DotNet.Logging.Logic;
 using NMGui.Agents;
-using NMGui.GUI.Windows;
-using NameMirror.Logic;
+using NameMirror.ViewContexts.NMViewContext;
 using NameMirror.Types;
 using System;
 using System.Diagnostics;
@@ -17,8 +16,8 @@ namespace NMGui.Views.Windows;
 /// </summary>
 public partial class NameMirrorWindow : RibbonWindow
 {
-    private readonly NMLogic RNLogic;
-    private readonly LogManagerLogic LogLogic;
+    private readonly NMContextLogic _mainLogic;
+    private readonly LogManagerLogic _logLogic;
     private TutorWindow? TutWin = null;
     private AboutWindow? AbWin = null;
 
@@ -28,30 +27,30 @@ public partial class NameMirrorWindow : RibbonWindow
         InitializeComponent();
 
         // Context : RNLogic
-        RNLogic = new(new Handler());
-        DataContext = RNLogic;
+        _mainLogic = new(new Handler());
+        DataContext = _mainLogic;
 
         // Context : LogLogic
-        LogLogic = new(MyConfig.LogsPath, MyConfig.LogsPrefix);
-        LogPartition.DataContext = LogLogic;
+        _logLogic = new(MyConfig.LogsPath, MyConfig.LogsPrefix);
+        LogPartition.DataContext = _logLogic;
 
         // Log
-        RNLogic.LogAction = LogLogic.EnterLog;
+        _mainLogic.LogAction = _logLogic.EnterLog;
     }
 
     // Loaded followup
-    private void Window_Loaded(object sender, RoutedEventArgs e) => RNLogic.OnInterfaceLoaded();
+    private void Window_Loaded(object sender, RoutedEventArgs e) => _mainLogic.OnInterfaceLoaded();
 
     // Selection changed update
     private void TaskList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (RNLogic.Data.IsBusy)
+        if (_mainLogic.Data.IsBusy)
             return;
 
-        RNLogic.Data.Selection.Clear();
+        _mainLogic.Data.Selection.Clear();
         foreach (var n in FileList.SelectedItems)
         {
-            RNLogic.Data.Selection.Add((RNTask)n);
+            _mainLogic.Data.Selection.Add((RNTask)n);
         }
     }
 
@@ -67,42 +66,42 @@ public partial class NameMirrorWindow : RibbonWindow
     // Pre-ViewModel HyperBridges
     private void AddFiles(object sender, RoutedEventArgs e)
     {
-        if (RNLogic.Handler.FileSystemAgent.GetFiles("Add files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
-            RNLogic.AddTasks(paths);
+        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Add files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
+            _mainLogic.AddTasks(paths);
         else
-            LogLogic.EnterLog("Cancelled adding tasks", "debug", sender);
+            _logLogic.EnterLog("Cancelled adding tasks", "debug", sender);
     }
 
     private void InsertFiles(object sender, RoutedEventArgs e)
     {
-        if (RNLogic.Handler.FileSystemAgent.GetFiles("Insert files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
-            RNLogic.AddTasks(paths, true);
+        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Insert files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
+            _mainLogic.AddTasks(paths, true);
         else
-            LogLogic.EnterLog("Cancelled inserting tasks", "debug", sender);
+            _logLogic.EnterLog("Cancelled inserting tasks", "debug", sender);
     }
 
     private void AppendReferences(object sender, RoutedEventArgs e)
     {
-        if (RNLogic.Handler.FileSystemAgent.GetFiles("Append references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            RNLogic.AddReferences(paths);
+        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Append references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
+            _mainLogic.AddReferences(paths);
         else
-            LogLogic.EnterLog("Cancelled adding references (Append)", "debug", sender);
+            _logLogic.EnterLog("Cancelled adding references (Append)", "debug", sender);
     }
 
     private void ReplaceReferencesAt(object sender, RoutedEventArgs e)
     {
-        if (RNLogic.Handler.FileSystemAgent.GetFiles("Replace references at selection : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            RNLogic.AddReferences(paths, AddReferencesMode.ReplaceAt);
+        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Replace references at selection : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
+            _mainLogic.AddReferences(paths, AddReferencesMode.ReplaceAt);
         else
-            LogLogic.EnterLog("Cancelled adding references (Replace At)", "debug", sender);
+            _logLogic.EnterLog("Cancelled adding references (Replace At)", "debug", sender);
     }
 
     private void ReplaceAllReferences(object sender, RoutedEventArgs e)
     {
-        if (RNLogic.Handler.FileSystemAgent.GetFiles("Replace all references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            RNLogic.AddReferences(paths, AddReferencesMode.ReplaceAll);
+        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Replace all references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
+            _mainLogic.AddReferences(paths, AddReferencesMode.ReplaceAll);
         else
-            LogLogic.EnterLog("Cancelled adding references (Replace All)", "debug", sender);
+            _logLogic.EnterLog("Cancelled adding references (Replace All)", "debug", sender);
     }
 
     // Misc system functions
@@ -149,7 +148,7 @@ public partial class NameMirrorWindow : RibbonWindow
 
     private void WindowExit(object sender, RoutedEventArgs e)
     {
-        if (!RNLogic.IsExitReady())
+        if (!_mainLogic.IsExitReady())
         {
             if (MessageBox.Show("Some files have still not been renamed. Continue with exiting?", "Confirmation", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
             {

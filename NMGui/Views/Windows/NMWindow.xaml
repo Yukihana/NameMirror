@@ -3,11 +3,11 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:logic="clr-namespace:NameMirror.Logic;assembly=NameMirror"
+              xmlns:logic="clr-namespace:NameMirror.ViewContexts.NMViewContext;assembly=NameMirror"
               xmlns:loglogic="clr-namespace:CSX.DotNet.Logging.Logic;assembly=CSX.DotNet.Logging"
               xmlns:sorting="clr-namespace:NMGui.Support.Sorting"
               x:Name="Window" mc:Ignorable="d" Loaded="Window_Loaded"
-              d:DataContext="{d:DesignInstance Type={x:Type logic:NMLogic}, IsDesignTimeCreatable=True}"
+              d:DataContext="{d:DesignInstance Type={x:Type logic:NMContextLogic}, IsDesignTimeCreatable=True}"
               SnapsToDevicePixels="True" UseLayoutRounding="True"
               Title="NameMirror" Height="600" Width="900">
 

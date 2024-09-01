@@ -1,33 +1,20 @@
-﻿using NameMirror.Agents;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using NameMirror.Agents;
 using NameMirror.Commands;
-using NameMirror.Models;
 using NameMirror.Types;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
-namespace NameMirror.Logic;
+namespace NameMirror.ViewContexts.NMViewContext;
 
-public partial class NMLogic : INotifyPropertyChanged
+public partial class NMContextLogic : ObservableObject
 {
     // Components
-    private RNData data = new();
+    [ObservableProperty]
+    private NMContextData _data = new();
 
-    public RNData Data
-    {
-        get => data;
-        set
-        {
-            if (data != value)
-            {
-                data = value;
-                PropertyChanged?.Invoke(this, new(nameof(Data)));
-            }
-        }
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
+    //    public event PropertyChangedEventHandler? PropertyChanged;
 
     // Handler
     private readonly IHandler _handler;
@@ -578,9 +565,9 @@ public partial class NMLogic : INotifyPropertyChanged
     }
 
     // LifeTime
-    public NMLogic() : this(new Dummy()) { }
+    public NMContextLogic() : this(new Dummy()) { }
 
-    public NMLogic(IHandler handler)
+    public NMContextLogic(IHandler handler)
     {
         // Handler
         _handler = handler;
