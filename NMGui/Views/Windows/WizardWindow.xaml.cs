@@ -1,4 +1,4 @@
-﻿using NMGui.Support;
+﻿using NameMirror.ViewContexts.WizardViewContext;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,14 +9,13 @@ namespace NMGui.Views.Windows;
 /// </summary>
 public partial class WizardWindow : Window
 {
-    private readonly WizardData _data = new();
-    internal WizardData Data => _data;
+    private readonly WizardContextLogic _logic = new();
 
     public WizardWindow()
     {
         InitializeComponent();
 
-        DataContext = Data;
+        DataContext = _logic;
     }
 
     private void WizTab_Click(object sender, RoutedEventArgs e)

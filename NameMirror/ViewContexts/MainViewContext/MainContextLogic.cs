@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NameMirror.ViewContexts.NMViewContext;
+namespace NameMirror.ViewContexts.MainViewContext;
 
-public partial class NMContextLogic : ObservableObject
+public partial class MainContextLogic : ObservableObject
 {
     // Components
     [ObservableProperty]
-    private NMContextData _data = new();
+    private MainContextData _data = new();
 
     //    public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -565,9 +565,9 @@ public partial class NMContextLogic : ObservableObject
     }
 
     // LifeTime
-    public NMContextLogic() : this(new Dummy()) { }
+    public MainContextLogic() : this(new Dummy()) { }
 
-    public NMContextLogic(IHandler handler)
+    public MainContextLogic(IHandler handler)
     {
         // Handler
         _handler = handler;

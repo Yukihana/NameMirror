@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+	 height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g id="Frame">
+	<path id="Frame_x5F_24" fill="#838BC5" d="M13,2h-1.999c-0.121,0-0.239,0.021-0.352,0.063l-8,3C2.259,5.21,2.001,5.583,2.001,6v12
+		c0,0.417,0.258,0.79,0.648,0.937l8,3C10.762,21.979,10.88,22,11.001,22H13c0.12,0,0.239-0.021,0.352-0.063l8-3
+		C21.741,18.79,22,18.417,22,18V6c0-0.417-0.259-0.79-0.648-0.937l-8-3C13.239,2.021,13.12,2,13,2L13,2z"/>
+</g>
+<g id="FadeR">
+	<linearGradient id="FadeR_x5F_24_1_" gradientUnits="userSpaceOnUse" x1="13" y1="12" x2="21" y2="12">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+		<stop  offset="1" style="stop-color:#F2F2F2;stop-opacity:0.3"/>
+	</linearGradient>
+	<path id="FadeR_x5F_24" fill="url(#FadeR_x5F_24_1_)" d="M21,6v12l-8,3V3L21,6z"/>
+</g>
+<g id="FadeL">
+	<linearGradient id="FadeL_x5F_24_1_" gradientUnits="userSpaceOnUse" x1="3.001" y1="12" x2="11.001" y2="12">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.3"/>
+		<stop  offset="1" style="stop-color:#F2F2F2;stop-opacity:0.7"/>
+	</linearGradient>
+	<path id="FadeL_x5F_24" fill="url(#FadeL_x5F_24_1_)" d="M11.001,21l-8-3V6l8-3V21z"/>
+</g>
+<g id="Edge">
+	<path id="Edge_x5F_24" opacity="0.3" fill="#F2F2F2" d="M11.001,3H13v18h-1.999V3z"/>
+</g>
+<g id="PlateShadow">
+	<linearGradient id="Shadow_x5F_24_1_" gradientUnits="userSpaceOnUse" x1="12.0005" y1="7" x2="12.0005" y2="17">
+		<stop  offset="0" style="stop-color:#909090"/>
+		<stop  offset="1" style="stop-color:#404040"/>
+	</linearGradient>
+	<path id="Shadow_x5F_24" fill="url(#Shadow_x5F_24_1_)" d="M19,9v6c0,1.103-0.897,2-2,2h-4V7h4C18.103,7,19,7.896,19,9z M11.001,7
+		h-4c-1.104,0-2,0.896-2,2v6c0,1.103,0.896,2,2,2h4V7z"/>
+</g>
+<g id="Border">
+	<path id="Border_x5F_24" fill="#FFFFFF" d="M11.001,16h-4c-0.553,0-1-0.447-1-1V9c0-0.553,0.447-1,1-1h4V16z M17,8h-4v8h4
+		c0.553,0,1-0.447,1-1V9C18,8.447,17.553,8,17,8z"/>
+</g>
+<g id="Old">
+	<linearGradient id="Old_x5F_24_1_" gradientUnits="userSpaceOnUse" x1="9.001" y1="9" x2="9.001" y2="15">
+		<stop  offset="0" style="stop-color:#FEEDEA"/>
+		<stop  offset="0.48" style="stop-color:#FBD0CD"/>
+		<stop  offset="0.52" style="stop-color:#FAC2BF"/>
+		<stop  offset="1" style="stop-color:#F7A7A7"/>
+	</linearGradient>
+	<path id="Old_x5F_24" fill="url(#Old_x5F_24_1_)" d="M11.001,15h-4V9h4V15z"/>
+</g>
+<g id="New">
+	<linearGradient id="New_x5F_24_1_" gradientUnits="userSpaceOnUse" x1="14.9995" y1="9" x2="14.9995" y2="15">
+		<stop  offset="0" style="stop-color:#DDE5F4"/>
+		<stop  offset="0.48" style="stop-color:#B1C2E4"/>
+		<stop  offset="0.52" style="stop-color:#9BB1DC"/>
+		<stop  offset="1" style="stop-color:#7696CD"/>
+	</linearGradient>
+	<path id="New_x5F_24" fill="url(#New_x5F_24_1_)" d="M17,15h-4V9h4V15z"/>
+</g>
+</svg>

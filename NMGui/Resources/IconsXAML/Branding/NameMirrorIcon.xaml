@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Shared="False"  x:Key="NameMirrorIcon48">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Geometry="M0,0h48v48H0z" Brush="Transparent" />
+
+                <!--Frame-->
+                <GeometryDrawing Brush="#8389C0"
+                                 Geometry="M21,2h-2c-0.172,0-0.34,0.045-0.49,0.129l-16,9
+                                 C2.195,11.307,2,11.639,2,12v24
+                                 c0,0.361,0.195,0.695,0.51,0.871l16,9
+                                 C18.66,45.957,18.828,46,19,46h2c0.553,0,1-0.447,1-1V3
+                                 C22,2.448,21.553,2,21,2L21,2z
+                                 M29,2h-2c-0.553,0-1,0.448-1,1v42
+                                 c0,0.553,0.447,1,1,1h2c0.172,0,0.341-0.043,0.49-0.129
+                                 l16-9C45.805,36.695,46,36.361,46,36V12
+                                 c0-0.361-0.195-0.693-0.51-0.871l-16-9
+                                 C29.341,2.045,29.172,2,29,2L29,2z" />
+
+                <!--Fade-->
+                <GeometryDrawing Geometry="M45,12v24l-16,9V3L45,12z">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#B3F2F2F2" />
+                            <GradientStop Offset="1" Color="#80F2F2F2" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+
+                <GeometryDrawing Geometry="M19,45L3,36V12l16-9V45z">
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#80F2F2F2" />
+                            <GradientStop Offset="1" Color="#B3F2F2F2" />
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                </GeometryDrawing>
+
+                <!--Shadow-->
+                <GeometryDrawing Brush="{StaticResource FilenameBorderBrush}"
+                                 Geometry="M40,18v12c0,1.104-0.897,2-2,2
+                                 h-9V16h9C39.103,16,40,16.897,40,18z
+                                 M19,16h-9c-1.103,0-2,0.897-2,2v12
+                                 c0,1.104,0.897,2,2,2h9V16z" />
+
+                <!--Border-->
+                <GeometryDrawing Brush="{StaticResource FilenameWhiteBrush}"
+                                 Geometry="M39,18v12c0,0.553-0.447,1-1,1
+                                 h-9V17h9C38.553,17,39,17.448,39,18z
+                                 M19,17h-9c-0.552,0-1,0.448-1,1v12
+                                 c0,0.553,0.448,1,1,1h9V17z" />
+
+                <!--Old-Plate-->
+                <GeometryDrawing Brush="{StaticResource FilenameOldBrush}"
+                                 Geometry="M19,30h-9V18h9V30z" />
+
+                <!--New-Plate-->
+                <GeometryDrawing Brush="{StaticResource FilenameNewBrush}"
+                                 Geometry="M38,18v12h-9V18H38z" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

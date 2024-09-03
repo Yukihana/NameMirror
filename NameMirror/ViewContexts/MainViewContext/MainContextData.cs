@@ -4,9 +4,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace NameMirror.ViewContexts.NMViewContext;
+namespace NameMirror.ViewContexts.MainViewContext;
 
-public partial class NMContextData : ObservableObject
+public partial class MainContextData : ObservableObject
 {
     public bool IsBusy { get; set; } = false;
 
@@ -32,7 +32,7 @@ public partial class NMContextData : ObservableObject
 
     // Ctor
 
-    public NMContextData()
+    public MainContextData()
     {
         Tasks.CollectionChanged += Tasks_CollectionChanged;
         Selection.CollectionChanged += Selection_CollectionChanged;

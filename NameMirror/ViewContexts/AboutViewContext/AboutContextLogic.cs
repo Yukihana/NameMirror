@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
 
 namespace NameMirror.ViewContexts.AboutViewContext;
 

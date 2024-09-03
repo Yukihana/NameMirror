@@ -1,30 +1,37 @@
 ﻿using CSX.DotNet.Logging.Logic;
-using NMGui.Agents;
-using NameMirror.ViewContexts.NMViewContext;
 using NameMirror.Types;
+using NameMirror.ViewContexts.MainViewContext;
+using NMGui.Agents;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Media.Imaging;
 
 namespace NMGui.Views.Windows;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class NameMirrorWindow : RibbonWindow
+public partial class MainWindow : RibbonWindow
 {
-    private readonly NMContextLogic _mainLogic;
+    private readonly MainContextLogic _mainLogic;
     private readonly LogManagerLogic _logLogic;
     private TutorWindow? TutWin = null;
     private AboutWindow? AbWin = null;
 
     // Initialise
-    public NameMirrorWindow()
+    public MainWindow()
     {
         InitializeComponent();
+
+        // Icon
+        /*
+        Uri iconUri = new("pack://application:,,,/NMGui;component/NameMirrorIcon.ico", UriKind.RelativeOrAbsolute);
+        Icon = BitmapFrame.Create(iconUri);
+        */
 
         // Context : RNLogic
         _mainLogic = new(new Handler());
