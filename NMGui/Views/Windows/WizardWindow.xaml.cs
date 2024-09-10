@@ -1,6 +1,5 @@
 ﻿using NameMirror.ViewContexts.WizardViewContext;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace NMGui.Views.Windows;
 
@@ -17,7 +16,4 @@ public partial class WizardWindow : Window
 
         DataContext = _logic;
     }
-
-    private void WizTab_Click(object sender, RoutedEventArgs e)
-        => WizPager.SelectedIndex = WizTabPanel.Children.IndexOf(sender as RadioButton);
 }

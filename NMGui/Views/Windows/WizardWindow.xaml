@@ -5,77 +5,223 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:logic="clr-namespace:NameMirror.ViewContexts.WizardViewContext;assembly=NameMirror"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=logic:WizardContextLogic, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=logic:WizardContextLogic, IsDesignTimeCreatable=False}"
+        SnapsToDevicePixels="True" UseLayoutRounding="True"
         ResizeMode="NoResize"
-        Title="Wizard"
+        Title="NameMirror Wizard"
         Icon="pack://application:,,,/NMGui;component/NameMirrorIcon.ico"
-        Height="450" Width="800">
+        Height="450" Width="800"
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="WizButton">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource WizButton}" />
+    </Window.Resources>
+
     <DockPanel>
-        <UniformGrid x:Name="WizTabPanel" DockPanel.Dock="Top" Rows="1" Height="75">
-            <UniformGrid.Resources>
-                <ControlTemplate TargetType="{x:Type RadioButton}" x:Key="WizTabHeader">
-                    <Grid Background="{TemplateBinding Background}">
-                        <Rectangle x:Name="CheckLine"
-                                   Fill="Transparent"
-                                   Height="5" Margin="3"
-                                   VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Stretch">
-                        </Rectangle>
-                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="DodgerBlue" TargetName="CheckLine" />
-                        </Trigger>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Fill" Value="LimeGreen" TargetName="CheckLine" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-                <Style TargetType="{x:Type RadioButton}">
-                    <Setter Property="Template" Value="{StaticResource WizTabHeader}" />
-                    <Setter Property="TextBlock.FontSize" Value="16" />
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="VerticalAlignment" Value="Stretch" />
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Center" />
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                    <EventSetter Event="Click" Handler="WizTab_Click" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#2266AAFF" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </UniformGrid.Resources>
-            <RadioButton Content="Start" IsChecked="True" />
-            <RadioButton Content="Add Tasks" />
-            <RadioButton Content="Add References" />
-            <RadioButton Content="Settings" />
-            <RadioButton Content="Finish" />
-        </UniformGrid>
-        <Border DockPanel.Dock="Bottom" BorderThickness="0 1 0 0" BorderBrush="#4000">
-            <DockPanel  Margin="5">
-                <DockPanel.Resources>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Margin" Value="5" />
-                        <Setter Property="Padding" Value="5" />
-                        <Setter Property="Width" Value="100" />
-                    </Style>
-                </DockPanel.Resources>
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                    <Button Content="Back" />
-                    <Button Content="Next" />
+
+        <!--Step-Header-->
+        <Border Background="{StaticResource AboutWindowBanner}"
+                DockPanel.Dock="Top">
+            <DockPanel Margin="10">
+
+                <!--Icon-->
+                <Rectangle DockPanel.Dock="Right"
+                           Fill="{StaticResource NameMirrorIcon48}"
+                           Margin="10"
+                           VerticalAlignment="Center"
+                           Height="48"
+                           Width="48" />
+
+                <StackPanel Orientation="Vertical"
+                            Margin="10"
+                            VerticalAlignment="Center">
+
+                    <!--Page-Index-->
+                    <TextBlock Foreground="#FFF"
+                               FontWeight="Bold"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis">
+                        <Run Text="Step" />
+                        <Run Text="{Binding CurrentPageId, Converter={StaticResource WizardPageOrder}, FallbackValue='Index'}" />:
+                    </TextBlock>
+
+                    <!--Title-->
+                    <TextBlock Text="{Binding CurrentPageId, Converter={StaticResource WizardStepTitle}, FallbackValue='Title'}"
+                               Foreground="#FFF"
+                               Margin="10 0 0 0">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="Step Details" />
+                                <Setter Property="ToolTip" Value="Step Details Tooltip" />
+                                <Style.Triggers>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </StackPanel>
-                <Button DockPanel.Dock="Left" Content="Cancel" />
+            </DockPanel>
+        </Border>
+
+        <!--Dialog-Navigation-->
+        <Border DockPanel.Dock="Bottom"
+                BorderThickness="0 1 0 0"
+                BorderBrush="#4000">
+            <DockPanel Margin="5">
+                <StackPanel Orientation="Horizontal"
+                            DockPanel.Dock="Right">
+                    <Button Content="Back"
+                            Visibility="{Binding CanReverse, Converter={StaticResource BooleanVisibility}}"
+                            Command="{Binding ReverseNavigationCommand}" />
+                    <Button Content="Next"
+                            Visibility="{Binding CanProgress, Converter={StaticResource BooleanVisibility}}"
+                            Command="{Binding ForwardNavigationCommand}" />
+                    <Button Content="Finish"
+                            Visibility="{Binding CanFinish, Converter={StaticResource BooleanVisibility}}"
+                            Command="{Binding FinishNavigationCommand}" />
+                </StackPanel>
+                <Button DockPanel.Dock="Left"
+                        Content="Cancel"
+                        Command="{Binding CancelNavigationCommand}"
+                        Visibility="{Binding CanCancel, Converter={StaticResource BooleanVisibility}}"
+                        CommandParameter="Cancel" />
                 <Rectangle />
             </DockPanel>
         </Border>
 
-        <TabControl x:Name="WizPager" Style="{StaticResource TabPager}" SelectedIndex="0">
-            <TabItem>
-                <TextBlock Text="Lets Start" />
+        <!--Main-Space-->
+        <TabControl Style="{StaticResource TabPager}"
+                    SelectedIndex="{Binding CurrentPageId, Mode=OneWay, Converter={StaticResource WizardPageOrder}, FallbackValue=0}"
+                    Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+
+            <!--Start-->
+            <TabItem Header="Start">
+                <TextBlock Text="{StaticResource StartWizardStepDescription}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center" />
+            </TabItem>
+
+            <!--Add-Tasks-->
+            <TabItem Header="Tasks">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{StaticResource AddTargetsStepDescription}"
+                               Grid.Column="1"
+                               Margin="5" />
+                    <DockPanel Grid.Row="1">
+                        <StackPanel DockPanel.Dock="Bottom"
+                                    Margin="0 0 0 20">
+                            <TextBlock Text="Editor Icon:"
+                                       TextAlignment="Center" />
+                            <Image Source="{StaticResource FilesNew32}"
+                                   ToolTip="In the main editor, click this icon for the same step."
+                                   Width="32"
+                                   Height="32" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Content="+ Files" />
+                            <Button Content="+ Folder" />
+                        </StackPanel>
+                    </DockPanel>
+                    <DataGrid Grid.Column="1" Grid.Row="1" Margin="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="2*" Header="Filename" />
+                            <DataGridTextColumn Width="3*" Header="Location" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!--Add-References-->
+            <TabItem Header="References">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{StaticResource AddReferencesStepDescription}"
+                               Grid.Column="1"
+                               Margin="5" />
+                    <DockPanel Grid.Row="1">
+                        <StackPanel DockPanel.Dock="Bottom"
+                                    Margin="0 0 0 20">
+                            <TextBlock Text="Editor Icon:"
+                                       TextAlignment="Center" />
+                            <Image Source="{StaticResource ReferenceAdd32}"
+                                   ToolTip="In the main editor, click this icon for the same step."
+                                   Width="32"
+                                   Height="32" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Content="+ Files" />
+                            <Button Content="+ Folder" />
+                        </StackPanel>
+                    </DockPanel>
+                    <DataGrid Grid.Column="1" Grid.Row="1" Margin="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="2*" Header="Filename" />
+                            <DataGridTextColumn Width="3*" Header="Location" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!--Progress-Window-->
+            <TabItem Header="Task Builder">
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Building rename tasks..." />
+                    <ProgressBar  Height="16" />
+                </StackPanel>
+            </TabItem>
+
+            <!--Review-->
+            <TabItem Header="Review">
+                <DockPanel Margin="5">
+                    <TextBlock DockPanel.Dock="Top"
+                               Text="Preview if the relations were correctly added. You can choose how to proceed in the next page." />
+                    <ScrollViewer Margin="5">
+                        <ItemsControl>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </DockPanel>
+            </TabItem>
+
+            <!--Edit-Gate-->
+
+            <!--Rename-->
+            <TabItem Header="Review">
+                <DockPanel>
+                    <StackPanel>
+                        <TextBlock Text="Review the added files before finalizing the wizard." />
+                    </StackPanel>
+
+                    <DataGrid>
+                    </DataGrid>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </DockPanel>

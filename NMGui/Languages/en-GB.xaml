@@ -21,7 +21,19 @@
     <system:String x:Key="CopyrightsHeader">Copyrights</system:String>
     <system:String x:Key="AccreditationsHeader">Accreditations</system:String>
     <system:String x:Key="AttributionHeader">Attribution</system:String>
-    <!--
-    <system:String x:Key="FeaturesHeader">Terms of use</system:String>
-    -->
+
+    <!--Wizard-Steps-->
+    <system:String x:Key="StartWizardStepTitle">Start</system:String>
+    <system:String x:Key="AddTargetsWizardStepTitle">Add Targets</system:String>
+    <system:String x:Key="AddReferencesWizardStepTitle">Add References</system:String>
+    <system:String x:Key="ReviewWizardStepTitle">Review</system:String>
+    <system:String x:Key="ChoiceWizardStepTitle">Choice</system:String>
+    <system:String x:Key="RenameWizardStepTitle">Rename</system:String>
+
+    <system:String x:Key="StartWizardStepDescription" xml:space="preserve">This wizard will assist with the renaming process.&#10;To get started, click the 'Next' button.</system:String>
+    <system:String x:Key="AddTargetsStepDescription">Add the files to be renamed:</system:String>
+    <system:String x:Key="AddReferencesStepDescription">Add the files to copy the names from:</system:String>
+    <system:String x:Key="ReviewStepDescription">Make sure the targets are paired with the correct references:</system:String>
+    <system:String x:Key="ChoiceStepDescription">Choose whether to edit in the main window, or finish renaming as is:</system:String>
+    <system:String x:Key="RenameStepDescription">Once the renaming operation has completed, you can click the Finish button:</system:String>
 </ResourceDictionary>

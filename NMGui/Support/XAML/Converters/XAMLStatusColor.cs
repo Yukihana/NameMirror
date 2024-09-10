@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace NMGui.Support.Converters;
+namespace NMGui.Support.XAML.Converters;
 
 internal class XAMLStatusColor : IValueConverter
 {

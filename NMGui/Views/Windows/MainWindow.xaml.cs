@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
-using System.Windows.Media.Imaging;
 
 namespace NMGui.Views.Windows;
 

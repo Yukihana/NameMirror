@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--32x32-->
-    <DrawingImage x:Shared="False"  x:Key="FilesNew32">
+    <DrawingImage x:Shared="False" x:Key="FilesNew32">
         <DrawingImage.Drawing>
             <DrawingGroup>
                 <GeometryDrawing Geometry="M0,0H32V32H0z" Brush="Transparent" />

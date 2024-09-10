@@ -3,7 +3,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace NMGui.Support.Converters;
+namespace NMGui.Support.XAML.Converters;
 
 internal class XAMLStatusText : IValueConverter
 {
