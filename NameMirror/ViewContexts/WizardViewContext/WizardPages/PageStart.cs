@@ -26,6 +26,18 @@ public partial class PageStart(IWizardData data) : IWizardPage
     {
     }
 
+    // Update
+
+    public void Update()
+    {
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -42,5 +54,5 @@ public partial class PageStart(IWizardData data) : IWizardPage
 
     public bool CanProgress() => true;
 
-    public WizardPageId Progress() => WizardPageId.AddTargets;
+    public WizardPageId? Progress() => WizardPageId.AddTargets;
 }

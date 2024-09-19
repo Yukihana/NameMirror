@@ -19,7 +19,15 @@ public partial class WizardContextData : ObservableObject, IWizardData
     private ObservableCollection<RenameTask> _renameTasks = [];
 
     [ObservableProperty]
-    private ObservableCollection<string> _log = [];
+    private string _log = string.Empty;
+
+    // Navigation
+
+    [ObservableProperty]
+    private bool _isBusy = false;
+
+    [ObservableProperty]
+    private WizardProgressMode _progressMode = WizardProgressMode.Next;
 
     // Choices
 
@@ -29,16 +37,22 @@ public partial class WizardContextData : ObservableObject, IWizardData
     [ObservableProperty]
     private bool _isEditOptionSelected = false;
 
-    // States
-
     [ObservableProperty]
-    private bool _isBusy = false;
+    private bool _clearBeforeEdit = false;
+
+    // UI
 
     [ObservableProperty]
     private bool _isReviewNoticeHidden = true;
 
     [ObservableProperty]
-    private WizardProgressMode _progressMode = WizardProgressMode.Next;
+    private bool _isProgressIndeterminate = false;
+
+    [ObservableProperty]
+    private double _progressValue = 0;
+
+    [ObservableProperty]
+    private double _progressMaximum = 1;
 
     [ObservableProperty]
     private bool _renameCompleted = false;

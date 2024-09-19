@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!--Indices-->
+        <ResourceDictionary Source="Images/Indices.xaml"/>
+        <ResourceDictionary Source="ControlStyling/Indices.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

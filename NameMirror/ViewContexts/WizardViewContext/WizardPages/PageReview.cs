@@ -1,8 +1,6 @@
-﻿using CSX.DotNet.Shared.Threading;
-using NameMirror.ViewContexts.Shared;
+﻿using NameMirror.ViewContexts.Shared;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +37,18 @@ public partial class PageReview(IWizardData data) : IWizardPage
             ?? throw new ArgumentException();
     }
 
+    // Update
+
+    public void Update()
+    {
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -55,5 +65,5 @@ public partial class PageReview(IWizardData data) : IWizardPage
 
     public bool CanProgress() => true; // Add confirmation dialog for target/reference count non-equivalency.
 
-    public WizardPageId Progress() => WizardPageId.Choice;
+    public WizardPageId? Progress() => WizardPageId.Choice;
 }

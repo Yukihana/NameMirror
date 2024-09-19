@@ -41,9 +41,51 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
+        <!--Dialog-Navigation-->
+        <Border Grid.Row="4"
+                BorderThickness="0 1 0 0"
+                BorderBrush="#4000">
+            <DockPanel Margin="5">
+                <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Right">
+                    <Button Command="{Binding ReverseNavigationCommand}">
+                        <TextBlock Text="{StaticResource BackNavigationText}" />
+                    </Button>
+                    <Button Command="{Binding ForwardNavigationCommand}">
+                        <TextBlock x:Name="ProgressLabel">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="{StaticResource NextNavigationText}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Finish">
+                                            <Setter Property="Text" Value="{StaticResource FinishNavigationText}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Close">
+                                            <Setter Property="Text" Value="{StaticResource CloseNavigationText}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Confirm">
+                                            <Setter Property="Text" Value="{StaticResource ConfirmNavigationText}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+                <Button DockPanel.Dock="Left"
+                        Command="{Binding CancelNavigationCommand}"
+                        CommandParameter="Cancel" >
+                    <TextBlock Text="{StaticResource CancelNavigationText}"/>
+                </Button>
+                <Rectangle d:Tag="just a spring filler for the dock panel"/>
+            </DockPanel>
+        </Border>
 
         <!--Step-Header-->
         <Border Background="{StaticResource AboutWindowBanner}"
@@ -62,7 +104,7 @@
                             Margin="10"
                             VerticalAlignment="Center">
 
-                    <!--Page-Index-->
+                    <!--Page-Index-And-Title-->
                     <TextBlock Foreground="#FFF"
                                FontWeight="Bold"
                                TextWrapping="NoWrap"
@@ -70,71 +112,43 @@
                         <Run Text="Step" />
                         <Run Text="{Binding CurrentPageId, Converter={StaticResource WizardPageOrder}, FallbackValue='Index'}" />:
                     </TextBlock>
-
-                    <!--Title-->
-                    <TextBlock Text="{Binding CurrentPageId, Converter={StaticResource WizardStepTitle}, FallbackValue='Title'}"
+                    <TextBlock Text="{Binding CurrentPageId, Converter={StaticResource WizardPageStringResource}, ConverterParameter='WizardStepTitle', FallbackValue='Title'}"
                                Foreground="#FFF"
-                               Margin="10 0 0 0">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Text" Value="Step Details" />
-                                <Setter Property="ToolTip" Value="Step Details Tooltip" />
-                                <Style.Triggers>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
+                               Margin="10 0 0 0"/>
                 </StackPanel>
-            </DockPanel>
-        </Border>
-
-        <!--Dialog-Navigation-->
-        <Border Grid.Row="2"
-                BorderThickness="0 1 0 0"
-                BorderBrush="#4000">
-            <DockPanel Margin="5">
-                <StackPanel Orientation="Horizontal"
-                            DockPanel.Dock="Right">
-                    <Button Command="{Binding ReverseNavigationCommand}">
-                        <TextBlock Text="{StaticResource BackNavigationText}"/>
-                    </Button>
-                    <Button Command="{Binding ForwardNavigationCommand}">
-                        <TextBlock>
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Text" Value="{StaticResource NextNavigationText}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Finish">
-                                            <Setter Property="Text" Value="{StaticResource FinishNavigationText}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Close">
-                                            <Setter Property="Text" Value="{StaticResource CloseNavigationText}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                    </Button>
-                </StackPanel>
-                <Button DockPanel.Dock="Left"
-                        Command="{Binding CancelNavigationCommand}"
-                        CommandParameter="Cancel" >
-                    <TextBlock Text="{StaticResource CancelNavigationText}"/>
-                </Button>
-                <Rectangle />
             </DockPanel>
         </Border>
 
         <!--Main-Space-->
-        <TabControl Grid.Row="1"
+        <Rectangle Grid.Row="1"
+                   Grid.RowSpan="3"
+                   Fill="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                   IsHitTestVisible="False"/>
+
+        <TextBlock Text="{Binding CurrentPageId, Converter={StaticResource WizardPageStringResource}, ConverterParameter='WizardStepCaption', FallbackValue='Step caption'}"
+                   Grid.Row="1"
+                   Margin="10 10 10 0"
+                   Visibility="{Binding ContextData.IsBusy, Converter={StaticResource InverseBooleanVisibility}}"/>
+
+        <TextBlock Grid.Row="3"
+                   HorizontalAlignment="Center"
+                   Margin="10 0 10 10"
+                   TextTrimming="CharacterEllipsis"
+                   Visibility="{Binding ContextData.IsBusy, Converter={StaticResource InverseBooleanVisibility}}">
+            <Run Text="{Binding ElementName=ProgressLabel, Path=Text, FallbackValue=Next}"/>
+            <Run Text="-" />
+            <Run Text="{Binding CurrentPageId, Converter={StaticResource WizardPageStringResource}, ConverterParameter='WizardNavigationHint', FallbackValue='Navigation hint'}"/>
+        </TextBlock>
+
+        <!--Pages-->
+        <TabControl Grid.Row="2"
                     Style="{StaticResource TabPager}"
                     Visibility="{Binding ContextData.IsBusy, Converter={StaticResource InverseBooleanVisibility}}"
-                    SelectedIndex="{Binding CurrentPageId, Mode=OneWay, Converter={StaticResource WizardPageOrder}, FallbackValue=0}"
-                    Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    SelectedIndex="{Binding CurrentPageId, Mode=OneWay, Converter={StaticResource WizardPageOrder}, FallbackValue=0}">
 
             <!--Start-->
             <TabItem Header="Start">
-                <TextBlock Text="{StaticResource StartWizardStepDescription}"
+                <TextBlock Text="{StaticResource StartWizardContent}"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            TextWrapping="Wrap"
@@ -143,19 +157,8 @@
 
             <!--Add-Targets-->
             <TabItem Header="Targets">
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{StaticResource AddTargetsStepDescription}"
-                               Grid.Column="1"
-                               Margin="5" />
-                    <DockPanel Grid.Row="1">
+                <DockPanel Margin="5">
+                    <DockPanel DockPanel.Dock="Left">
                         <StackPanel DockPanel.Dock="Bottom"
                                     Margin="0 0 0 20">
                             <TextBlock Text="Editor Icon:"
@@ -173,8 +176,6 @@
                     </DockPanel>
                     <DataGrid ItemsSource="{Binding ContextData.Targets}"
                               Style="{StaticResource WizAddGrid}"
-                              Grid.Column="1"
-                              Grid.Row="1"
                               Margin="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="2*"
@@ -185,24 +186,13 @@
                                                 Binding="{Binding ParentDirectory}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                </Grid>
+                </DockPanel>
             </TabItem>
 
             <!--Add-References-->
             <TabItem Header="References">
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{StaticResource AddReferencesStepDescription}"
-                               Grid.Column="1"
-                               Margin="5" />
-                    <DockPanel Grid.Row="1">
+                <DockPanel Margin="5">
+                    <DockPanel DockPanel.Dock="Left">
                         <StackPanel DockPanel.Dock="Bottom"
                                     Margin="0 0 0 20">
                             <TextBlock Text="Editor Icon:"
@@ -220,8 +210,6 @@
                     </DockPanel>
                     <DataGrid ItemsSource="{Binding ContextData.References}"
                               Style="{StaticResource WizAddGrid}"
-                              Grid.Column="1"
-                              Grid.Row="1"
                               Margin="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="2*"
@@ -232,50 +220,46 @@
                                                 Binding="{Binding ParentDirectory}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                </Grid>
+                </DockPanel>
             </TabItem>
 
             <!--Review-->
             <TabItem Header="Review">
                 <DockPanel Margin="5">
-                    <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="Review if the relations were correctly added. You can choose how to proceed in the next page."
-                                    Margin="5" />
-                        <Border Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}"
-                                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
-                                BorderThickness="1"
-                                Margin="5">
-                            <Border.Style>
-                                <Style TargetType="{x:Type Border}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ContextData.IsReviewNoticeHidden, Mode=OneWay}" Value="True">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Border.Style>
-                            <DockPanel>
-                                <ToggleButton DockPanel.Dock="Right"
-                                                IsChecked="{Binding ContextData.IsReviewNoticeHidden, Mode=TwoWay}"
-                                                Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
-                                                BorderThickness="0"
-                                                Background="Transparent">
-                                    <Path Data="{StaticResource Cross16Figures}"
-                                            Fill="#888"
-                                            Width="16"
-                                            Height="16"
-                                            Stretch="None"
-                                            SnapsToDevicePixels="True"/>
-                                </ToggleButton>
-                                <TextBlock Margin="5">
-                                    <Run Text="Note:"
-                                            FontWeight="Bold"/>
-                                    <Run Text="The number of targets and references don't match. The excess in the longer collection is ignored."/>
-                                </TextBlock>
-                            </DockPanel>
-
-                        </Border>
-                    </StackPanel>
+                    <Border DockPanel.Dock="Top"
+                            Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}"
+                            BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
+                            BorderThickness="1"
+                            Margin="5">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ContextData.IsReviewNoticeHidden, Mode=OneWay}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <DockPanel>
+                            <ToggleButton DockPanel.Dock="Right"
+                                          IsChecked="{Binding ContextData.IsReviewNoticeHidden, Mode=TwoWay}"
+                                          Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                                          BorderThickness="0"
+                                          Background="Transparent">
+                                <Path Data="{StaticResource Cross16Figures}"
+                                      Fill="#888"
+                                      Width="16"
+                                      Height="16"
+                                      Stretch="None"
+                                      SnapsToDevicePixels="True"/>
+                            </ToggleButton>
+                            <TextBlock Margin="5">
+                                <Run Text="Note:"
+                                     FontWeight="Bold"/>
+                                <Run Text="The number of targets and references don't match. The excess in the longer collection is ignored."/>
+                            </TextBlock>
+                        </DockPanel>
+                    </Border>
 
                     <ScrollViewer Margin="5">
                         <ItemsControl ItemsSource="{Binding ContextData.RenameTasks}">
@@ -294,76 +278,100 @@
                 </DockPanel>
             </TabItem>
 
-            <!--Edit-Gate-->
+            <!--Choice-->
             <TabItem Header="Choice">
-                <DockPanel Margin="10">
-                    <TextBlock Text="{StaticResource ChoiceStepDescription}"
-                               Margin="10"
-                               DockPanel.Dock="Top"/>
-                    <TextBlock DockPanel.Dock="Bottom"
-                               Margin="10"
-                               Visibility="{Binding ContextData.IsRenameOptionSelected, Converter={StaticResource BooleanVisibility}, ConverterParameter='hidden'}">
-                        <Run Text="Note:"
-                             FontWeight="Bold"/>
-                        <Run Text="Proceeding with the current choice will start renaming immediately in the next step."/>
-                    </TextBlock>
-
-                    <UniformGrid Margin="10"
-                                 Columns="1"
-                                 Rows="2">
-                        <UniformGrid.Resources>
-
-                        </UniformGrid.Resources>
-                        <RadioButton GroupName="WizardChoiceTabOption"
-                                     IsChecked="{Binding ContextData.IsRenameOptionSelected}"
-                                     Command="{Binding OptionSelectedCommand}">
-                            <TextBlock>
-                                <Run Text="Targets and references are aligned perfectly."
-                                     FontWeight="Bold"/>
-                                <LineBreak/>
-                                <Run Text="Moving forward to the next page will start renaming."/>
-                            </TextBlock>
-                        </RadioButton>
-                        <RadioButton GroupName="WizardChoiceTabOption"
-                                     IsChecked="{Binding ContextData.IsEditOptionSelected, FallbackValue=True}">
-                            <TextBlock>
-                                <Run Text="Not everything is as it should be."
-                                     FontWeight="Bold"/>
-                                <LineBreak/>
-                                <Run Text="The next page will finalize the transfer to the main window for editing."/>
-                            </TextBlock>
-                        </RadioButton>
-                    </UniformGrid>
-                </DockPanel>
+                <UniformGrid Margin="5"
+                             Rows="1"
+                             Columns="2"
+                             HorizontalAlignment="Center">
+                    <UniformGrid.Resources>
+                        <Style TargetType="{x:Type RadioButton}"
+                               BasedOn="{StaticResource WizardRadioChoice}">
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </UniformGrid.Resources>
+                    <RadioButton GroupName="WizardChoiceTabOption"
+                                 IsChecked="{Binding ContextData.IsRenameOptionSelected}"
+                                 Command="{Binding OptionSelectedCommand}">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap">
+                            <Run Text="Start Renaming"
+                                 FontSize="18"
+                                 FontWeight="DemiBold"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run Text="{StaticResource WizardChoiceRenameContent}"/>
+                        </TextBlock>
+                    </RadioButton>
+                    <RadioButton GroupName="WizardChoiceTabOption"
+                                 IsChecked="{Binding ContextData.IsEditOptionSelected}"
+                                 Command="{Binding OptionSelectedCommand}"
+                                 d:IsChecked="True">
+                        <TextBlock TextAlignment="Center">
+                            <Run Text="Move to Editor"
+                                 FontSize="18"
+                                 FontWeight="DemiBold"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run Text="{StaticResource WizardChoiceEditorContent}"/>
+                        </TextBlock>
+                    </RadioButton>
+                </UniformGrid>
             </TabItem>
 
             <!--Rename-->
             <TabItem Header="Rename">
-                <DockPanel Margin="5">
-                    <TextBlock Text="Log:"
-                               DockPanel.Dock="Top"
-                               Margin="5" />
-                    <ListView Margin="5"
-                              ItemsSource="{Binding ContextData.Log}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-                    <!--In the log, add:-->
-                    <!--1. logs have been forwarded to main window as well-->
-                    <!--2. The wizard can now be closed-->
-                </DockPanel>
+                <TextBox Text="{Binding ContextData.Log}"
+                         Margin="10"
+                         FontFamily="Lucida Console, Consolas, Courier New"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         TextChanged="TextBox_TextChanged"/>
+            </TabItem>
+
+            <!--FinalizeForEdit-->
+            <TabItem Header="FinalizeForEdit">
+                <UniformGrid Margin="5"
+                             Rows="1"
+                             Columns="2">
+                    <StackPanel VerticalAlignment="Center"
+                                Margin="5">
+                        <TextBlock Text="You have selected to migrate and edit the tasks in the main window."/>
+                        <TextBlock Text="Confirm options before transfering out of this wizard:" />
+                        <!--Editor Icons here-->
+                    </StackPanel>
+
+                    <GroupBox Header="Options"
+                              DockPanel.Dock="Right"
+                              Margin="5">
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Center">
+                            <CheckBox IsChecked="{Binding ContextData.ClearBeforeEdit}">
+                                <TextBlock Text="Clear existing tasks in main window"/>
+                            </CheckBox>
+                        </StackPanel>
+                    </GroupBox>
+                </UniformGrid>
             </TabItem>
         </TabControl>
 
         <!--Busy-Overlay-->
         <StackPanel Grid.Row="1"
+                    Grid.RowSpan="3"
                     Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Visibility="{Binding ContextData.IsBusy, Converter={StaticResource BooleanVisibility}}"
                     d:Visibility="Collapsed">
-            <TextBlock Text="Building rename tasks..." />
+            <TextBlock Text="Working..."
+                       HorizontalAlignment="Center"/>
             <ProgressBar Height="16"
-                         IsIndeterminate="{Binding ContextData.IsBusy}" />
+                         Width="100"
+                         IsIndeterminate="{Binding ContextData.IsBusy}"
+                         Maximum="{Binding ContextData.ProgressMaximum}"
+                         Value="{Binding ContextData.ProgressValue}"/>
         </StackPanel>
 
     </Grid>

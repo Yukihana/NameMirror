@@ -27,6 +27,18 @@ public partial class PageAddReferences(IWizardData data) : IWizardPage
     {
     }
 
+    // Update
+
+    public void Update()
+    {
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -43,5 +55,5 @@ public partial class PageAddReferences(IWizardData data) : IWizardPage
 
     public bool CanProgress() => Data.References.Any();
 
-    public WizardPageId Progress() => WizardPageId.Review;
+    public WizardPageId? Progress() => WizardPageId.Review;
 }

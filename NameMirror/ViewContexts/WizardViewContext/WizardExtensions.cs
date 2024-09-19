@@ -13,6 +13,7 @@ public static partial class WizardExtensions
         WizardPageId.Review => new PageReview(data),
         WizardPageId.Choice => new PageChoice(data),
         WizardPageId.Rename => new PageRename(data),
+        WizardPageId.FinalizeForEdit => new PageFinalizeForEdit(data),
         _ => throw new InvalidOperationException($"Unsupported page Id: {pageId}")
     };
 
@@ -24,6 +25,7 @@ public static partial class WizardExtensions
         WizardPageId.Review => 3,
         WizardPageId.Choice => 4,
         WizardPageId.Rename => 5,
+        WizardPageId.FinalizeForEdit => 6,
         _ => throw new InvalidOperationException($"Unsupported page Id: {pageId}"),
     };
 }

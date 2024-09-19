@@ -72,16 +72,13 @@ public partial class MainContextLogic
 
     private bool CanClearAll(object? parameter) => Data.AtLeastOneTask;
 
-    private void ClearAll(object? parameter = null)
+    private void ClearAll(object? parameter = null, bool confirm = true)
     {
         if (_services.PromptAgent.Validate(
             _services.PromptAgent.Query("Clear all tasks?", "Confirmation", "Yes;Cancel", "information", "Yes"),
             "yes"))
         {
-            foreach (RNTask task in Data.Tasks)
-            {
-                Data.Tasks.Remove(task);
-            }
+            Data.Tasks.Clear();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using NameMirror.Agents;
 using NameMirror.Types;
+using NameMirror.ViewContexts.Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace NameMirror.ViewContexts.MainViewContext;
 
-public partial class MainContextLogic : ObservableObject
+public partial class MainContextLogic : ObservableObject, IRenameTaskReceptor
 {
     // Components
     [ObservableProperty]
@@ -62,6 +62,7 @@ public partial class MainContextLogic : ObservableObject
     public MainContextLogic()
     {
         _services = NameMirrorServices.Current;
+        _services.MainContextTaskReceptor = this;
 
         // Validations
         Data.TasksChanged += Data_TasksChanged;
@@ -69,7 +70,7 @@ public partial class MainContextLogic : ObservableObject
 
         // Commands : Targets
         AddTargetsCommand = new(ExecuteAddTargets);
-        InsertTargetsCommand = new(ExecuteInsertTargets, CanInsertTargets);
+        InsertTargetsCommand = new(ExecuteInsertTargets, CanExecuteInsertTargets);
 
         TaskRemoveCommand = new(RemoveTask, CanRemoveTask);
 
@@ -102,7 +103,7 @@ public partial class MainContextLogic : ObservableObject
         ClearCompletedCommand = new(ClearCompleted, CanClearCompleted);
         ClearMissingCommand = new(ClearMissing, CanClearMissing);
         ClearUnreadyCommand = new(ClearUnready, CanClearUnready);
-        ClearAllCommand = new(ClearAll, CanClearAll);
+        ClearAllCommand = new((_) => ClearAll(), CanClearAll);
     }
 
     public void OnInterfaceLoaded()
@@ -111,7 +112,18 @@ public partial class MainContextLogic : ObservableObject
         Log("How-To basics:\n1. Add tasks - Files to be renamed,\n2. Append references - Files to copy names from,\n3. Apply rename.", "notes");
     }
 
+    // Interface : IRenameTaskReceptor
+
+    public void SetTasks(IList<RenameTask> tasks, bool clearExisting = false)
+    {
+        if (clearExisting)
+            ClearAll(confirm: false);
+
+        AddTasks(tasks);
+    }
+
     // Base Functions
+
     private void RenameFiles(IEnumerable<RNTask> tasks)
     {
         int count = 0, successes = 0, errors = 0;

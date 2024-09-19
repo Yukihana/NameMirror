@@ -14,6 +14,7 @@
     <converters:ThicknessConverter x:Key="ThicknessConverter"/>
 
     <!--Converters-Wizard-->
-    <converters:WizardStepTitle x:Key="WizardStepTitle" />
     <converters:WizardStandardPageOrder x:Key="WizardPageOrder" />
+    <converters:WizardPageStringResource x:Key="WizardPageStringResource" />
+
 </ResourceDictionary>

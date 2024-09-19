@@ -1,5 +1,4 @@
 ﻿using CSX.DotNet.Shared.Alerts;
-using CSX.DotNet.Shared.FileSystem;
 using CSX.DotNet.Shared.Logging;
 using NameMirror.Agents;
 using NameMirror.ServiceInterfaces;
@@ -30,8 +29,6 @@ public sealed partial class NameMirrorServices
 
     public static NameMirrorServices Current
         => _current ?? throw new InvalidOperationException($"A current {nameof(NameMirrorServices)} has not been set.");
-
-    // Singleton handlers
 
     public static void MakeCurrent(NameMirrorServices serviceIndex)
     {

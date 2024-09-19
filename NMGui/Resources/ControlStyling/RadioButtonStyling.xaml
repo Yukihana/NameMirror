@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--Wizard-Option-Template-->
+    <!--Wizard-Option-Template-Traditional-->
+    <!--Not-In-Use-->
     <ControlTemplate TargetType="{x:Type RadioButton}"
                      x:Key="WizardChoiceRadioButtonTemplate">
         <Border Padding="{TemplateBinding Padding}"
@@ -26,13 +27,54 @@
         </Border>
     </ControlTemplate>
 
+    <!--Wizard-Option-Template-SideBySide-->
+    <ControlTemplate TargetType="{x:Type RadioButton}"
+                     x:Key="WizardSideBySideRadioTemplate">
+        <Border Padding="{TemplateBinding Padding}"
+                CornerRadius="10"
+                Background="{TemplateBinding Background}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                <Ellipse Width="16"
+                         Height="16"
+                         HorizontalAlignment="Center"
+                         Fill="{TemplateBinding Foreground}"
+                         Visibility="{TemplateBinding IsChecked, Converter={StaticResource BooleanVisibility}}"/>
+                <Rectangle Height="{TemplateBinding Padding, Converter={StaticResource ThicknessConverter}}"
+                           IsHitTestVisible="False"/>
+                <ContentPresenter Grid.Row="2"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+            </StackPanel>
+        </Border>
+    </ControlTemplate>
+
+    <!--Wizard-Option-Focus-->
+    <ControlTemplate x:Key="WizardRadioFocusTemplate">
+        <Rectangle StrokeThickness="1"
+                   Margin="-4"
+                   RadiusX="14"
+                   RadiusY="14"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Stroke="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+    </ControlTemplate>
+    <Style x:Key="WizardRadioFocusStyle">
+        <Setter Property="Control.Template" Value="{StaticResource WizardRadioFocusTemplate}"/>
+    </Style>
+
     <!--Wizard-Option-Style-->
-    <Style TargetType="{x:Type RadioButton}">
-        <Setter Property="Template" Value="{StaticResource WizardChoiceRadioButtonTemplate}"/>
+    <Style TargetType="{x:Type RadioButton}"
+           x:Key="WizardRadioChoice">
+        <Setter Property="Template" Value="{StaticResource WizardSideBySideRadioTemplate}"/>
         <Setter Property="Padding" Value="20"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource WizardRadioFocusStyle}"/>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="#2888"/>

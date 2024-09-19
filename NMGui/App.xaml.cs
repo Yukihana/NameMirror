@@ -16,7 +16,9 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        _ = CreateNameMirrorServices(); // Do this after SyncContext has been initialized (Not possible in ctor)
+        // Do this after SyncContext has been initialized (Not possible in ctor)
+        _ = CreateNameMirrorServices();
+        _ = CreateNMGuiServices();
         base.OnStartup(e);
     }
 
@@ -29,6 +31,14 @@ public partial class App : Application
             promptAgent: new PromptAgent(),
             loggingService: LoggingService);
         NameMirrorServices.MakeCurrent(services);
+        return services;
+    }
+
+    private NMGuiServices CreateNMGuiServices()
+    {
+        NMGuiServices services = new(
+            syncContext: SynchronizationContext.Current);
+        NMGuiServices.MakeCurrent(services);
         return services;
     }
 }

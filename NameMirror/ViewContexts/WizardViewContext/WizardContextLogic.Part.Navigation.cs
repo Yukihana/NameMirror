@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using NameMirror.ViewContexts.WizardViewContext.WizardPages;
-using System;
+﻿using NameMirror.ViewContexts.WizardViewContext.WizardPages;
 using System.Threading.Tasks;
 
 namespace NameMirror.ViewContexts.WizardViewContext;
@@ -8,6 +6,7 @@ namespace NameMirror.ViewContexts.WizardViewContext;
 public partial class WizardContextLogic
 {
     // Operations
+
     private void SetPage(WizardPageId pageId)
     {
         CurrentPageId = pageId;
@@ -36,19 +35,32 @@ public partial class WizardContextLogic
         }, null);
     }
 
-    private void CloseView()
-    {
-        RequestClose?.Invoke(this, new());
-    }
-
     private void UpdateNavigation()
     {
+        CurrentPage.Update();
         CancelNavigationCommand.NotifyCanExecuteChanged();
         ReverseNavigationCommand.NotifyCanExecuteChanged();
         ForwardNavigationCommand.NotifyCanExecuteChanged();
     }
 
+    // Navigation: Close (External)
+
+    private bool CanExecuteClose()
+        => !ContextData.IsBusy
+        && CurrentPage.CanClose();
+
+    private bool ExecuteClose()
+    {
+        // DO NOT Request view closure
+        // Since the origin is from the view itself
+        // And the cyclic call would result in stack overflow.
+        return !ContextData.IsBusy
+            && CurrentPage.Close();
+    }
+
     // Navigation: Cancel
+    // (In future, remove !IsBusy and change this to use cancel token instead.)
+    // (Making everything async might be needed.)
 
     private bool CanExecuteCancel()
         => !ContextData.IsBusy
@@ -56,7 +68,8 @@ public partial class WizardContextLogic
 
     private void ExecuteCancel()
     {
-        if (CurrentPage.Cancel())
+        if (!ContextData.IsBusy &&
+            CurrentPage.Cancel())
             CloseView();
     }
 
@@ -88,9 +101,15 @@ public partial class WizardContextLogic
 
     private void ExecuteProgress()
     {
-        WizardPageId next = CurrentPage.Progress();
-        if (CurrentPageId != WizardPageId.Start)
-            _history.Push(CurrentPageId);
-        SetPage(next);
+        if (CurrentPage.Progress() is not WizardPageId next)
+        {
+            CloseView();
+        }
+        else
+        {
+            if (CurrentPageId != WizardPageId.Start)
+                _history.Push(CurrentPageId);
+            SetPage(next);
+        }
     }
 }

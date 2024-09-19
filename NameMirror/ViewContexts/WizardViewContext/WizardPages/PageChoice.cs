@@ -27,6 +27,22 @@ public partial class PageChoice(IWizardData data) : IWizardPage
     {
     }
 
+    // Update
+
+    public void Update()
+    {
+        Data.ProgressMode
+            = Data.IsRenameOptionSelected
+            ? WizardProgressMode.Confirm
+            : WizardProgressMode.Next;
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -42,9 +58,9 @@ public partial class PageChoice(IWizardData data) : IWizardPage
     // Progress
 
     public bool CanProgress()
-        => Data.IsEditOptionSelected || Data.IsEditOptionSelected;
+        => Data.IsRenameOptionSelected || Data.IsEditOptionSelected;
 
-    public WizardPageId Progress()
+    public WizardPageId? Progress()
     {
         if (Data.IsEditOptionSelected)
             return WizardPageId.FinalizeForEdit;

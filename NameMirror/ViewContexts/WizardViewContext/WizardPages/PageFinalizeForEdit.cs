@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NameMirror.ViewContexts.MainViewContext;
+using NameMirror.ViewContexts.Shared;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
@@ -30,6 +30,18 @@ public partial class PageFinalizeForEdit(IWizardData data) : IWizardPage
     {
     }
 
+    // Update
+
+    public void Update()
+    {
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -47,13 +59,21 @@ public partial class PageFinalizeForEdit(IWizardData data) : IWizardPage
     public bool CanProgress()
         => Data.IsEditOptionSelected || Data.IsEditOptionSelected;
 
-    public WizardPageId Progress()
+    public WizardPageId? Progress()
     {
-        if (!CanProgress())
-            throw new InvalidOperationException();
+        try
+        {
+            if (NameMirrorServices.Current.MainContextTaskReceptor is not IRenameTaskReceptor receptor)
+                throw new InvalidOperationException("MainContext task receptor interface not found.");
 
-        if (Data.IsRenameOptionSelected)
-            return WizardPageId.Rename;
-        throw new NotImplementedException();
+            receptor.SetTasks(
+                tasks: new List<RenameTask>(Data.RenameTasks),
+                clearExisting: Data.ClearBeforeEdit);
+        }
+        catch (Exception ex)
+        {
+            NameMirrorServices.Current.LogService.Log("error", "MainContext task receptor interface not found.", this, ex);
+        }
+        return null;
     }
 }

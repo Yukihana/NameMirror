@@ -2,6 +2,7 @@
 using CSX.DotNet.Shared.Logging;
 using NMGui.Config;
 using System;
+using System.Windows;
 
 namespace NMGui.Logging;
 
@@ -15,6 +16,12 @@ public partial class LoggingService : ILoggingService
 
     public void Log(string level, string message, object? sender = null, Exception? ex = null, params object[] attachments)
     {
-        ContextLogic.EnterLog(message, level, sender);
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            ContextLogic.EnterLog(message, level, sender);
+        }, null);
     }
+
+    // Add a templated log system for language compatibility.
+    // E.g. with event id
 }

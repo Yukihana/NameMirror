@@ -2,6 +2,7 @@
 using CSX.DotNet.Shared.Logging;
 using NameMirror.Agents;
 using NameMirror.ServiceInterfaces;
+using NameMirror.ViewContexts.MainViewContext;
 using System.Threading;
 
 namespace NameMirror;
@@ -24,4 +25,8 @@ public sealed partial class NameMirrorServices
     public IAlertService AlertService => _alertService;
     public IPromptAgent PromptAgent => _promptAgent;
     public ILoggingService LogService => _loggingService;
+
+    // Public Dynamic
+
+    public IRenameTaskReceptor? MainContextTaskReceptor { get; set; } = null;
 }

@@ -3,7 +3,9 @@ using Microsoft.Win32;
 using NameMirror.ServiceInterfaces;
 using NameMirror.Types;
 using NMGui.Config;
+using NMGui.Support.Sorting;
 using Ookii.Dialogs.Wpf;
+using System;
 using System.IO;
 using System.Windows;
 
@@ -84,7 +86,12 @@ public partial class FileInputService : IFileInputService
         if (folderDialog.ShowDialog() != true)
             return null;
 
-        try { return Directory.GetFiles(folderDialog.SelectedPath, "*", SearchOption.TopDirectoryOnly); }
+        try
+        {
+            var files = Directory.GetFiles(folderDialog.SelectedPath, "*", SearchOption.TopDirectoryOnly);
+            Array.Sort(files, NaturalStringComparer.Default);
+            return files;
+        }
         catch { return null; }
     }
 

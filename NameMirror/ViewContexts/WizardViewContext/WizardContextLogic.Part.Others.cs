@@ -2,8 +2,4 @@
 
 public partial class WizardContextLogic
 {
-    private void ExecuteOptionSelected()
-    {
-        UpdateNavigation();
-    }
 }

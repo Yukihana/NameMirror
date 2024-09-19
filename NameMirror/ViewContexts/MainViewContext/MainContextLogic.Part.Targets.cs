@@ -26,7 +26,7 @@ public partial class MainContextLogic
     private void ExecuteAddTargets()
     {
         if (_services.FileInputService.AddFiles(FileInputReason.AddTargets) is string[] paths)
-            AddTasks(paths);
+            AddTargets(paths);
         else
             Log("Cancelled adding tasks", "debug");
     }
@@ -34,14 +34,14 @@ public partial class MainContextLogic
     private void ExecuteInsertTargets()
     {
         if (_services.FileInputService.AddFiles(FileInputReason.InsertTargets) is string[] paths)
-            AddTasks(paths, true);
+            AddTargets(paths, true);
         else
             Log("Cancelled inserting tasks", "debug");
     }
 
     // Add : Backing
 
-    public void AddTasks(string[] paths, bool insert = false)
+    public void AddTargets(string[] paths, bool insert = false)
     {
         // Validate
         if (Invalid(paths) || (insert && InvalidSelection())) return;
@@ -98,7 +98,7 @@ public partial class MainContextLogic
         );
     }
 
-    private bool CanInsertTargets()
+    private bool CanExecuteInsertTargets()
         => Data.AtLeastOneSelected;
 
     // Remove

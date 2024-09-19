@@ -1,5 +1,6 @@
 ﻿using NameMirror.ViewContexts.WizardViewContext;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace NMGui.Views.Windows;
 
@@ -21,7 +22,13 @@ public partial class WizardWindow : Window
 
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
-        if (!_logic.CanCloseView())
+        if (!_logic.IsClosingAllowed || !_logic.OnClosing())
             e.Cancel = true;
+    }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (sender is TextBox textbox)
+            textbox.ScrollToEnd();
     }
 }

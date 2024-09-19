@@ -34,19 +34,37 @@
     <system:String x:Key="NextNavigationText">Next</system:String>
     <system:String x:Key="FinishNavigationText">Finish</system:String>
     <system:String x:Key="CloseNavigationText">Close</system:String>
+    <system:String x:Key="ConfirmNavigationText">Confirm</system:String>
 
     <!--Wizard-Steps-->
     <system:String x:Key="StartWizardStepTitle">Start</system:String>
-    <system:String x:Key="AddTargetsWizardStepTitle">Add Targets</system:String>
-    <system:String x:Key="AddReferencesWizardStepTitle">Add References</system:String>
-    <system:String x:Key="ReviewWizardStepTitle">Review</system:String>
-    <system:String x:Key="ChoiceWizardStepTitle">Choice</system:String>
-    <system:String x:Key="RenameWizardStepTitle">Rename</system:String>
+    <system:String x:Key="StartWizardStepCaption">&#160;</system:String>
+    <system:String x:Key="StartWizardNavigationHint">Add files to rename.</system:String>
+    <system:String x:Key="StartWizardContent" xml:space="preserve">This wizard will assist with the renaming process.&#10;To get started, click the 'Next' button.</system:String>
 
-    <system:String x:Key="StartWizardStepDescription" xml:space="preserve">This wizard will assist with the renaming process.&#10;To get started, click the 'Next' button.</system:String>
-    <system:String x:Key="AddTargetsStepDescription">Add the files to be renamed:</system:String>
-    <system:String x:Key="AddReferencesStepDescription">Add the files to copy the names from:</system:String>
-    <system:String x:Key="ReviewStepDescription">Make sure the targets are paired with the correct references:</system:String>
-    <system:String x:Key="ChoiceStepDescription">Choose whether to edit in the main window, or finish renaming as is:</system:String>
-    <system:String x:Key="RenameStepDescription">Once the renaming operation has completed, you can click the Finish button:</system:String>
+    <system:String x:Key="AddTargetsWizardStepTitle">Add Targets</system:String>
+    <system:String x:Key="AddTargetsWizardStepCaption">Add the files to be renamed.</system:String>
+    <system:String x:Key="AddTargetsWizardNavigationHint">Add files to copy names from.</system:String>
+
+    <system:String x:Key="AddReferencesWizardStepTitle">Add References</system:String>
+    <system:String x:Key="AddReferencesWizardStepCaption">Add the files to copy the names from.</system:String>
+    <system:String x:Key="AddReferencesWizardNavigationHint">Review target-reference relations.</system:String>
+
+    <system:String x:Key="ReviewWizardStepTitle">Review</system:String>
+    <system:String x:Key="ReviewWizardStepCaption">Make sure the targets are paired with the correct references.</system:String>
+    <system:String x:Key="ReviewWizardNavigationHint">Choose whether to proceed or edit.</system:String>
+
+    <system:String x:Key="ChoiceWizardStepTitle">Choice</system:String>
+    <system:String x:Key="ChoiceWizardStepCaption">Choose whether to edit in the editor, or finish renaming as is.</system:String>
+    <system:String x:Key="ChoiceWizardNavigationHint">Based on the selected option, start rename operations OR configure transfer.</system:String>
+    <system:String x:Key="WizardChoiceRenameContent" xml:space="preserve">Targets and references are aligned perfectly.&#10;Select this option to start renaming in the next step.</system:String>
+    <system:String x:Key="WizardChoiceEditorContent" xml:space="preserve">Not everything is as it should be.&#10;Configure and transfer to the editor in the next page.</system:String>
+
+    <system:String x:Key="RenameWizardStepTitle">Rename</system:String>
+    <system:String x:Key="RenameWizardStepCaption">Rename operation logs:</system:String>
+    <system:String x:Key="RenameWizardNavigationHint">Close the wizard.</system:String>
+
+    <system:String x:Key="FinalizeForEditWizardStepTitle">Configure and Finish</system:String>
+    <system:String x:Key="FinalizeForEditWizardStepCaption">Configure options for transfering.</system:String>
+    <system:String x:Key="FinalizeForEditWizardNavigationHint">Transfers to the main window and closes.</system:String>
 </ResourceDictionary>

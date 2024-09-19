@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
 
@@ -17,6 +16,16 @@ public interface IWizardPage
 
     void PostLoad(object? state);
 
+    // Update
+
+    void Update();
+
+    // Close
+
+    bool CanClose();
+
+    bool Close();
+
     // Cancel
 
     bool CanCancel();
@@ -33,5 +42,5 @@ public interface IWizardPage
 
     bool CanProgress();
 
-    WizardPageId Progress();
+    WizardPageId? Progress();
 }

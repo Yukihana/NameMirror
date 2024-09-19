@@ -27,6 +27,18 @@ public partial class PageAddTargets(IWizardData data) : IWizardPage
     {
     }
 
+    // Update
+
+    public void Update()
+    {
+    }
+
+    // Close
+
+    public bool CanClose() => true;
+
+    public bool Close() => true;
+
     // Cancel
 
     public bool CanCancel() => true;
@@ -43,5 +55,5 @@ public partial class PageAddTargets(IWizardData data) : IWizardPage
 
     public bool CanProgress() => Data.Targets.Any();
 
-    public WizardPageId Progress() => WizardPageId.AddReferences;
+    public WizardPageId? Progress() => WizardPageId.AddReferences;
 }

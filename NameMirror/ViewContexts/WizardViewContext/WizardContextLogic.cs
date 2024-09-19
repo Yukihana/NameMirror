@@ -82,10 +82,28 @@ public partial class WizardContextLogic : ObservableObject
         OptionSelectedCommand = new(ExecuteOptionSelected);
     }
 
-    // Exposed : Close (For View CodeBehind)
+    // View-Closure control inversion
 
     public event EventHandler? RequestClose;
 
-    public bool CanCloseView()
-        => CanExecuteCancel();
+    /// <summary>
+    /// For internal use only.
+    /// </summary>
+    private void CloseView()
+        => RequestClose?.Invoke(this, new());
+
+    // View-Closure permittance
+
+    public bool IsClosingAllowed
+        => CanExecuteClose();
+
+    public bool OnClosing()
+        => ExecuteClose();
+
+    // Updates
+
+    private void ExecuteOptionSelected()
+    {
+        UpdateNavigation();
+    }
 }

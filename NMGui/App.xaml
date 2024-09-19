@@ -7,7 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Languages/en-GB.xaml" />
-                <ResourceDictionary Source="Resources/ResourcesIndex.xaml"/>
+                <ResourceDictionary Source="Resources/Brushes.xaml" />
+                <ResourceDictionary Source="Resources/Misc.xaml"/>
+                <ResourceDictionary Source="Resources/Indices.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

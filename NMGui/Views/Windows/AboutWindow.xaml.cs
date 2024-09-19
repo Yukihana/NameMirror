@@ -1,5 +1,5 @@
 ﻿using NameMirror.ViewContexts.AboutViewContext;
-using NMGui.Resources.Indices;
+using NMGui.Resources;
 using System;
 using System.IO;
 using System.Reflection;

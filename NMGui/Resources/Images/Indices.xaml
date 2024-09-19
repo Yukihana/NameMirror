@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+
+        <!--Files-->
+        <ResourceDictionary Source="BigImages.xaml"/>
+        <ResourceDictionary Source="Vectors.xaml"/>
+
+        <!--Directories-->
+        <ResourceDictionary Source="XamlIcons/Indices.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

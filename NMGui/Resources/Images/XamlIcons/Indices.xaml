@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="Branding\NameMirrorIcon.xaml" />
+
+        <ResourceDictionary Source="Files\FilesInsert.xaml" />
+        <ResourceDictionary Source="Files\FilesNew.xaml" />
+        <ResourceDictionary Source="Files\FilesRemove.xaml" />
+
+        <ResourceDictionary Source="Move\MoveGeneric.xaml" />
+        <ResourceDictionary Source="Move\MoveUp.xaml" />
+        <ResourceDictionary Source="Move\MoveDown.xaml" />
+        <ResourceDictionary Source="Move\MoveToTop.xaml" />
+        <ResourceDictionary Source="Move\MoveToBottom.xaml" />
+
+        <ResourceDictionary Source="References\ReferenceAdd.xaml" />
+        <ResourceDictionary Source="References\ReferenceInsert.xaml" />
+        <ResourceDictionary Source="References\ReferenceRemove.xaml" />
+
+        <ResourceDictionary Source="Sort\SortGeneric.xaml" />
+        <ResourceDictionary Source="Sort\SortAscending.xaml" />
+        <ResourceDictionary Source="Sort\SortDescending.xaml" />
+        <ResourceDictionary Source="Sort\SortReference.xaml" />
+
+        <ResourceDictionary Source="Macros\Wand.xaml" />
+        <ResourceDictionary Source="Macros\RenameSelected.xaml" />
+        <ResourceDictionary Source="Macros\RenameAll.xaml" />
+        <ResourceDictionary Source="Macros\Retask.xaml" />
+        <ResourceDictionary Source="Macros\AutoRetask.xaml" />
+        <ResourceDictionary Source="Macros\EvaluateErrors.xaml" />
+
+        <ResourceDictionary Source="Clear\ClearCompleted.xaml" />
+        <ResourceDictionary Source="Clear\ClearUnreferenced.xaml" />
+        <ResourceDictionary Source="Clear\ClearMissing.xaml" />
+        <ResourceDictionary Source="Clear\ClearAll.xaml" />
+
+        <ResourceDictionary Source="Misc\Instructions.xaml" />
+        <ResourceDictionary Source="Misc\About.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

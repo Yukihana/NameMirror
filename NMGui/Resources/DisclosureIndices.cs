@@ -1,4 +1,4 @@
-﻿namespace NMGui.Resources.Indices;
+﻿namespace NMGui.Resources;
 
 public static partial class DisclosureIndices
 {

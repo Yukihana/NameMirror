@@ -5,4 +5,5 @@ public enum WizardProgressMode
     Next,
     Finish,
     Close,
+    Confirm,
 }
