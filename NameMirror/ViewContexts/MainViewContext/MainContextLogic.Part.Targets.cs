@@ -1,24 +1,115 @@
-﻿using NameMirror.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
+using NameMirror.Commands;
 using NameMirror.Types;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace NameMirror.ViewContexts.MainViewContext;
 
 public partial class MainContextLogic
 {
-    // Commands : Task
-    private readonly ActionCommand taskRemoveCommand;
+    // Commands
 
-    public ActionCommand TaskRemoveCommand => taskRemoveCommand;
+    public RelayCommand AddTargetsCommand { get; }
+    public RelayCommand InsertTargetsCommand { get; }
+
+    public ActionCommand TaskRemoveCommand { get; }
+
+    public ActionCommand TaskMoveUpCommand { get; }
+    public ActionCommand TaskMoveDownCommand { get; }
+    public ActionCommand TaskMoveToTopCommand { get; }
+    public ActionCommand TaskMoveToBottomCommand { get; }
+
+    // Add
+
+    private void ExecuteAddTargets()
+    {
+        if (_services.FileInputService.AddFiles(FileInputReason.AddTargets) is string[] paths)
+            AddTasks(paths);
+        else
+            Log("Cancelled adding tasks", "debug");
+    }
+
+    private void ExecuteInsertTargets()
+    {
+        if (_services.FileInputService.AddFiles(FileInputReason.InsertTargets) is string[] paths)
+            AddTasks(paths, true);
+        else
+            Log("Cancelled inserting tasks", "debug");
+    }
+
+    // Add : Backing
+
+    public void AddTasks(string[] paths, bool insert = false)
+    {
+        // Validate
+        if (Invalid(paths) || (insert && InvalidSelection())) return;
+
+        // Prepare
+        int originalSelectedIndex = Data.SelectedIndex;
+        int successes = 0, invalids = 0, absentees = 0, repeats = 0;
+        string s;
+
+        // Enumerate
+        foreach (string file in paths)
+        {
+            s = Path.GetFullPath(file);
+
+            // Duplicate check
+            if (Data.Tasks.Any(x => x.OriginalPath == s))
+            {
+                Log("Unable to add task (Already on the list): " + Path.GetFullPath(file));
+                repeats++;
+                continue;
+            }
+
+            // Bad Uri check
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                Log("Unable to add task (Bad URI): " + s);
+                invalids++;
+                continue;
+            }
+
+            // Validity check
+            if (!File.Exists(s))
+            {
+                Log("Unable to add task (File does not exist): " + s);
+                absentees++;
+                continue;
+            }
+
+            // Add/Insert actual
+            if (insert)
+                Data.Tasks.Insert(originalSelectedIndex + successes, new() { OriginalPath = s });
+            else
+                Data.Tasks.Add(new RNTask() { OriginalPath = s });
+
+            // Append status for log
+            successes++;
+        }
+
+        // Log operation
+        int n = paths.Length;
+        Log(
+            $"{successes} of {n} files were {(insert ? "inserted in" : "added ")}to the task list."
+            + (n - successes > 0 ? $" {repeats} duplicates, {invalids} bad Uri and {absentees} missing files were not added." : "")
+        );
+    }
+
+    private bool CanInsertTargets()
+        => Data.AtLeastOneSelected;
+
+    // Remove
 
     private bool CanRemoveTask(object? parameter) => Data.AtLeastOneSelected;
 
     private void RemoveTask(object? parameter)
     {
         // Adding confirmation to prevent accidents
-        if (!Handler.PromptAgent.Validate(
-            Handler.PromptAgent.Query("Delete selected task(s)?", "Confirmation", "Yes;No", "information", "yes", "no"),
+        if (!_services.PromptAgent.Validate(
+            _services.PromptAgent.Query("Delete selected task(s)?", "Confirmation", "Yes;No", "information", "yes", "no"),
             "yes"))
             return;
 
@@ -37,11 +128,10 @@ public partial class MainContextLogic
             }
         }
 
-        LogAdd($"Removed {successes} tasks.");
+        Log($"Removed {successes} tasks.");
     }
 
-    private readonly ActionCommand taskMoveUpCommand;
-    public ActionCommand TaskMoveUpCommand => taskMoveUpCommand;
+    // Move
 
     private bool CanMoveTaskUp(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
@@ -68,9 +158,6 @@ public partial class MainContextLogic
         ConcludeReordering(successes, selected);
     }
 
-    private readonly ActionCommand taskMoveDownCommand;
-    public ActionCommand TaskMoveDownCommand => taskMoveDownCommand;
-
     private bool CanMoveTaskDown(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
 
@@ -95,9 +182,6 @@ public partial class MainContextLogic
         // Finish
         ConcludeReordering(successes, selected);
     }
-
-    private readonly ActionCommand taskMoveToTopCommand;
-    public ActionCommand TaskMoveToTopCommand => taskMoveToTopCommand;
 
     private bool CanMoveTaskToTop(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
@@ -130,9 +214,6 @@ public partial class MainContextLogic
         // Finish
         ConcludeReordering(successes, [.. selected]);
     }
-
-    private readonly ActionCommand taskMoveToBottomCommand;
-    public ActionCommand TaskMoveToBottomCommand => taskMoveToBottomCommand;
 
     private bool CanMoveTaskToBottom(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;

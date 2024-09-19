@@ -1,17 +1,160 @@
-﻿using NameMirror.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
+using NameMirror.Commands;
 using NameMirror.Types;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace NameMirror.ViewContexts.MainViewContext;
 
 public partial class MainContextLogic
 {
-    // Commands : References
-    private readonly ActionCommand referenceRemoveCommand;
+    // Commands
 
-    public ActionCommand ReferenceRemoveCommand => referenceRemoveCommand;
+    public RelayCommand AppendReferencesCommand { get; }
+    public RelayCommand ReplaceReferencesAtCommand { get; }
+    public RelayCommand ReplaceAllReferencesCommand { get; }
+
+    public ActionCommand ReferenceRemoveCommand { get; }
+
+    public ActionCommand ReferenceMoveUpCommand { get; }
+    public ActionCommand ReferenceMoveDownCommand { get; }
+    public ActionCommand ReferenceMoveToTopCommand { get; }
+    public ActionCommand ReferenceMoveToBottomCommand { get; }
+
+    // Add
+
+    private void ExecuteAppendReferences()
+    {
+        if (_services.FileInputService.AddFiles(FileInputReason.AppendReferences) is string[] paths)
+            AppendReferences(paths);
+        else
+            Log("Cancelled adding references (Append)", "debug");
+    }
+
+    private void ExecuteReplaceReferencesAt()
+    {
+        if (_services.FileInputService.AddFiles(FileInputReason.ReplaceReferencesAt) is string[] paths)
+            ReplaceReferencesAt(paths);
+        else
+            Log("Cancelled adding references (Replace At)", "debug");
+    }
+
+    private void ExecuteReplaceAllReferences()
+    {
+        if (_services.FileInputService.AddFiles(FileInputReason.ReplaceAllReferences) is string[] paths)
+            ReplaceAllReferences(paths);
+        else
+            Log("Cancelled adding references (Replace All)", "debug");
+    }
+
+    private void AppendReferences(string[] paths)
+    {
+        // Validate
+        if (Invalid(paths)) return;
+
+        // Check status
+        var unreferenced = Data.Tasks.Where(x => string.IsNullOrWhiteSpace(x.ReferencePath)).ToArray();
+        var uncount = unreferenced.Length;
+
+        // Abort if there are no unreferenced tasks to add to
+        if (uncount == 0)
+        {
+            string emsg = "Unable to add more references as there are no unreferenced tasks remaining."
+                + " To add more references, either add more tasks, or clear references from pending tasks.";
+            _services.PromptAgent.Alert(emsg, "Nothing to reference", "error");
+            Log(emsg, "error");
+            return;
+        }
+
+        // Prepare
+        // (Exists validation is not required because only the filename is needed)
+        // (Uniqueness validation condition: only for same target folder. Implementation pending)
+        var fcount = paths.Length;
+        int n = 0;
+
+        for (int i = 0; i < fcount; i++)
+        {
+            if (i >= uncount)
+            {
+                break;
+            }
+            try
+            {
+                unreferenced[i].ReferencePath = Path.GetFullPath(paths[i]);
+                n++;
+            }
+            catch (Exception x)
+            {
+                Log($"Error - {x.Source}: {x.Message}");
+            }
+        }
+
+        // Log count mismatch message
+        Log($"Added {n} of {fcount} name references."
+            + (uncount > fcount ? $" {uncount - fcount} unreferenced tasks remaining. Add more reference files to continue from the next unreferenced task." : "")
+            + (uncount < fcount ? $" {fcount - uncount} excess references files were ignored. If this was not intended, clear reference(s) and try again." : "")
+            );
+    }
+
+    private bool CanExecuteReplaceReferencesAt()
+        => Data.AtLeastOneSelected;
+
+    private void ReplaceReferencesAt(string[] paths)
+    {
+        // Validate
+        if (Invalid(paths) || InvalidTasks()) return;
+        if (Data.SelectedIndex == -1)
+        {
+            Log("Nothing is selected. Unable to proceed.", "information");
+            return;
+        }
+
+        // Process
+        int i = 0;
+        int j = Data.SelectedIndex;
+        int k = paths.Length;
+        int l = Data.Tasks.Count;
+
+        while (j + i < l && i < k)
+        {
+            Data.Tasks[j + i].ReferencePath = paths[i];
+            i++;
+        }
+
+        // Post process
+        Log($"Added {i} of {k} name references added."
+            + (i < k ? $" {k - i} excess remaining. Reached end of tasks list. Unable to continue without adding more tasks." : "")
+            );
+    }
+
+    private bool CanReplaceAllReferences()
+        => Data.AtLeastOneTask;
+
+    private void ReplaceAllReferences(string[] paths)
+    {
+        // Validate
+        if (Invalid(paths) || InvalidTasks()) return;
+
+        // Process
+        int i;
+        int l = paths.Length;
+        int c = Data.Tasks.Count;
+        int n = l < c ? l : c;
+        for (i = 0; i < n; i++)
+        {
+            Data.Tasks[i].ReferencePath = paths[i];
+        }
+
+        // Post
+        Log($"Added {i} of {l} name references."
+            + (c > l ? $" {c - l} unreferenced tasks remaining. Add more reference files to continue from the next unreferenced task." : "")
+            + (c < l ? $" {l - c} excess references files were ignored. If this was not intended, clear reference(s) and try again." : "")
+            );
+    }
+
+    // Remove
 
     private bool CanRemoveReference(object? parameter) => Data.AtLeastOneSelected;
 
@@ -22,9 +165,6 @@ public partial class MainContextLogic
             task.ReferencePath = string.Empty;
         }
     }
-
-    private readonly ActionCommand referenceMoveUpCommand;
-    public ActionCommand ReferenceMoveUpCommand => referenceMoveUpCommand;
 
     private bool CanMoveReferenceUp(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
@@ -51,9 +191,6 @@ public partial class MainContextLogic
         ConcludeReordering(successes, [.. selected]);
     }
 
-    private readonly ActionCommand referenceMoveDownCommand;
-    public ActionCommand ReferenceMoveDownCommand => referenceMoveDownCommand;
-
     private bool CanMoveReferenceDown(object? parameter)
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
 
@@ -78,9 +215,6 @@ public partial class MainContextLogic
         // Conclude
         ConcludeReordering(successes, [.. selected]);
     }
-
-    private readonly ActionCommand referenceMoveToTopCommand;
-    public ActionCommand ReferenceMoveToTopCommand => referenceMoveToTopCommand;
 
     private bool CanMoveReferenceToTop(object? parameter) => Data.AtLeastOneSelected;
 
@@ -136,9 +270,6 @@ public partial class MainContextLogic
         // Finish
         ConcludeReordering(successes, [.. newSelection]);
     }
-
-    private readonly ActionCommand referenceMoveToBottomCommand;
-    public ActionCommand ReferenceMoveToBottomCommand => referenceMoveToBottomCommand;
 
     private bool CanMoveReferenceToBottom(object? parameter) => Data.AtLeastOneSelected;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
 
@@ -8,7 +9,21 @@ public partial class PageRename(IWizardData data) : IWizardPage
 
     public IWizardData Data { get; } = data;
 
-    public void Load()
+    // Load
+
+    public object? PreLoad()
+    {
+        Data.ProgressMode = WizardProgressMode.Close;
+        return null;
+    }
+
+    public async Task<object?> Load(object? state)
+    {
+        await Task.Yield();
+        return null;
+    }
+
+    public void PostLoad(object? state)
     {
     }
 
@@ -18,15 +33,9 @@ public partial class PageRename(IWizardData data) : IWizardPage
 
     public bool Cancel() => true;
 
-    // Finish
-
-    public bool CanFinish() => false; // Send update notif after rename is completed then change this to true.
-
-    public bool Finish() => Data.RenameCompleted;
-
     // Reverse
 
-    public bool CanReverse() => !(Data.RenameStarted || Data.RenameCompleted);
+    public bool CanReverse() => true;
 
     public WizardPageId? Reverse() => null;
 

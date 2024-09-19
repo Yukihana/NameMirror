@@ -7,7 +7,7 @@
               xmlns:loglogic="clr-namespace:CSX.DotNet.Logging.Logic;assembly=CSX.DotNet.Logging"
               xmlns:sorting="clr-namespace:NMGui.Support.Sorting"
               x:Name="Window" mc:Ignorable="d" Loaded="Window_Loaded"
-              d:DataContext="{d:DesignInstance Type={x:Type logic:MainContextLogic}, IsDesignTimeCreatable=True}"
+              d:DataContext="{d:DesignInstance Type={x:Type logic:MainContextLogic}, IsDesignTimeCreatable=False}"
               SnapsToDevicePixels="True" UseLayoutRounding="True"
               Title="NameMirror"
               Icon="pack://application:,,,/NMGui;component/NameMirrorIcon.ico"
@@ -115,14 +115,15 @@
                              SmallImageSource="{StaticResource Hollow16Icon}"
                              LargeImageSource="{StaticResource Hollow32Icon}">
 
-                    <RibbonButton Label="Add Task" Click="AddFiles"
+                    <RibbonButton Command="{Binding AddTargetsCommand}"
+                                  Label="Add Task"
                                   ToolTip="Add task... (Ctrl+O)"
                                   ToolTipDescription="Add the file(s) to be renamed..."
                                   SmallImageSource="{StaticResource FilesNew16}"
                                   LargeImageSource="{StaticResource FilesNew32}" />
 
-                    <RibbonButton Label="Insert Task" Click="InsertFiles"
-                                  IsEnabled="{Binding Data.AtLeastOneSelected}"
+                    <RibbonButton Command="{Binding InsertTargetsCommand}"
+                                  Label="Insert Task"
                                   ToolTip="Insert task... (Ctrl+I)"
                                   ToolTipDescription="Insert files to be renamed at the current position..."
                                   SmallImageSource="{StaticResource FilesInsert16}"
@@ -169,7 +170,8 @@
                              SmallImageSource="{StaticResource Hollow16Icon}"
                              LargeImageSource="{StaticResource Hollow32Icon}">
 
-                    <RibbonButton Label="Append" Click="AppendReferences"
+                    <RibbonButton Command="{Binding AppendReferencesCommand}"
+                                  Label="Append"
                                   ToolTip="Add name reference files... (Ctrl+Shift+O)"
                                   ToolTipDescription="Add the files from which the names will be copied. References will only be added to unreferenced tasks, starting at the first such task in the list."
                                   SmallImageSource="{StaticResource ReferenceAdd16}"
@@ -181,14 +183,14 @@
                                       SmallImageSource="{StaticResource ReferenceInsert16}"
                                       LargeImageSource="{StaticResource ReferenceInsert32}">
 
-                        <RibbonMenuItem Header="Replace At..." Click="ReplaceReferencesAt"
-                                        IsEnabled="{Binding Data.AtLeastOneSelected}"
+                        <RibbonMenuItem Command="{Binding ReplaceReferencesAtCommand}"
+                                        Header="Replace At..."
                                         ToolTip="Insert name reference files and avoid existing... (Ctrl+Shift+I)"
                                         ToolTipDescription="Add the files from which the names will be copied. References will be added selected position onwards, and only to unreferenced tasks. Relative order is not maintained."
                                         Icon="{StaticResource Hollow16Icon}" />
 
-                        <RibbonMenuItem Header="Replace All..." Click="ReplaceAllReferences"
-                                        IsEnabled="{Binding Data.AtLeastOneTask}"
+                        <RibbonMenuItem Command="{Binding ReplaceAllReferencesCommand}"
+                                        Header="Replace All..."
                                         ToolTip="Insert name reference files... (Ctrl+Shift+I)"
                                         ToolTipDescription="Add the files from which the names will be copied. References will be added selected position onwards, overwriting any existing references. Relative order is maintained."
                                         Icon="{StaticResource Hollow16Icon}" />
@@ -296,12 +298,17 @@
         </Ribbon>
 
         <!--DataGrid-->
-        <DataGrid x:Name="FileList" Grid.Row="1" SnapsToDevicePixels="True"
+        <DataGrid x:Name="FileList"
+                  Grid.Row="1"
+                  SnapsToDevicePixels="True"
                   ItemsSource="{Binding Data.Tasks}"
                   SelectedIndex="{Binding Data.SelectedIndex, Mode=TwoWay}"
                   SelectionChanged="TaskList_SelectionChanged"
-                  RowHeaderWidth="30" CanUserAddRows="False" CanUserResizeRows="False"
-                  AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible"
+                  RowHeaderWidth="30"
+                  CanUserAddRows="False"
+                  CanUserResizeRows="False"
+                  AutoGenerateColumns="False"
+                  VerticalScrollBarVisibility="Visible"
                   Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                   HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"
                   VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"

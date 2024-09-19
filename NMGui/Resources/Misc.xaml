@@ -10,6 +10,8 @@
     <converters:XAMLStatusColor x:Key="StatusColor" />
     <converters:XAMLStatusText x:Key="StatusText" />
     <converters:BooleanVisibility x:Key="BooleanVisibility" />
+    <converters:InverseBooleanVisibility x:Key="InverseBooleanVisibility" />
+    <converters:ThicknessConverter x:Key="ThicknessConverter"/>
 
     <!--Converters-Wizard-->
     <converters:WizardStepTitle x:Key="WizardStepTitle" />

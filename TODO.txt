@@ -1,6 +1,9 @@
+Application wide semantics update 'Task to Target' to prevent threading confusion.
+
 add functions to +Files/Folder buttons for both wizard add pages
 - Add interface handler functions to wizard
 
-Create a ServicesIndex static feature with 'SetAsDefault()' option.
-- First time it should set up a new instance in 'static Current'
-- Second time it should throw
+Upgrade filesystem services functions to standard and provide functionality, enough to replace FileSystemAgent fully.
+No need to propagate Rename and all that to front end.
+
+Simplify RNTasks (infact delete and replace it with NameMirror/ViewContexts/Shared/RenameTask)

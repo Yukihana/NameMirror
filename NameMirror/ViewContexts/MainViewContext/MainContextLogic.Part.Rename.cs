@@ -5,18 +5,17 @@ namespace NameMirror.ViewContexts.MainViewContext;
 
 public partial class MainContextLogic
 {
-    // Commands : Rename
-    private readonly ActionCommand renameAllCommand;
+    // Commands
 
-    public ActionCommand RenameAllCommand => renameAllCommand;
+    public ActionCommand RenameAllCommand { get; }
+    public ActionCommand RenameSelectedCommand { get; }
+
+    // Handlers
 
     private bool CanRenameAll(object? parameter) => Data.AtLeastOneTask; // Create AtleastOneTaskReady
 
     private void RenameAll(object? parameter)
         => RenameFiles(Data.Tasks.Where(x => x.Ready));
-
-    private readonly ActionCommand renameSelectedCommand;
-    public ActionCommand RenameSelectedCommand => renameSelectedCommand;
 
     private bool CanRenameSelected(object? parameter) => Data.AtLeastOneSelected; // Use AtleastOneSelected + Ready
 

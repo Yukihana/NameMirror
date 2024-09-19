@@ -1,4 +1,6 @@
-﻿namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
+﻿using System.Threading.Tasks;
+
+namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
 
 public partial class PageStart(IWizardData data) : IWizardPage
 {
@@ -6,9 +8,21 @@ public partial class PageStart(IWizardData data) : IWizardPage
 
     public IWizardData Data { get; } = data;
 
-    // Functions
+    // Load
 
-    public void Load()
+    public object? PreLoad()
+    {
+        Data.ProgressMode = WizardProgressMode.Next;
+        return null;
+    }
+
+    public async Task<object?> Load(object? state)
+    {
+        await Task.Yield();
+        return null;
+    }
+
+    public void PostLoad(object? state)
     {
     }
 
@@ -17,12 +31,6 @@ public partial class PageStart(IWizardData data) : IWizardPage
     public bool CanCancel() => true;
 
     public bool Cancel() => true;
-
-    // Finish
-
-    public bool CanFinish() => false;
-
-    public bool Finish() => false;
 
     // Reverse
 

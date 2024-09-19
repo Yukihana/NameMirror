@@ -1,14 +1,17 @@
 ﻿using NameMirror.Commands;
 using NameMirror.Types;
+using System.IO;
 
 namespace NameMirror.ViewContexts.MainViewContext;
 
 public partial class MainContextLogic
 {
-    // Commands : Manage
-    private readonly ActionCommand evaluateErrorsCommand;
+    // Commands
 
-    public ActionCommand EvaluateErrorsCommand => evaluateErrorsCommand;
+    public ActionCommand EvaluateErrorsCommand { get; }
+    public ActionCommand RetaskCommand { get; }
+
+    // Handlers
 
     private bool CanEvaluateErrors(object? parameter) => Data.AtLeastOneTask;
 
@@ -24,7 +27,7 @@ public partial class MainContextLogic
         {
             if (task.SuccessStatus == true)
                 completed++;
-            else if (!Handler.FileSystemAgent.FileExists(task.OriginalPath))
+            else if (!File.Exists(task.OriginalPath))
                 missing++;
             else if (!task.Ready)
                 notready++;
@@ -34,15 +37,12 @@ public partial class MainContextLogic
                 uncat++;
         }
 
-        LogAdd(
+        Log(
             $"Evaluation Completed:\n"
             + $"Completed={completed}\n"
             + $"NotReady={notready}\n"
             + $"Failed={failed}");
     }
-
-    private readonly ActionCommand retaskCommand;
-    public ActionCommand RetaskCommand => retaskCommand;
 
     private bool CanRetask(object? parameter) => Data.AtLeastOneTask;
 

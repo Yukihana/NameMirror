@@ -1,7 +1,5 @@
-﻿using CSX.DotNet.Logging.Logic;
-using NameMirror.Types;
+﻿using NameMirror.Types;
 using NameMirror.ViewContexts.MainViewContext;
-using NMGui.Agents;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -16,8 +14,8 @@ namespace NMGui.Views.Windows;
 /// </summary>
 public partial class MainWindow : RibbonWindow
 {
+    private readonly App _app;
     private readonly MainContextLogic _mainLogic;
-    private readonly LogManagerLogic _logLogic;
     private TutorWindow? TutWin = null;
     private AboutWindow? AbWin = null;
 
@@ -26,22 +24,15 @@ public partial class MainWindow : RibbonWindow
     {
         InitializeComponent();
 
-        // Icon
-        /*
-        Uri iconUri = new("pack://application:,,,/NMGui;component/NameMirrorIcon.ico", UriKind.RelativeOrAbsolute);
-        Icon = BitmapFrame.Create(iconUri);
-        */
+        _app = Application.Current as App
+            ?? throw new InvalidOperationException("Unable to access members from the application entry class.");
 
-        // Context : RNLogic
-        _mainLogic = new(new Handler());
+        // Context : Main
+        _mainLogic = new();
         DataContext = _mainLogic;
 
-        // Context : LogLogic
-        _logLogic = new(MyConfig.LogsPath, MyConfig.LogsPrefix);
-        LogPartition.DataContext = _logLogic;
-
-        // Log
-        _mainLogic.LogAction = _logLogic.EnterLog;
+        // Context : LogPartition Logic
+        LogPartition.DataContext = _app.LoggingService.ContextLogic;
     }
 
     // Loaded followup
@@ -67,47 +58,6 @@ public partial class MainWindow : RibbonWindow
         {
             s.ScrollIntoView(s.Items[s.Items.Count - 1]);
         }
-    }
-
-    // Pre-ViewModel HyperBridges
-    private void AddFiles(object sender, RoutedEventArgs e)
-    {
-        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Add files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
-            _mainLogic.AddTasks(paths);
-        else
-            _logLogic.EnterLog("Cancelled adding tasks", "debug", sender);
-    }
-
-    private void InsertFiles(object sender, RoutedEventArgs e)
-    {
-        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Insert files to be renamed...", MyConfig.LastTasksPath, 0) is string[] paths)
-            _mainLogic.AddTasks(paths, true);
-        else
-            _logLogic.EnterLog("Cancelled inserting tasks", "debug", sender);
-    }
-
-    private void AppendReferences(object sender, RoutedEventArgs e)
-    {
-        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Append references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            _mainLogic.AddReferences(paths);
-        else
-            _logLogic.EnterLog("Cancelled adding references (Append)", "debug", sender);
-    }
-
-    private void ReplaceReferencesAt(object sender, RoutedEventArgs e)
-    {
-        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Replace references at selection : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            _mainLogic.AddReferences(paths, AddReferencesMode.ReplaceAt);
-        else
-            _logLogic.EnterLog("Cancelled adding references (Replace At)", "debug", sender);
-    }
-
-    private void ReplaceAllReferences(object sender, RoutedEventArgs e)
-    {
-        if (_mainLogic.Handler.FileSystemAgent.GetFiles("Replace all references : Add files to copy names from...", MyConfig.LastTasksPath, 0) is string[] paths)
-            _mainLogic.AddReferences(paths, AddReferencesMode.ReplaceAll);
-        else
-            _logLogic.EnterLog("Cancelled adding references (Replace All)", "debug", sender);
     }
 
     // Misc system functions

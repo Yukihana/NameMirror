@@ -8,4 +8,5 @@ public enum WizardPageId : int
     Review = 3,
     Choice = 4,
     Rename = 5,
+    FinalizeForEdit = 6,
 }

@@ -21,4 +21,8 @@
         <GradientStop Color="SteelBlue" Offset="0.3" />
         <GradientStop Color="Navy" Offset="0.7" />
     </LinearGradientBrush>
+
+    <!--Cross-->
+    <PathGeometry x:Key="Cross24Figures" Figures="M3,5l2-2l7,7l7-7l2,2l-7,7l7,7l-2,2l-7-7l-7,7l-2-2l7-7L3,5z"/>
+    <PathGeometry x:Key="Cross16Figures" Figures="M2,4l2-2l4,4l4-4l2,2l-4,4l4,4l-2,2l-4-4l-4,4l-2-2l4-4L2,4z"/>
 </ResourceDictionary>

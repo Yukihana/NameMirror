@@ -4,6 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:logic="clr-namespace:NameMirror.ViewContexts.WizardViewContext;assembly=NameMirror"
+        xmlns:controls="clr-namespace:NMGui.Views.Controls"
+        xmlns:sharedcontext="clr-namespace:NameMirror.ViewContexts.Shared;assembly=NameMirror"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=logic:WizardContextLogic, IsDesignTimeCreatable=False}"
         SnapsToDevicePixels="True" UseLayoutRounding="True"
@@ -11,7 +13,9 @@
         Title="NameMirror Wizard"
         Icon="pack://application:,,,/NMGui;component/NameMirrorIcon.ico"
         Height="450" Width="800"
-        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+        Closing="Window_Closing">
+
     <Window.Resources>
         <Style TargetType="{x:Type Button}" x:Key="WizButton">
             <Setter Property="Margin" Value="5" />
@@ -20,9 +24,26 @@
             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
         </Style>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource WizButton}" />
+
+        <Style TargetType="{x:Type DataGrid}" x:Key="WizAddGrid">
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#4888"/>
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="False"/>
+            <Setter Property="SelectionMode" Value="Extended"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
     </Window.Resources>
 
-    <DockPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
         <!--Step-Header-->
         <Border Background="{StaticResource AboutWindowBanner}"
@@ -68,33 +89,46 @@
         </Border>
 
         <!--Dialog-Navigation-->
-        <Border DockPanel.Dock="Bottom"
+        <Border Grid.Row="2"
                 BorderThickness="0 1 0 0"
                 BorderBrush="#4000">
             <DockPanel Margin="5">
                 <StackPanel Orientation="Horizontal"
                             DockPanel.Dock="Right">
-                    <Button Content="Back"
-                            Visibility="{Binding CanReverse, Converter={StaticResource BooleanVisibility}}"
-                            Command="{Binding ReverseNavigationCommand}" />
-                    <Button Content="Next"
-                            Visibility="{Binding CanProgress, Converter={StaticResource BooleanVisibility}}"
-                            Command="{Binding ForwardNavigationCommand}" />
-                    <Button Content="Finish"
-                            Visibility="{Binding CanFinish, Converter={StaticResource BooleanVisibility}}"
-                            Command="{Binding FinishNavigationCommand}" />
+                    <Button Command="{Binding ReverseNavigationCommand}">
+                        <TextBlock Text="{StaticResource BackNavigationText}"/>
+                    </Button>
+                    <Button Command="{Binding ForwardNavigationCommand}">
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="{StaticResource NextNavigationText}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Finish">
+                                            <Setter Property="Text" Value="{StaticResource FinishNavigationText}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ContextData.ProgressMode}" Value="Close">
+                                            <Setter Property="Text" Value="{StaticResource CloseNavigationText}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Button>
                 </StackPanel>
                 <Button DockPanel.Dock="Left"
-                        Content="Cancel"
                         Command="{Binding CancelNavigationCommand}"
-                        Visibility="{Binding CanCancel, Converter={StaticResource BooleanVisibility}}"
-                        CommandParameter="Cancel" />
+                        CommandParameter="Cancel" >
+                    <TextBlock Text="{StaticResource CancelNavigationText}"/>
+                </Button>
                 <Rectangle />
             </DockPanel>
         </Border>
 
         <!--Main-Space-->
-        <TabControl Style="{StaticResource TabPager}"
+        <TabControl Grid.Row="1"
+                    Style="{StaticResource TabPager}"
+                    Visibility="{Binding ContextData.IsBusy, Converter={StaticResource InverseBooleanVisibility}}"
                     SelectedIndex="{Binding CurrentPageId, Mode=OneWay, Converter={StaticResource WizardPageOrder}, FallbackValue=0}"
                     Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 
@@ -107,8 +141,8 @@
                            TextAlignment="Center" />
             </TabItem>
 
-            <!--Add-Tasks-->
-            <TabItem Header="Tasks">
+            <!--Add-Targets-->
+            <TabItem Header="Targets">
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -132,14 +166,23 @@
                                    Height="32" />
                         </StackPanel>
                         <StackPanel>
-                            <Button Content="+ Files" />
-                            <Button Content="+ Folder" />
+                            <Button Content="+ Files" Command="{Binding AddTargetFilesCommand}"/>
+                            <Button Content="+ Folder" Command="{Binding AddTargetFolderCommand}"/>
+                            <Button Content="Clear" Command="{Binding ClearTargetsCommand}"/>
                         </StackPanel>
                     </DockPanel>
-                    <DataGrid Grid.Column="1" Grid.Row="1" Margin="5">
+                    <DataGrid ItemsSource="{Binding ContextData.Targets}"
+                              Style="{StaticResource WizAddGrid}"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              Margin="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="2*" Header="Filename" />
-                            <DataGridTextColumn Width="3*" Header="Location" />
+                            <DataGridTextColumn Width="2*"
+                                                Header="Filename"
+                                                Binding="{Binding FileName}"/>
+                            <DataGridTextColumn Width="3*"
+                                                Header="Location"
+                                                Binding="{Binding ParentDirectory}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -170,59 +213,158 @@
                                    Height="32" />
                         </StackPanel>
                         <StackPanel>
-                            <Button Content="+ Files" />
-                            <Button Content="+ Folder" />
+                            <Button Content="+ Files" Command="{Binding AddReferenceFilesCommand}" />
+                            <Button Content="+ Folder" Command="{Binding AddReferenceFolderCommand}" />
+                            <Button Content="Clear" Command="{Binding ClearReferencesCommand}"/>
                         </StackPanel>
                     </DockPanel>
-                    <DataGrid Grid.Column="1" Grid.Row="1" Margin="5">
+                    <DataGrid ItemsSource="{Binding ContextData.References}"
+                              Style="{StaticResource WizAddGrid}"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              Margin="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="2*" Header="Filename" />
-                            <DataGridTextColumn Width="3*" Header="Location" />
+                            <DataGridTextColumn Width="2*"
+                                                Header="Filename"
+                                                Binding="{Binding FileName}"/>
+                            <DataGridTextColumn Width="3*"
+                                                Header="Location"
+                                                Binding="{Binding ParentDirectory}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
 
-            <!--Progress-Window-->
-            <TabItem Header="Task Builder">
-                <StackPanel Orientation="Vertical"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="Building rename tasks..." />
-                    <ProgressBar  Height="16" />
-                </StackPanel>
-            </TabItem>
-
             <!--Review-->
             <TabItem Header="Review">
                 <DockPanel Margin="5">
-                    <TextBlock DockPanel.Dock="Top"
-                               Text="Preview if the relations were correctly added. You can choose how to proceed in the next page." />
+                    <StackPanel DockPanel.Dock="Top">
+                        <TextBlock Text="Review if the relations were correctly added. You can choose how to proceed in the next page."
+                                    Margin="5" />
+                        <Border Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
+                                BorderThickness="1"
+                                Margin="5">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ContextData.IsReviewNoticeHidden, Mode=OneWay}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <DockPanel>
+                                <ToggleButton DockPanel.Dock="Right"
+                                                IsChecked="{Binding ContextData.IsReviewNoticeHidden, Mode=TwoWay}"
+                                                Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                                                BorderThickness="0"
+                                                Background="Transparent">
+                                    <Path Data="{StaticResource Cross16Figures}"
+                                            Fill="#888"
+                                            Width="16"
+                                            Height="16"
+                                            Stretch="None"
+                                            SnapsToDevicePixels="True"/>
+                                </ToggleButton>
+                                <TextBlock Margin="5">
+                                    <Run Text="Note:"
+                                            FontWeight="Bold"/>
+                                    <Run Text="The number of targets and references don't match. The excess in the longer collection is ignored."/>
+                                </TextBlock>
+                            </DockPanel>
+
+                        </Border>
+                    </StackPanel>
+
                     <ScrollViewer Margin="5">
-                        <ItemsControl>
+                        <ItemsControl ItemsSource="{Binding ContextData.RenameTasks}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="sharedcontext:RenameTask">
+                                    <controls:WizardRenamePreviewControl Margin="10 5"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
                 </DockPanel>
             </TabItem>
 
             <!--Edit-Gate-->
+            <TabItem Header="Choice">
+                <DockPanel Margin="10">
+                    <TextBlock Text="{StaticResource ChoiceStepDescription}"
+                               Margin="10"
+                               DockPanel.Dock="Top"/>
+                    <TextBlock DockPanel.Dock="Bottom"
+                               Margin="10"
+                               Visibility="{Binding ContextData.IsRenameOptionSelected, Converter={StaticResource BooleanVisibility}, ConverterParameter='hidden'}">
+                        <Run Text="Note:"
+                             FontWeight="Bold"/>
+                        <Run Text="Proceeding with the current choice will start renaming immediately in the next step."/>
+                    </TextBlock>
+
+                    <UniformGrid Margin="10"
+                                 Columns="1"
+                                 Rows="2">
+                        <UniformGrid.Resources>
+
+                        </UniformGrid.Resources>
+                        <RadioButton GroupName="WizardChoiceTabOption"
+                                     IsChecked="{Binding ContextData.IsRenameOptionSelected}"
+                                     Command="{Binding OptionSelectedCommand}">
+                            <TextBlock>
+                                <Run Text="Targets and references are aligned perfectly."
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="Moving forward to the next page will start renaming."/>
+                            </TextBlock>
+                        </RadioButton>
+                        <RadioButton GroupName="WizardChoiceTabOption"
+                                     IsChecked="{Binding ContextData.IsEditOptionSelected, FallbackValue=True}">
+                            <TextBlock>
+                                <Run Text="Not everything is as it should be."
+                                     FontWeight="Bold"/>
+                                <LineBreak/>
+                                <Run Text="The next page will finalize the transfer to the main window for editing."/>
+                            </TextBlock>
+                        </RadioButton>
+                    </UniformGrid>
+                </DockPanel>
+            </TabItem>
 
             <!--Rename-->
-            <TabItem Header="Review">
-                <DockPanel>
-                    <StackPanel>
-                        <TextBlock Text="Review the added files before finalizing the wizard." />
-                    </StackPanel>
-
-                    <DataGrid>
-                    </DataGrid>
+            <TabItem Header="Rename">
+                <DockPanel Margin="5">
+                    <TextBlock Text="Log:"
+                               DockPanel.Dock="Top"
+                               Margin="5" />
+                    <ListView Margin="5"
+                              ItemsSource="{Binding ContextData.Log}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                    <!--In the log, add:-->
+                    <!--1. logs have been forwarded to main window as well-->
+                    <!--2. The wizard can now be closed-->
                 </DockPanel>
             </TabItem>
         </TabControl>
-    </DockPanel>
+
+        <!--Busy-Overlay-->
+        <StackPanel Grid.Row="1"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding ContextData.IsBusy, Converter={StaticResource BooleanVisibility}}"
+                    d:Visibility="Collapsed">
+            <TextBlock Text="Building rename tasks..." />
+            <ProgressBar Height="16"
+                         IsIndeterminate="{Binding ContextData.IsBusy}" />
+        </StackPanel>
+
+    </Grid>
 </Window>

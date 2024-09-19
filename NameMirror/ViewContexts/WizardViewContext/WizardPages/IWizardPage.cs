@@ -1,4 +1,7 @@
-﻿namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
+﻿using System;
+using System.Threading.Tasks;
+
+namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
 
 public interface IWizardPage
 {
@@ -6,21 +9,19 @@ public interface IWizardPage
 
     WizardPageId PageId { get; }
 
-    // Functions
+    // Load
 
-    void Load();
+    object? PreLoad();
+
+    Task<object?> Load(object? state);
+
+    void PostLoad(object? state);
 
     // Cancel
 
     bool CanCancel();
 
     bool Cancel();
-
-    // Finish
-
-    bool CanFinish();
-
-    bool Finish();
 
     // Reverse
 

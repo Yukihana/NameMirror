@@ -14,6 +14,14 @@ public partial class WizardWindow : Window
     {
         InitializeComponent();
 
+        _logic.RequestClose += (s, e) => Close();
+
         DataContext = _logic;
+    }
+
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+        if (!_logic.CanCloseView())
+            e.Cancel = true;
     }
 }

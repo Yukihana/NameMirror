@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace NameMirror.ViewContexts.WizardViewContext.WizardPages;
 
@@ -8,7 +9,21 @@ public partial class PageChoice(IWizardData data) : IWizardPage
 
     public IWizardData Data { get; } = data;
 
-    public void Load()
+    // Load
+
+    public object? PreLoad()
+    {
+        Data.ProgressMode = WizardProgressMode.Next;
+        return null;
+    }
+
+    public async Task<object?> Load(object? state)
+    {
+        await Task.Yield();
+        return null;
+    }
+
+    public void PostLoad(object? state)
     {
     }
 
@@ -18,12 +33,6 @@ public partial class PageChoice(IWizardData data) : IWizardPage
 
     public bool Cancel() => true;
 
-    // Finish
-
-    public bool CanFinish() => false;
-
-    public bool Finish() => false;
-
     // Reverse
 
     public bool CanReverse() => true;
@@ -32,13 +41,15 @@ public partial class PageChoice(IWizardData data) : IWizardPage
 
     // Progress
 
-    public bool CanProgress() => !Data.PushToEdit; // No if edit is selected.
+    public bool CanProgress()
+        => Data.IsEditOptionSelected || Data.IsEditOptionSelected;
 
     public WizardPageId Progress()
     {
-        if (Data.PushToEdit)
-            throw new InvalidOperationException();
-
-        throw new NotImplementedException();
+        if (Data.IsEditOptionSelected)
+            return WizardPageId.FinalizeForEdit;
+        if (Data.IsRenameOptionSelected)
+            return WizardPageId.Rename;
+        throw new InvalidOperationException();
     }
 }

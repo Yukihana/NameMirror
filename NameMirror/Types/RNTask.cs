@@ -1,24 +1,15 @@
-﻿using NameMirror.Agents;
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.IO;
 
 namespace NameMirror.Types;
 
-public class RNTask : INotifyPropertyChanged
+public partial class RNTask : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public Exception? LastException { get; set; } = null;
-    private const string StatusChars = " ●✔✖";
-
-    // Callbacks
-    public Func<string, string> GetFullPath;
-
-    public Func<string, string> GetFilename;
-    public Func<string, string> GetExtension;
-    public Func<string, string> GetFilenameWithoutExtension;
-    public Func<string, string> GetDirectory;
-    public Func<string, string, string> Combine;
+    // private const string StatusChars = " ●✔✖";
 
     // Properties : Primary
     private string originalPath = string.Empty;
@@ -30,14 +21,14 @@ public class RNTask : INotifyPropertyChanged
         {
             if (!originalPath.Equals(value, StringComparison.OrdinalIgnoreCase))
             {
-                originalPath = GetFullPath(value);
+                originalPath = Path.GetFullPath(value);
                 PropertyChanged?.Invoke(this, new(nameof(OriginalPath)));
 
                 // Derived
-                OriginalFilename = GetFilename(value);
-                OriginalExtension = GetExtension(value);
-                OriginalFilenameWithoutExtension = GetFilenameWithoutExtension(value);
-                OriginalDirectory = GetDirectory(value);
+                OriginalFilename = Path.GetFileName(value);
+                OriginalExtension = Path.GetExtension(value);
+                OriginalFilenameWithoutExtension = Path.GetFileNameWithoutExtension(value);
+                OriginalDirectory = Path.GetDirectoryName(value);
 
                 // Update
                 GeneratePreview();
@@ -57,9 +48,9 @@ public class RNTask : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new(nameof(ReferencePath)));
 
             // Derived
-            ReferenceFilename = GetFilename(value);
-            ReferenceFilenameWithoutExtension = GetFilenameWithoutExtension(value);
-            ReferenceDirectory = GetDirectory(value);
+            ReferenceFilename = Path.GetFileName(value);
+            ReferenceFilenameWithoutExtension = Path.GetFileNameWithoutExtension(value);
+            ReferenceDirectory = Path.GetDirectoryName(value);
 
             // Status
             GeneratePreview();
@@ -80,7 +71,7 @@ public class RNTask : INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new(nameof(PreviewFilename)));
 
                 // Derived
-                PreviewPath = Combine(OriginalDirectory, PreviewFilename);
+                PreviewPath = Path.Combine(OriginalDirectory, PreviewFilename);
 
                 // Update
                 UpdateStatus();
@@ -295,17 +286,6 @@ public class RNTask : INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new(nameof(StatusIndex)));
             }
         }
-    }
-
-    // Ctor
-    public RNTask(IFileSystemAgent agent)
-    {
-        GetFullPath = agent.GetFullPath;
-        GetFilename = agent.GetFilename;
-        GetDirectory = agent.GetDirectory;
-        GetFilenameWithoutExtension = agent.GetFilenameWithoutExtension;
-        GetExtension = agent.GetExtension;
-        Combine = agent.Combine;
     }
 
     public void GeneratePreview()

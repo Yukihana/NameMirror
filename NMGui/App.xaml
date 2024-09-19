@@ -7,13 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Languages/en-GB.xaml" />
-                <ResourceDictionary Source="Resources/Misc.xaml" />
-                <ResourceDictionary Source="Resources/Vectors.xaml" />
-                <ResourceDictionary Source="Resources/IconsXAML/IconsXamlResources.xaml" />
-                <ResourceDictionary Source="Resources/Icons.xaml" />
-                <ResourceDictionary Source="Resources/BigImages.xaml" />
-                <ResourceDictionary Source="Resources/Styles.xaml" />
-                <ResourceDictionary Source="Resources/TabControl.xaml" />
+                <ResourceDictionary Source="Resources/ResourcesIndex.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -2,6 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <!--Add-Items-->
+    <system:String x:Key="AddTargetsFromFilesDialogTitle">Select target files...</system:String>
+    <system:String x:Key="AddTargetsFromFolderDialogTitle">Select folder for target files...</system:String>
+    <system:String x:Key="AddReferencesFromFilesDialogTitle">Select reference files...</system:String>
+    <system:String x:Key="AddReferencesFromFolderDialogTitle">Select folder for reference files...</system:String>
+
     <!--About-Info-->
     <system:String x:Key="AboutTitle">About NameMirror...</system:String>
     <system:String x:Key="CreativeBranding">CherrySoft</system:String>
@@ -21,6 +27,13 @@
     <system:String x:Key="CopyrightsHeader">Copyrights</system:String>
     <system:String x:Key="AccreditationsHeader">Accreditations</system:String>
     <system:String x:Key="AttributionHeader">Attribution</system:String>
+
+    <!--Navigation-->
+    <system:String x:Key="CancelNavigationText">Cancel</system:String>
+    <system:String x:Key="BackNavigationText">Back</system:String>
+    <system:String x:Key="NextNavigationText">Next</system:String>
+    <system:String x:Key="FinishNavigationText">Finish</system:String>
+    <system:String x:Key="CloseNavigationText">Close</system:String>
 
     <!--Wizard-Steps-->
     <system:String x:Key="StartWizardStepTitle">Start</system:String>

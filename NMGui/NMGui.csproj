@@ -39,6 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CSX.DotNet.Logging\CSX.DotNet.Logging.csproj" />
     <ProjectReference Include="..\CSX.Wpf.Dialogs\CSX.Wpf.Dialogs.csproj" />
     <ProjectReference Include="..\NameMirror\NameMirror.csproj" />
