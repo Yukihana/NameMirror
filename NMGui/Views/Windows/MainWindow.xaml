@@ -287,6 +287,7 @@
                                   ToolTipDescription="Open help with a few instructions on how to use this program."
                                   SmallImageSource="{StaticResource Instructions16}"
                                   LargeImageSource="{StaticResource Instructions32}"
+                                  IsEnabled="False"
                                   Click="ShowTutor" />
                     <RibbonButton Label="About NameMirror"
                                   ToolTip="About Referenced Naming Tool"

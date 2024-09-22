@@ -1,4 +1,4 @@
-﻿using NameMirror.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
 using NameMirror.Types;
 using System.IO;
 
@@ -8,14 +8,14 @@ public partial class MainContextLogic
 {
     // Commands
 
-    public ActionCommand EvaluateErrorsCommand { get; }
-    public ActionCommand RetaskCommand { get; }
+    public RelayCommand EvaluateErrorsCommand { get; }
+    public RelayCommand RetaskCommand { get; }
 
     // Handlers
 
-    private bool CanEvaluateErrors(object? parameter) => Data.AtLeastOneTask;
+    private bool CanEvaluateErrors() => Data.AtLeastOneTask;
 
-    private void EvaluateErrors(object? parameter)
+    private void EvaluateErrors()
     {
         int completed = 0;
         int notready = 0;
@@ -44,9 +44,9 @@ public partial class MainContextLogic
             + $"Failed={failed}");
     }
 
-    private bool CanRetask(object? parameter) => Data.AtLeastOneTask;
+    private bool CanRetask() => Data.AtLeastOneTask;
 
-    private void Retask(object? parameter)
+    private void Retask()
     {
         foreach (RNTask task in Data.Selection)
         {

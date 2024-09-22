@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using NameMirror.Commands;
 using NameMirror.Types;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +13,12 @@ public partial class MainContextLogic
     public RelayCommand AddTargetsCommand { get; }
     public RelayCommand InsertTargetsCommand { get; }
 
-    public ActionCommand TaskRemoveCommand { get; }
+    public RelayCommand TaskRemoveCommand { get; }
 
-    public ActionCommand TaskMoveUpCommand { get; }
-    public ActionCommand TaskMoveDownCommand { get; }
-    public ActionCommand TaskMoveToTopCommand { get; }
-    public ActionCommand TaskMoveToBottomCommand { get; }
+    public RelayCommand TaskMoveUpCommand { get; }
+    public RelayCommand TaskMoveDownCommand { get; }
+    public RelayCommand TaskMoveToTopCommand { get; }
+    public RelayCommand TaskMoveToBottomCommand { get; }
 
     // Add
 
@@ -103,9 +102,9 @@ public partial class MainContextLogic
 
     // Remove
 
-    private bool CanRemoveTask(object? parameter) => Data.AtLeastOneSelected;
+    private bool CanRemoveTask() => Data.AtLeastOneSelected;
 
-    private void RemoveTask(object? parameter)
+    private void RemoveTask()
     {
         // Adding confirmation to prevent accidents
         if (!_services.PromptAgent.Validate(
@@ -133,10 +132,10 @@ public partial class MainContextLogic
 
     // Move
 
-    private bool CanMoveTaskUp(object? parameter)
+    private bool CanMoveTaskUp()
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
 
-    private void MoveTaskUp(object? parameter)
+    private void MoveTaskUp()
     {
         // Snapshot
         var selected = GetSelection().ToArray();
@@ -158,10 +157,10 @@ public partial class MainContextLogic
         ConcludeReordering(successes, selected);
     }
 
-    private bool CanMoveTaskDown(object? parameter)
+    private bool CanMoveTaskDown()
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
 
-    private void MoveTaskDown(object? parameter)
+    private void MoveTaskDown()
     {
         // Snapshot
         RNTask[] selected = [.. GetSelection()];
@@ -183,10 +182,10 @@ public partial class MainContextLogic
         ConcludeReordering(successes, selected);
     }
 
-    private bool CanMoveTaskToTop(object? parameter)
+    private bool CanMoveTaskToTop()
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
 
-    private void MoveTaskToTop(object? parameter)
+    private void MoveTaskToTop()
     {
         // Snapshot and prepare
         var selected = GetSelection();
@@ -215,10 +214,10 @@ public partial class MainContextLogic
         ConcludeReordering(successes, [.. selected]);
     }
 
-    private bool CanMoveTaskToBottom(object? parameter)
+    private bool CanMoveTaskToBottom()
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
 
-    private void MoveTaskToBottom(object? parameter)
+    private void MoveTaskToBottom()
     {
         // Snapshot and prepare
         var selected = GetSelection();

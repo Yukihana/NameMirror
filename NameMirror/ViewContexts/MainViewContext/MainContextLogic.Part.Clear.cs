@@ -1,4 +1,4 @@
-﻿using NameMirror.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
 using NameMirror.Types;
 using System.IO;
 
@@ -8,16 +8,16 @@ public partial class MainContextLogic
 {
     // Commands
 
-    public ActionCommand ClearCompletedCommand { get; }
-    public ActionCommand ClearMissingCommand { get; }
-    public ActionCommand ClearUnreadyCommand { get; }
-    public ActionCommand ClearAllCommand { get; }
+    public RelayCommand ClearCompletedCommand { get; }
+    public RelayCommand ClearMissingCommand { get; }
+    public RelayCommand ClearUnreadyCommand { get; }
+    public RelayCommand ClearAllCommand { get; }
 
     // Handlers
 
-    private bool CanClearCompleted(object? parameter) => Data.AtLeastOneTask;
+    private bool CanClearCompleted() => Data.AtLeastOneTask;
 
-    private void ClearCompleted(object? parameter = null)
+    private void ClearCompleted()
     {
         // Adding confirmation to prevent accidents
         if (_services.PromptAgent.Validate(
@@ -34,9 +34,9 @@ public partial class MainContextLogic
         }
     }
 
-    private bool CanClearMissing(object? parameter) => Data.AtLeastOneTask;
+    private bool CanClearMissing() => Data.AtLeastOneTask;
 
-    private void ClearMissing(object? parameter = null)
+    private void ClearMissing()
     {
         if (_services.PromptAgent.Validate(
             _services.PromptAgent.Query("Clear all tasks with missing files?", "Confirmation", "Yes;Cancel", "information", "Yes"),
@@ -52,9 +52,9 @@ public partial class MainContextLogic
         }
     }
 
-    private bool CanClearUnready(object? parameter) => Data.AtLeastOneTask;
+    private bool CanClearUnready() => Data.AtLeastOneTask;
 
-    private void ClearUnready(object? parameter = null)
+    private void ClearUnready()
     {
         if (_services.PromptAgent.Validate(
             _services.PromptAgent.Query("Clear all tasks not ready for renaming?", "Confirmation", "Yes;Cancel", "information", "Yes"),
@@ -70,11 +70,12 @@ public partial class MainContextLogic
         }
     }
 
-    private bool CanClearAll(object? parameter) => Data.AtLeastOneTask;
+    private bool CanClearAll() => Data.AtLeastOneTask;
 
-    private void ClearAll(object? parameter = null, bool confirm = true)
+    private void ClearAll(bool confirm = true)
     {
-        if (_services.PromptAgent.Validate(
+        if (!confirm ||
+            _services.PromptAgent.Validate(
             _services.PromptAgent.Query("Clear all tasks?", "Confirmation", "Yes;Cancel", "information", "Yes"),
             "yes"))
         {

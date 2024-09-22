@@ -23,39 +23,39 @@ public partial class MainContextLogic : ObservableObject, IRenameTaskReceptor
     private void Data_TasksChanged(object? sender, EventArgs e)
     {
         // Rename
-        RenameAllCommand.UpdateCanExecute();
+        RenameAllCommand.NotifyCanExecuteChanged();
 
         // Evaluate
-        EvaluateErrorsCommand.UpdateCanExecute();
+        EvaluateErrorsCommand.NotifyCanExecuteChanged();
 
         // Purge
-        ClearMissingCommand.UpdateCanExecute();
-        ClearUnreadyCommand.UpdateCanExecute();
-        ClearAllCommand.UpdateCanExecute();
-        ClearCompletedCommand.UpdateCanExecute();
+        ClearMissingCommand.NotifyCanExecuteChanged();
+        ClearUnreadyCommand.NotifyCanExecuteChanged();
+        ClearAllCommand.NotifyCanExecuteChanged();
+        ClearCompletedCommand.NotifyCanExecuteChanged();
     }
 
     private void Data_SelectionChanged(object? sender, EventArgs e)
     {
         // Rename
-        RenameSelectedCommand.UpdateCanExecute();
+        RenameSelectedCommand.NotifyCanExecuteChanged();
 
         // Tasks
-        TaskRemoveCommand.UpdateCanExecute();
+        TaskRemoveCommand.NotifyCanExecuteChanged();
 
         // References
-        ReferenceRemoveCommand.UpdateCanExecute();
+        ReferenceRemoveCommand.NotifyCanExecuteChanged();
 
         // Sort
-        TaskMoveUpCommand.UpdateCanExecute();
-        TaskMoveDownCommand.UpdateCanExecute();
-        TaskMoveToTopCommand.UpdateCanExecute();
-        TaskMoveToBottomCommand.UpdateCanExecute();
+        TaskMoveUpCommand.NotifyCanExecuteChanged();
+        TaskMoveDownCommand.NotifyCanExecuteChanged();
+        TaskMoveToTopCommand.NotifyCanExecuteChanged();
+        TaskMoveToBottomCommand.NotifyCanExecuteChanged();
 
-        ReferenceMoveUpCommand.UpdateCanExecute();
-        ReferenceMoveDownCommand.UpdateCanExecute();
-        ReferenceMoveToTopCommand.UpdateCanExecute();
-        ReferenceMoveToBottomCommand.UpdateCanExecute();
+        ReferenceMoveUpCommand.NotifyCanExecuteChanged();
+        ReferenceMoveDownCommand.NotifyCanExecuteChanged();
+        ReferenceMoveToTopCommand.NotifyCanExecuteChanged();
+        ReferenceMoveToBottomCommand.NotifyCanExecuteChanged();
     }
 
     // LifeTime
@@ -103,7 +103,7 @@ public partial class MainContextLogic : ObservableObject, IRenameTaskReceptor
         ClearCompletedCommand = new(ClearCompleted, CanClearCompleted);
         ClearMissingCommand = new(ClearMissing, CanClearMissing);
         ClearUnreadyCommand = new(ClearUnready, CanClearUnready);
-        ClearAllCommand = new((_) => ClearAll(), CanClearAll);
+        ClearAllCommand = new(() => ClearAll(), CanClearAll);
     }
 
     public void OnInterfaceLoaded()

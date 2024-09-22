@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using NameMirror.Commands;
 using NameMirror.Types;
 using System;
 using System.Collections.Generic;
@@ -16,12 +15,12 @@ public partial class MainContextLogic
     public RelayCommand ReplaceReferencesAtCommand { get; }
     public RelayCommand ReplaceAllReferencesCommand { get; }
 
-    public ActionCommand ReferenceRemoveCommand { get; }
+    public RelayCommand ReferenceRemoveCommand { get; }
 
-    public ActionCommand ReferenceMoveUpCommand { get; }
-    public ActionCommand ReferenceMoveDownCommand { get; }
-    public ActionCommand ReferenceMoveToTopCommand { get; }
-    public ActionCommand ReferenceMoveToBottomCommand { get; }
+    public RelayCommand ReferenceMoveUpCommand { get; }
+    public RelayCommand ReferenceMoveDownCommand { get; }
+    public RelayCommand ReferenceMoveToTopCommand { get; }
+    public RelayCommand ReferenceMoveToBottomCommand { get; }
 
     // Add
 
@@ -156,9 +155,9 @@ public partial class MainContextLogic
 
     // Remove
 
-    private bool CanRemoveReference(object? parameter) => Data.AtLeastOneSelected;
+    private bool CanRemoveReference() => Data.AtLeastOneSelected;
 
-    private void RemoveReference(object? parameter)
+    private void RemoveReference()
     {
         foreach (RNTask task in Data.Selection)
         {
@@ -166,10 +165,10 @@ public partial class MainContextLogic
         }
     }
 
-    private bool CanMoveReferenceUp(object? parameter)
+    private bool CanMoveReferenceUp()
         => Data.AtLeastOneSelected && !Data.SelectionHasMinimum;
 
-    private void MoveReferenceUp(object? parameter)
+    private void MoveReferenceUp()
     {
         // Snapshot and prepare (No need to snapshot for references but it doesn't make a difference with this method anyway)
         var selected = GetSelection();
@@ -191,10 +190,10 @@ public partial class MainContextLogic
         ConcludeReordering(successes, [.. selected]);
     }
 
-    private bool CanMoveReferenceDown(object? parameter)
+    private bool CanMoveReferenceDown()
         => Data.AtLeastOneSelected && !Data.SelectionHasMaximum;
 
-    private void MoveReferenceDown(object? parameter)
+    private void MoveReferenceDown()
     {
         // Snapshot and prepare (No need to snapshot for references but it doesn't make a difference with this method anyway)
         var selected = GetSelection();
@@ -216,9 +215,9 @@ public partial class MainContextLogic
         ConcludeReordering(successes, [.. selected]);
     }
 
-    private bool CanMoveReferenceToTop(object? parameter) => Data.AtLeastOneSelected;
+    private bool CanMoveReferenceToTop() => Data.AtLeastOneSelected;
 
-    private void MoveReferenceToTop(object? parameter)
+    private void MoveReferenceToTop()
     {
         // Prepare
         RNTask[] selected = [.. GetSelection()];
@@ -271,9 +270,9 @@ public partial class MainContextLogic
         ConcludeReordering(successes, [.. newSelection]);
     }
 
-    private bool CanMoveReferenceToBottom(object? parameter) => Data.AtLeastOneSelected;
+    private bool CanMoveReferenceToBottom() => Data.AtLeastOneSelected;
 
-    private void MoveReferenceToBottom(object? parameter)
+    private void MoveReferenceToBottom()
     {
         RNTask[] selected = [.. GetSelection()];
         List<RNTask> newSelection = [];
