@@ -1,312 +1,102 @@
-﻿using System;
-using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using NameMirror.ViewContexts.Shared;
+using System;
 using System.IO;
 
 namespace NameMirror.Types;
 
-public partial class RNTask : INotifyPropertyChanged
+public partial class RNTask : ObservableObject
 {
-    public event PropertyChangedEventHandler? PropertyChanged;
+    // Target
 
-    public Exception? LastException { get; set; } = null;
-    // private const string StatusChars = " ●✔✖";
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(TargetFullPath))]
+    private string _targetDirectory = string.Empty;
 
-    // Properties : Primary
-    private string originalPath = string.Empty;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(TargetFileName))]
+    [NotifyPropertyChangedFor(nameof(TargetFullPath))]
+    private string _targetFileNameWithoutExtension = string.Empty;
 
-    public string OriginalPath
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(TargetFileName))]
+    [NotifyPropertyChangedFor(nameof(TargetFullPath))]
+    private string _targetExtension = string.Empty;
+
+    // Reference
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ReferenceFullPath))]
+    private string _referenceDirectory = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ReferenceFileName))]
+    [NotifyPropertyChangedFor(nameof(ReferenceFullPath))]
+    private string _referenceFileNameWithoutExtension = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ReferenceFileName))]
+    [NotifyPropertyChangedFor(nameof(ReferenceFullPath))]
+    private string _referenceExtension = string.Empty;
+
+    // Derived : Base
+
+    public string TargetFileName
+        => $"{TargetFileNameWithoutExtension}{TargetExtension}";
+
+    public string TargetFullPath => Path.Combine(
+        TargetDirectory,
+        TargetFileName);
+
+    public string ReferenceFileName
+        => $"{ReferenceFileNameWithoutExtension}{ReferenceExtension}";
+
+    public string ReferenceFullPath => Path.Combine(
+        ReferenceDirectory,
+        ReferenceFileName);
+
+    // Derived : Secondary
+
+    public string GeneratedFileName
+        => $"{ReferenceFileNameWithoutExtension}{TargetExtension}";
+
+    public string GeneratedFullPath => Path.Combine(
+        TargetDirectory,
+        GeneratedFileName);
+
+    // Custom Property : Preview
+
+    private string _previewFileName = string.Empty;
+
+    /// <summary>
+    /// Also contains extension.
+    /// </summary>
+    public string PreviewFileName
     {
-        get => originalPath;
+        get
+        {
+        }
         set
         {
-            if (!originalPath.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                originalPath = Path.GetFullPath(value);
-                PropertyChanged?.Invoke(this, new(nameof(OriginalPath)));
-
-                // Derived
-                OriginalFilename = Path.GetFileName(value);
-                OriginalExtension = Path.GetExtension(value);
-                OriginalFilenameWithoutExtension = Path.GetFileNameWithoutExtension(value);
-                OriginalDirectory = Path.GetDirectoryName(value);
-
-                // Update
-                GeneratePreview();
-                UpdateStatus();
-            }
         }
     }
 
-    private string referencePath = string.Empty;
+    // Derived
 
-    public string ReferencePath
-    {
-        get => referencePath;
-        set
-        {
-            referencePath = value;
-            PropertyChanged?.Invoke(this, new(nameof(ReferencePath)));
+    public string PreviewFullPath
+        => Path.Combine(TargetDirectory, PreviewFileName);
 
-            // Derived
-            ReferenceFilename = Path.GetFileName(value);
-            ReferenceFilenameWithoutExtension = Path.GetFileNameWithoutExtension(value);
-            ReferenceDirectory = Path.GetDirectoryName(value);
+    [ObservableProperty]
+    private bool _isSelected = false;
 
-            // Status
-            GeneratePreview();
-            UpdateStatus();
-        }
-    }
+    [ObservableProperty]
+    private Exception? _lastException = null;
 
-    private string previewFilename = string.Empty;
+    // [ObservableProperty]
 
-    public string PreviewFilename
-    {
-        get => previewFilename;
-        private set
-        {
-            if (!previewFilename.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                previewFilename = value;
-                PropertyChanged?.Invoke(this, new(nameof(PreviewFilename)));
+    // Derived Properties
 
-                // Derived
-                PreviewPath = Path.Combine(OriginalDirectory, PreviewFilename);
+    public bool IsReady => this.Get
 
-                // Update
-                UpdateStatus();
-            }
-        }
-    }
-
-    private bool _isSelected;
-
-    public bool IsSelected
-    {
-        get => _isSelected;
-        set
-        {
-            if (_isSelected != value)
-            {
-                _isSelected = value;
-                PropertyChanged?.Invoke(this, new(nameof(IsSelected)));
-            }
-        }
-    }
-
-    // Properties : Original Derived
-    private string originalFilename = string.Empty;
-
-    public string OriginalFilename
-    {
-        get => originalFilename;
-        private set
-        {
-            if (!originalFilename.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                originalFilename = value;
-                PropertyChanged?.Invoke(this, new(nameof(OriginalFilename)));
-            }
-        }
-    }
-
-    private string originalFilenameWithoutExtension = string.Empty;
-
-    public string OriginalFilenameWithoutExtension
-    {
-        get => originalFilenameWithoutExtension;
-        private set
-        {
-            if (!originalFilenameWithoutExtension.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                originalFilenameWithoutExtension = value;
-                PropertyChanged?.Invoke(this, new(nameof(OriginalFilenameWithoutExtension)));
-            }
-        }
-    }
-
-    private string originalExtension = string.Empty;
-
-    public string OriginalExtension
-    {
-        get => originalExtension;
-        private set
-        {
-            if (!originalExtension.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                originalExtension = value;
-                PropertyChanged?.Invoke(this, new(nameof(OriginalExtension)));
-            }
-        }
-    }
-
-    private string originalDirectory = string.Empty;
-
-    public string OriginalDirectory
-    {
-        get => originalDirectory;
-        private set
-        {
-            if (!originalDirectory.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                originalDirectory = value;
-                PropertyChanged?.Invoke(this, new(nameof(OriginalDirectory)));
-            }
-        }
-    }
-
-    // Properties : Reference Derived
-    private string referenceFilename = string.Empty;
-
-    public string ReferenceFilename
-    {
-        get => referenceFilename;
-        private set
-        {
-            if (!referenceFilename.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                referenceFilename = value;
-                PropertyChanged?.Invoke(this, new(nameof(ReferenceFilename)));
-            }
-        }
-    }
-
-    private string referenceFilenameWithoutExtension = string.Empty;
-
-    public string ReferenceFilenameWithoutExtension
-    {
-        get => referenceFilenameWithoutExtension;
-        private set
-        {
-            if (!referenceFilenameWithoutExtension.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                referenceFilenameWithoutExtension = value;
-                PropertyChanged?.Invoke(this, new(nameof(ReferenceFilenameWithoutExtension)));
-            }
-        }
-    }
-
-    private string referenceDirectory = string.Empty;
-
-    public string ReferenceDirectory
-    {
-        get => referenceDirectory;
-        private set
-        {
-            if (!referenceDirectory.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                referenceDirectory = value;
-                PropertyChanged?.Invoke(this, new(nameof(ReferenceDirectory)));
-            }
-        }
-    }
-
-    // Properties : Preview
-    private string generatedFilename = string.Empty;
-
-    public string GeneratedFilename
-    {
-        get => generatedFilename;
-        private set
-        {
-            if (!generatedFilename.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                // Alter actual only if actual matched generated before the change
-                if (PreviewFilename.Equals(generatedFilename))
-                {
-                    PreviewFilename = value;
-                }
-
-                generatedFilename = value;
-                PropertyChanged?.Invoke(this, new(nameof(GeneratedFilename)));
-
-                // No more changes required here, as everything will be taken care of by actual preview property handler
-            }
-        }
-    }
-
-    private string previewPath = string.Empty;
-
-    public string PreviewPath
-    {
-        get => previewPath;
-        private set
-        {
-            if (!previewPath.Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                previewPath = value;
-                PropertyChanged?.Invoke(this, new(nameof(PreviewPath)));
-            }
-        }
-    }
-
-    // Properties : Status
-    private bool ready = false;
-
-    public bool Ready
-    {
-        get => ready;
-        private set
-        {
-            if (ready != value)
-            {
-                ready = value;
-                PropertyChanged?.Invoke(this, new(nameof(Ready)));
-                UpdateStatusText();
-            }
-        }
-    }
-
-    private bool? successStatus = null;
-
-    public bool? SuccessStatus
-    {
-        get => successStatus;
-        set
-        {
-            if (successStatus != value)
-            {
-                successStatus = value;
-                PropertyChanged?.Invoke(this, new(nameof(SuccessStatus)));
-                UpdateStatusText();
-            }
-        }
-    }
-
-    private byte statusIndex = 0;
-
-    public byte StatusIndex
-    {
-        get => statusIndex;
-        set
-        {
-            if (statusIndex != value)
-            {
-                statusIndex = value;
-                PropertyChanged?.Invoke(this, new(nameof(StatusIndex)));
-            }
-        }
-    }
-
-    public void GeneratePreview()
-        => GeneratedFilename = ReferenceFilenameWithoutExtension + OriginalExtension;
-
-    private void UpdateStatus()
-    {
-        Ready =
-            (!string.IsNullOrWhiteSpace(OriginalDirectory)) &&
-            (!string.IsNullOrEmpty(ReferenceFilenameWithoutExtension));
-    }
-
-    private void UpdateStatusText()
-    {
-        if (SuccessStatus == false)
-            StatusIndex = 3;
-        else if (SuccessStatus == true)
-            StatusIndex = 2;
-        else if (Ready)
-            StatusIndex = 1;
-        else
-            StatusIndex = 0;
-    }
+    public byte StatusIndex => this.GetStatusIndex();
 }
