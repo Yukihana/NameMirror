@@ -12,8 +12,10 @@
 	  <ImplicitUsings>disable</ImplicitUsings>
 
     <UseWPF>true</UseWPF>
-	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<ApplicationIcon>NameMirrorIcon.ico</ApplicationIcon>
+    <Prefer32Bit>false</Prefer32Bit>
+
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <ApplicationIcon>NameMirrorIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,6 +8,8 @@
     <LangVersion>Latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
 </Project>

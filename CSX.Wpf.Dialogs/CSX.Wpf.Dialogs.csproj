@@ -10,6 +10,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
 
     <UseWPF>true</UseWPF>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>

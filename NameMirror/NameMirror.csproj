@@ -4,6 +4,7 @@
     <TargetFramework>net481</TargetFramework>
 
     <Version>0.$([System.DateTime]::UtcNow.ToString("yyyy.MMdd.Hmm"))</Version>
+    <Prefer32Bit>false</Prefer32Bit>
 
     <LangVersion>Latest</LangVersion>
     <ImplicitUsings>disable</ImplicitUsings>
